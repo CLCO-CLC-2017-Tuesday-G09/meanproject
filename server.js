@@ -25,11 +25,10 @@ mongoose.connect(config.uri, (err) => {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(session({ secret: config.secret, resave: false, saveUninitialized: true }));
-app.use(express.static(path.join(__dirname, 'client')));
-app.use(express.static(__dirname + '/client/dist/'));
+app.use(express.static(__dirname + '/public/dist/'));
 //default
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + '/client/dist/index.html'))
+    res.sendFile(path.join(__dirname + '/public/dist/index.html'))
 });
 app.use('/users', userRouter);
 // app.use(cors({

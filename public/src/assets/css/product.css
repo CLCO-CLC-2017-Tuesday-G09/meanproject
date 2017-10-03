@@ -173,3 +173,14 @@ div.c-white span{
 	height:1.5em; 
 	border:0.1em solid #e8e9eb;
 }
+#listproduct-filter{
+    padding: 20px;
+    padding-left: 40px
+}
+#listproduct-content{
+    padding: 20px;
+    
+}
+#listproduct-checkbox{
+	padding-left: 20px;
+}

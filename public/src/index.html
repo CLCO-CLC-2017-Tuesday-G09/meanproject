@@ -1,29 +1,42 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Public</title>
-  <base href="/">
+<!DOCTYPE html>
+<html lang="">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <!-- Bootstrap CSS -->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>WWeb Page</title>
+	<base href="/">
+	<!-- Bootstrap assets/css -->
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<!-- style-->
 	<link rel="stylesheet" type="text/css" href="assets/css/style3.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="assets/css/message.css" media="all" />
 	<!-- slider-->
-	<link rel="stylesheet" href="assets/css/slider.css"/>
+	<link rel="stylesheet" href="assets/css/slider.css" />
 	<!-- catalogy -->
 	<link rel="stylesheet" type="text/css" href="assets/css/product.css" media="all" />
+	<!--javascript style-->
+	<script type="text/javascript" src="assets/js/product.min.js"></script>
 	<!-- jQuery -->
-  <script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.min.js"></script>
 	<!--product amimate-->
 	<script type="text/javascript" src="assets/js/product.min.js"></script>
 	<!-- Bootstrap JavaScript -->
 	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/modernizr.custom.js"></script>
 	<script src="assets/js/slider.min.js"></script>
 </head>
+
 <body>
-  <app-root>loading...</app-root>
+	<app-root></app-root>
+	<script src="assets/js/app.min.js"></script>
+	<script>
+		$(function () {
+			cbpHorizontalMenu.init();
+			slider();
+		});
+	</script>
 </body>
+
 </html>

@@ -90,6 +90,40 @@ module.exports = (router) => {
             });
         }
     });
+    router.get('/checkEmail/:email', (req, res) => {
+        if (!req.params.email) {
+            res.json({ success: false, message: 'E-mail was not provided' });
+        } else {
+            User.findOne({ email: req.params.email }, (err, user) => {
+                if (err) {
+                    res.json({ success: false, message: err });
+                } else {
+                    if (user) {
+                        res.json({ success: false, message: 'E-mail is already taken' });
+                    } else {
+                        res.json({ success: true, message: 'E-mail is avilable' });
+                    }
+                }
+            });
+        }
+    }); 
+    router.get('/checkUsername/:username', (req, res) => {
+        if (!req.params.username) {
+            res.json({ success: false, message: 'User Name was not provided' });
+        } else {
+            User.findOne({ username: req.params.username }, (err, user) => {
+                if (err) {
+                    res.json({ success: false, message: err });
+                } else {
+                    if (user) {
+                        res.json({ success: false, message: 'User name is already taken' });
+                    } else {
+                        res.json({ success: true, message: 'User name is avilable' });
+                    }
+                }
+            });
+        }
+    });  
 //find all list user
     router.get('/listmember', (req, res) => {
         User.find({}, (err, users) => {
@@ -118,5 +152,42 @@ module.exports = (router) => {
             }
         });
     });
+
+    /* ========
+  LOGIN ROUTE
+  ======== */
+  router.post('/login', (req, res) => {
+    // Check if username was provided
+    if (!req.body.username) {
+      res.json({ success: false, message: 'No username was provided' }); // Return error
+    } else {
+      // Check if password was provided
+      if (!req.body.password) {
+        res.json({ success: false, message: 'No password was provided.' }); // Return error
+      } else {
+        // Check if username exists in database
+        User.findOne({ username: req.body.username.toLowerCase() }, (err, user) => {
+          // Check if error was found
+          if (err) {
+            res.json({ success: false, message: err }); // Return error
+          } else {
+            // Check if username was found
+            if (!user) {
+              res.json({ success: false, message: 'Username not found.' }); // Return error
+            } else {
+              const validPassword = user.comparePassword(req.body.password); // Compare password provided to password in database
+              // Check if password is a match
+              if (!validPassword) {
+                res.json({ success: false, message: 'Password invalid' }); // Return error
+              } else {
+                res.json({ success: true, message: 'Success!',user: { username: user.username } }); // Return success and token to frontend
+              }
+            }
+          }
+        });
+      }
+    }
+  });
+
     return router;
 }

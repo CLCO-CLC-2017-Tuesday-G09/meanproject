@@ -1,7 +1,7 @@
 /* general demo style */
 @font-face {
-	font-weight: normal;
-	font-style: normal;
+	font-family: UTMAmerikaSans;
+    src: url(../fonts/UTMAmerikaSans.ttf);
 }
 
 body, html { font-size: 100%; 	padding: 0; margin: 0;}
@@ -240,13 +240,14 @@ img {
 	margin: 0 10% 0;
 }
 #social > div img {
-	width: 18%;
+	width: 17%;
 	height: 75%;
 	margin: 1em 1em 1em;
 	box-shadow:0 0.5em 0.5em rgba(0,0,0,1);
 	-moz-box-shadow:0em 0.5em 0.5em rgba(0,0,0,.3);
 	-webkit-box-shadow:0.5em 0.5em 1em rgba(0,0,1,5);
 }
+
 .section-dark{
 	padding:3.5em;
 	background:url(../images/bg-section-dark.jpg) top center no-repeat;
@@ -255,9 +256,16 @@ img {
 .section-dark h2{
 	font-size:38px;
 	color:#fff;
-	padding:0;
-	margin:0 0 0.3em;
+	padding:0.5em 0;
 	text-shadow:1px 2px 5px rgba(0,0,0,.8)}
+	.section-dark p{
+		font-family: "UTMAmerikaSans";
+		text-transform: none;
+		font-size:0.8em;
+		color:#fff;
+		padding:0.3em;
+		float: left;
+	}
 	.nav-section-dark{
 		border-top:0.1px solid #3d3d3d;
 		border-bottom:0.1px solid #3d3d3d;
@@ -321,14 +329,18 @@ img {
 
 
 	.footer-distributed{
-		min-height:350px;
+		height: 30em;
 		background:url(../images/bg-wood.jpg) #000;
 		box-shadow:0 -8px 30px rgba(0,0,0,.5);
 		-moz-box-shadow:0 -8px 30px rgba(0,0,0,.5);
 		-webkit-box-shadow:0 -8px 30px rgba(0,0,0,.5);
-		margin:0;position:relative;
+		position:relative;
 		-moz-box-shadow:0em 0.5em 0.5em rgba(0,0,0,.3);
 		-webkit-box-shadow:0.5em 0.5em 5em rgba(0,0,1,5);
+		padding:60px 0 0;
+		overflow:hidden;
+		width:100%;
+		margin:0 auto
 	}
 	.footer-membership{
 		background:url(../images/logo-plus-large.png) 0 0/205px 35px no-repeat rgba(0,0,0,0);
@@ -341,7 +353,7 @@ img {
 		text-align:center;
 		padding:60px 0 0;
 		overflow:hidden;
-		width:1024px;
+		width:100%;
 		margin:0 auto
 	}
 	.all-width{
@@ -391,7 +403,7 @@ img {
 		}#master-footer-copyright{
 			width:100%;
 			text-align:center;
-			padding:15px 0;
+			padding:1em 0;
 			background:rgba(0,0,0,.4);
 			border-top:1px solid rgba(255,255,255,.05);
 			margin:0;
@@ -509,7 +521,85 @@ img {
 					}
 
 				}
+				#space-register{
+					position: relative;
+					transform-style: preserve-3d;
+					transition: transform 5s;
+				}
+				#space-register.animate{
+					margin: 1em 1em 1em 1em;
+					background:#313131;
+					box-shadow:0 2em 0.9em rgba(0,0,0,1);
+					-moz-box-shadow:0 2em 0.5em rgba(0,0,0,.3);
+					-webkit-box-shadow:0 1em 3em rgba(0,0,1,5);
+					-webkit-transition:  100ms ease-out; 
+					-moz-transition:  100ms ease-out; 
+					-o-transition:  100ms ease-out; 
+					transition:  100ms ease-out; 
+				}
+				#space-register.animate> h3{
+					font-size:1.5em;
+					padding: 0.5em;
+					text-align: center;
+					vertical-align:middle
+				}
+				#space-register.animate #register-conten{
+					padding: 1em;
+				}
+				#space-login{
+					position: relative;
+					transform-style: preserve-3d;
+					transition: transform 5s;
+				}
+				#space-login.animate{
+					background:#313131;
+					position: static;
+					box-shadow:0 2em 0.9em rgba(0,0,0,1);
+					-moz-box-shadow:0 2em 0.5em rgba(0,0,0,.3);
+					-webkit-box-shadow:0 1em 3em rgba(0,0,1,5);
+					-webkit-transition:  1000ms ease-out; 
+					-moz-transition:  1000ms ease-out; 
+					-o-transition:  1000ms ease-out; 
+					transition:  1000ms ease-out; 
+				}
+				#space-login.animate> h3{
+					font-size:1.5em;
+					padding: 0.5em;
+					text-align: center;
+					vertical-align:middle
+				}
+				#space-login.animate #login-conten{
+					padding: 1em;
+				}
+				#register-button-style h3{
+					font-family:snicon;
+					font-size:1.5em;
+					vertical-align:middle
+				}
+				#register-button-style :hover{
+					background-color: #e29200;
+				}
+				#register-button-style :disabled{
+					color:#000;
+					background-color: #A4FA33;
+				}
 
+				#login-button-style h3{
+					font-family:snicon;
+					font-size:1.5em;
+					vertical-align:middle
+				}
+				#login-button-style :hover{
+					background-color: #FF9900;
+				}
+				#login-button-style :disabled{
+					color:#FFFFFF;
+					background-color: #FA3333;
+				}
+				#register-detail-font{
+					font-size: 80%;
+					text-transform: none;
+				}
 				/* examples for media queries */
 				@media screen and (max-width: 100em) { 
 					img {

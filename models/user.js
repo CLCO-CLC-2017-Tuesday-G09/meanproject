@@ -211,6 +211,9 @@ UserSchema.pre('save', function (next) {
         next();
     });
 });
-
+// Methods to compare password to encrypted password upon login
+UserSchema.methods.comparePassword = function(password) {
+    return bcrypt.compareSync(password, this.password); // Return comparison of login password to password in database (true or false)
+  };
 
 module.exports = mongoose.model('User', UserSchema);
