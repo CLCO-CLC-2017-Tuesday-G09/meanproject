@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 const userRouter=require('./routers/user.router')(router);
+const productRouter=require('./routers/product.router')(router);
 const config = require('./config/database');
 //start connect database
 mongoose.Promise = global.Promise;
@@ -31,6 +32,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/dist/index.html'))
 });
 app.use('/users', userRouter);
+app.use('/products', productRouter);
 // app.use(cors({
 //     orgin: 'http://localhost:4200'
 // }));

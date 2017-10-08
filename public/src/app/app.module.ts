@@ -12,7 +12,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
+import { AdhomeComponent } from './admin/adhome/adhome.component';
 
+// Layout
+import { ClientComponent } from './layout/client/client.component';
+import { AdministratorComponent } from './layout/administrator/administrator.component';
+import { AdsidebarComponent } from './partials/adsidebar/adsidebar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +26,11 @@ import { AuthService } from './services/auth.service';
     HeaderComponent,
     SidebarComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    AdhomeComponent,
+    ClientComponent,
+    AdministratorComponent,
+    AdsidebarComponent
   ],
   imports: [
     BrowserModule,

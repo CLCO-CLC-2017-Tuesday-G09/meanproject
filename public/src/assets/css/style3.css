@@ -3,9 +3,35 @@
 	font-family: UTMAmerikaSans;
     src: url(../fonts/UTMAmerikaSans.ttf);
 }
-
-body, html { font-size: 100%; 	padding: 0; margin: 0;}
-
+@font-face {
+	font-family: UTMHelvetIns;
+    src: url(../fonts/UTM_HelvetIns.ttf);
+}
+@font-face {
+	font-family: UTMAptima;
+    src: url(../fonts/UTMAptima.ttf);
+}
+@font-face {
+	font-family: UTMAptimaBold;
+    src: url(../fonts/UTMAptimaBold.ttf);
+}
+@font-face {
+	font-family: UTMDaxMedium;
+    src: url(../fonts/UTMDaxMedium.ttf);
+}
+@font-face {
+	font-family: UTMDax;
+    src: url(../fonts/UTMDaxBold.ttf);
+}
+@font-face {
+	font-family: UTMDaxBold;
+    src: url(../fonts/UTMDaxBold.ttf);
+}
+@font-face {
+	font-family: 'FontAwesome';
+	src: url('../fonts/FontAwesome.eot?v=4.7.0');	font-weight: normal;
+	font-style: normal;
+  }
 /* reset */
 *,
 *:after,
@@ -24,15 +50,6 @@ body, html { font-size: 100%; 	padding: 0; margin: 0;}
 
 .clearfix:after {
 	clear: both;
-}
-
-body {
-	font-family:'roboto condensed',arial,helvetica,
-	sans-serif;
-	font-weight:400;
-	font-size:14px;
-	color:#d0d0d0;
-	background:url(../images/bg-noise.jpg) #080808;
 }
 
 a {
@@ -63,16 +80,8 @@ a:hover {
 	margin-top: 2em;
 	margin-bottom: 2em;
 }
-#titleheader{
-	width:100%;
-	height:14em;
-	background: #fff;
-	box-shadow:0 2em 0.9em rgba(0,0,0,1);
-	-moz-box-shadow:0 2em 0.5em rgba(0,0,0,.3);
-	-webkit-box-shadow:0 1em 2em rgba(0,0,1,5);
-	text-align:center
-}
-#titleheader > div{
+
+.titleheader > div{
 	font-weight: 700;
 	padding: 5em 16em;
 	color: #000;
@@ -81,42 +90,6 @@ a:hover {
 	text-decoration: none;
 }
 /*menu*/
-
-.cbp-hrmenu {
-	position:absolute;
-	background:rgba(0,0,0,1);
-	width:100%;
-	z-index:9999;
-	height:8em;
-}
-.logoheader{
-	width: 100%;
-	margin: 0 auto;
-}
-.cbp-hrmenu > nav li{
-	float: left;
-	list-style: none;
-	width: 15%;
-	margin: 0 auto;
-	padding: 0.8em 0.2em 0em 2em;
-	/* background:url(../images/white-logo-small.png) 0 bottom no-repeat; */
-}
-.cbp-hrmenu  > div li{
-	float: right;
-	list-style: none;
-	margin-top: 4em;
-	margin-right: 2em;
-}
-.cbp-hrmenu  > div li a{
-	font-weight: 700;
-	padding: 0.7em 0.4em;
-	color: #fff;
-	display: inline-block;
-	text-decoration: none;
-}
-.cbp-hrmenu  > div li a:hover{
-	color: #f3ac00;
-}
 img {
 	width: 100%;
 	height: auto;
@@ -126,87 +99,7 @@ img {
 	max-width: 100%;
 
 }
-/* general ul style */
-.cbp-hrmenu ul {
-	list-style: none;
-	display: inline-block;
-	color: #fff;
-	line-height: 2em;
-	font-size:1.2em;
-	margin:1em 0 0;
-}
 
-/* first level ul style */
-.cbp-hrmenu > ul,
-.cbp-hrmenu .cbp-hrsub-inner {
-	width: 100%;
-	max-width: 60%;
-	margin: 2.7em auto;
-}
-
-.cbp-hrmenu > ul > li {
-	display: inline-block;
-}
-
-.cbp-hrmenu > ul > li > a {
-	font-weight: 700;
-	padding: 0.7em 0.4em;
-	color: #fff;
-	display: inline-block;
-	text-decoration: none;
-}
-
-.cbp-hrmenu > ul > li > a:hover {
-	color: #f3ac00;
-}
-
-.cbp-hrmenu > ul > li.cbp-hropen a,
-.cbp-hrmenu > ul > li.cbp-hropen > a:hover {
-	color: #fff;
-	background: #282828;
-	transition-duration: 0.3s;
-	-moz-transition-duration: 0.3s;
-	-webkit-transition-duration: 0.3s;
-}
-
-/* sub-menu */
-.cbp-hrmenu .cbp-hrsub {
-	display: none;
-	position: absolute;
-	background: #282828;
-	width: 100%;
-	left: 0;
-}
-
-.cbp-hropen .cbp-hrsub {
-	display: block;
-	padding-bottom: 1em;
-}
-
-.cbp-hrmenu .cbp-hrsub-inner > div {
-	width: 30%;
-	float: left;
-	padding: 0 1em 0;
-	border-left:0.07em solid #333;
-}
-
-.cbp-hrmenu .cbp-hrsub-inner:before,
-.cbp-hrmenu .cbp-hrsub-inner:after {
-	content: " ";
-	display: table;
-}
-
-.cbp-hrmenu .cbp-hrsub-inner:after {
-	clear: both;
-}
-
-.cbp-hrmenu .cbp-hrsub-inner > div a {
-	line-height: 2em;
-}
-
-.cbp-hrmenu .cbp-hrsub-inner > div a:hover {
-	color: #f3ac00;
-}
 
 .cbp-hrsub h4 {
 	color: #afdefa;
@@ -214,32 +107,24 @@ img {
 	font-size: 160%;
 	font-weight: 300;
 }
-#slider{
-	border-bottom:0.1em solid #282828;
-	-moz-box-shadow:0em 1em 0.5em rgba(0,0,0,.3);
-	-webkit-box-shadow:0em 0.5em 2.6em rgba(0,0,1,5);
+.slider img {
+	width:100%;
+	height:48em;
 }
-#social{
-	width: 100%;
-	height: auto;
-	padding: 2em;
-	border-bottom:0.1em solid #282828;
-	box-shadow:0 0.5em 0.5em rgba(0,0,0,1);
-	-moz-box-shadow:0em 0.5em 0.5em rgba(0,0,0,.3);
-	-webkit-box-shadow:0em 0.5em 3.8em rgba(0,0,1,5);
-}
-#social > div {
+.social > div {
 	text-align:center
 }
-#social > div h1 {
-	font-size:3em;
+.social > div h1 {
+	font-family: "UTMHelvetIns";
+	padding: 1em;
+	font-size:3.2em;
 	color:#fff;
 	text-shadow:1px 4px 5px rgba(0,0,0,.8)
 }
-#social > li{
+.social > li{
 	margin: 0 10% 0;
 }
-#social > div img {
+.social > div img {
 	width: 17%;
 	height: 75%;
 	margin: 1em 1em 1em;
@@ -248,17 +133,20 @@ img {
 	-webkit-box-shadow:0.5em 0.5em 1em rgba(0,0,1,5);
 }
 
-.section-dark{
-	padding:3.5em;
-	background:url(../images/bg-section-dark.jpg) top center no-repeat;
-	text-align:center
-}
-.section-dark h2{
-	font-size:38px;
+.menubodytop h2{
+	font-family: "UTMHelvetIns";
+	font-size:3em;
 	color:#fff;
-	padding:0.5em 0;
-	text-shadow:1px 2px 5px rgba(0,0,0,.8)}
-	.section-dark p{
+	padding:1.5em 0 0.1em;
+	text-shadow:1px 2px 5px rgba(0,0,0,.8)
+}
+.menubodytop ul{
+	font-family: "arial";
+	font-size:1.1em;
+	color:#fff;
+	padding:0.2em 0em 0;
+}
+	.menubodytop p{
 		font-family: "UTMAmerikaSans";
 		text-transform: none;
 		font-size:0.8em;
@@ -606,7 +494,7 @@ img {
 						width: 80%;
 						height: auto;
 					}
-					.cbp-hrmenu {
+					.topheader {
 						font-size: 85%;
 					}
 				}
@@ -619,7 +507,7 @@ img {
 						width: 15%;
 						height: 60%;
 					}
-					.cbp-hrmenu {
+					.topheader {
 						font-size: 80%;
 					}
 					@media screen and (max-width: 60em) { 
@@ -627,7 +515,7 @@ img {
 							width: 70%;
 							height: auto;
 						}
-						.cbp-hrmenu {
+						.topheader {
 							font-size: 85%;
 						}
 					}
@@ -635,13 +523,13 @@ img {
 						.social > item{
 							margin: 0 5% 0;
 						}
-						.cbp-hrmenu {
+						.topheader {
 							font-size: 95%;
 							border: none;
 						}
 
-						.cbp-hrmenu > ul,
-						.cbp-hrmenu .cbp-hrsub-inner {
+						.topheader > ul,
+						.topheader .cbp-hrsub-inner {
 							max-width: 100%;
 							width: 100%;
 							padding: 0;
@@ -649,32 +537,91 @@ img {
 							background: #282828;
 						}
 
-						.cbp-hrmenu .cbp-hrsub-inner {
+						.topheader .cbp-hrsub-inner {
 							padding: 0 2em;
 							font-size: 75%;
 						}
 
-						.cbp-hrmenu > ul > li {
+						.topheader > ul > li {
 							display: block;
 							border-bottom: 0.2em solid #282828;
 						}
 
-						.cbp-hrmenu > ul > li > a { 
+						.topheader > ul > li > a { 
 							display: block;
 							padding: 1em 3em;
 						}
 
-						.cbp-hrmenu .cbp-hrsub { 
+						.topheader .cbp-hrsub { 
 							position: relative;
 						}
 						.cbp-hrsub h4 {
 							padding-top: 0.6em;
 						}
 
+
+						.menu-container {
+							width: 100%;
+						}
+						.menu-container .menuright .menu-mobile{
+							list-style: none;
+							color: #FFFFFF;
+							display: block;
+						}
+						.menu-container .menuright .menu-mobile:hover{
+							color: #f3ac00;
+						}
+						.menu-dropdown-icon:before {
+							display: block;
+						}
+						.menu > ul {
+							display: none;
+							background: #282828;
+						}
+						.menu > ul > li {
+							width: 100%;
+							float: none;
+							display: block;
+							list-style: none;
+						}
+						
+						.menu > ul > li a {
+							padding: 1.5em;
+							width: 100%;
+							display: block;
+						}
+						.menu > ul > li > ul {
+							position: relative;
+						}
+						.menu > ul > li > ul.normal-sub {
+							width: 100%;
+						}
+						.menu > ul > li > ul > li {
+							float: none;
+							width: 100%;
+							margin-top: 20px;
+						}
+						.menu > ul > li > ul > li:first-child {
+							margin: 0;
+						}
+						.menu > ul > li > ul > li > ul {
+							position: relative;
+						}
+						.menu > ul > li > ul > li > ul > li {
+							float: none;
+						}
+						.menu .show-on-mobile {
+							display: block;
+						}
+
 					}
 
+
+					
+
+
 					@media screen and (max-width: 36em) { 
-						.cbp-hrmenu .cbp-hrsub-inner > div {
+						.topheader .cbp-hrsub-inner > div {
 							width: 100%;
 							float: none;
 							padding: 0 2em;
