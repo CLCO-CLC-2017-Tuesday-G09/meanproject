@@ -239,11 +239,6 @@
 				margin-bottom: 1.2em;
 				-webkit-box-shadow:0 0.1em 0.2em rgba(0,0,0,.3);
 				}
-				#content > .inner .components mat-expansion-panel
-				{
-					background: #292929;
-					margin-bottom: 1em;
-				}
 				#content > .inner .components h1
 				{
 				   font-family: "UTMDaxMedium";

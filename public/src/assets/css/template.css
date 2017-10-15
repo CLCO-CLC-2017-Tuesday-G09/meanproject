@@ -6,6 +6,203 @@ body {
 	font-size:0.8em;
     background:url(../images/bg-noise.jpg) #080808;
 }
+
+#style-scrollbar::-webkit-scrollbar-track
+{
+	border-radius: 10px;
+	background-color: none;
+}
+
+#style-scrollbar::-webkit-scrollbar
+{	width: 12px;
+	background-color: none;
+}
+
+#style-scrollbar::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #2b2b2b;
+}
+.leftbody
+{
+    padding-left: 5%;
+    float: left;
+    width: 20%;
+}
+.rightcontent
+{
+    float: right;
+    width: 80%;
+}
+.sidebarclient{
+    padding: 1em;
+}
+.init{
+    margin-bottom: 1.5em;
+    margin-top: 7em;
+}
+
+.sidebarclient .components{
+    padding-bottom: 3em;
+    margin-bottom: 1.5em;
+    border-bottom:0.2em solid #282828;
+    max-height: 20em;
+    float: left;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    overflow-y: scroll;
+}
+.sidebarclient .components .title{
+    font-family: "UTMHelvetIns";
+	font-size:1.1em;
+	color:#fff;
+	text-shadow:1px 2px 5px rgba(0,0,0,.8);
+	display: inline-block;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+}
+
+.sidebarclient .components >ul{
+    margin-left: 0.5em;
+}
+.sidebarclient .components >ul :hover{
+    color: #f3ac00;
+}
+.sidebarclient .components >ul > input{
+    float: left;
+    width:1.1em;
+    height:1.1em;
+    margin-right: 0.5em;
+}
+.sidebarclient .components >ul > p{
+    text-transform: capitalize;
+    font-size: 0.9em;
+    color: #ffffff;
+}
+.sidebarclient .components >.size{
+    margin-top:0.5em;
+}
+.sidebarclient .components >.size button{
+    text-align: center;
+    width: 3em;
+    height: 3em;
+    text-decoration: none;
+    background: #424242;
+    float: left;
+    margin: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    color: #ffffff;
+}
+.sidebarclient .components >.size>button:hover{
+    background: #575757;
+    color: #f3ac00;
+}
+
+.rightcontent .title
+{ 
+    text-transform: capitalize;
+    font-family: "UTMHelvetIns";
+	font-size:2em;
+	color:#fff;
+	text-shadow:1px 2px 5px rgba(0,0,0,.8);
+	display: inline-block;
+	text-decoration: none;
+}
+.rightcontent .numberresult
+{ 
+    font-family: "UTMDax";
+	font-size:1em;
+	color:#fff;
+	text-shadow:1px 2px 5px rgba(0,0,0,.8);
+	display: inline-block;
+    text-decoration: none;
+    margin-bottom: 0.5em;
+}
+.rightcontent > .listproduct {
+    float: left;
+    font-family: "UTMAptimaBold";
+    list-style: none;
+    padding-bottom: 2em;
+    margin: 2em 2em;
+}
+.rightcontent > .listproduct .pagepagin {
+    color: #ffffff;
+    font-size: 1.5em;
+    text-align: right;
+}
+.rightcontent > .listproduct a {
+    width: 14em;
+    height:19em;
+    color: #ffffff;
+    padding: 2em;
+    margin: 1em 1em 1em 1em;
+    display: block;
+    font-size: 0.9em;
+    float: left;
+    text-align: center;
+    text-decoration: none;
+    transform-style: preserve-3d;
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%) url(../images/bg-cat-product-wide-hover.png) #282828;
+    background-size: 14em 19em;
+}
+.rightcontent > .listproduct a:hover {
+    background:url(../images/bg-cat-product-hover.jpg) #282828;
+    background-size: 14em 19em;
+    box-shadow:0 2em 0.9em rgba(0,0,0,1);
+	-moz-box-shadow:0 1em 0.5em rgba(0,0,0,.3);
+    -webkit-box-shadow:0 0.5em 1em rgba(0,0,1,5);
+}
+.rightcontent > .listproduct a >img{
+ width: 9em;
+ height:9em;
+}
+.rightcontent > .listproduct a >.nameproduct{
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-top: 0.5em;
+   }
+   .rightcontent > .listproduct a >.price{
+    color: #ffffff;
+    text-transform: uppercase;
+    font-family: UTMDaxMedium;
+   }
+   
+   .rightcontent > .listproduct a > ul {
+    display: none;
+    width: 100%;
+    position: absolute;
+    z-index: 99;
+    left: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.rightcontent > .listproduct a > ul:before,
+.rightcontent > .listproduct a > ul:after {
+    content: "";
+    display: table;
+}
+
+.rightcontent > .listproduct a > ul:after {
+    clear: both;
+}
+
+   .rightcontent > .listproduct a > ul>.sizeproduct{
+       font-size: 0.8em;
+       margin-top: 0.7em;
+    border-top:0.1em solid #444343;
+    color: #ffffff;
+   }
+.searchbtn
+{
+    height: 2.5em;
+    width:3.5em;
+    background: #929292;
+}
+.searchbtn:hover
+{
+    color: #ff0000;
+}
 .topheader {
 	position:absolute;
 	background:rgba(0,0,0,1);
@@ -124,7 +321,7 @@ body {
 }
 
 .menu-container {
-	position:absolute;
+	position: fixed;
 	background:rgba(0,0,0,1);
 	width:100%;
 	z-index:9999;
@@ -143,7 +340,7 @@ body {
 .menu-container .menuright >li{
     float: right;
     list-style: none;
-	margin-top: 4em;
+	margin-top: 3.9em;
 	margin-right: 1em;
 }
 .menu-container .menuright >li a{
@@ -156,7 +353,142 @@ body {
 .menu-container .menuright >li a:hover{
 	color: #f3ac00;
 }
+.menu-container .menuright .search {
+    float: right;
+    list-style: none;
+	margin-top: 3.9em;
+	margin-right: 1em;
+}
+.menu-container .menuright .search a{
+    font-family: "UTMDaxBold";
+	font-size:0.8em;
+	color:#fff;
+    display: block;
+    text-decoration: none;
+}
+.menu-container .menuright .search a:hover{
+	color: #f3ac00;
+}
+.menu-container .menuright .search >ul {
+    display: none;
+    width: 100%;
+    height: 30em;
+    background:#111111;
+    position: absolute;
+    z-index: 99;
+    left: 0;
+    list-style: none;
+    -moz-box-shadow:0em 0.5em 0.5em rgba(75, 74, 74, 0.3);
+	-webkit-box-shadow:0em 0.5em 0.5em rgb(41, 40, 40);
+}
 
+.menu-container .menuright .search>ul:before,
+.menu-container .menuright .search >ul:after {
+    content: "";
+    display: table;
+}
+
+.menu-container .menuright  .search >ul:after {
+    clear: both;
+}
+.menu-container .menuright .search > ul > .col-lg-12{
+    font-family: "UTMAptimaBold";
+    list-style: none;
+    margin-top: 2em;
+}
+.menu-container .menuright .search > ul > .catalog {
+    float: left;
+    opacity:none;
+    font-family: "UTMAptimaBold";
+    list-style: none;
+    background: none;
+    padding-bottom: 1.5em;
+    width: 25%;
+    margin: 1em 1em;
+    height: 22em;
+    border-right:0.1em solid #2c2c2c;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    overflow-y: scroll;
+}
+.menu-container .menuright .search  > ul > .catalog .title {
+    color: #ffffff;
+    text-shadow:1px 2px 5px rgba(0,0,0,.8);
+    padding-bottom: 0.5em;
+    width: 80%;
+    display: block;
+    font-size: 1.5em;
+    margin-left: 1em;
+    text-transform: uppercase;
+    border-bottom:0.1em solid #2c2c2c;
+    -webkit-box-shadow:0em 0.05em 0.05em rgb(41, 40, 40);
+    text-align: center;
+}
+.menu-container .menuright .search  > ul > .catalog a {
+    color: #ffffff;
+    padding-bottom: 0.7em;
+    display: block;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    margin-top: 0.2em;
+    margin-left: 2em;
+}
+.menu-container .menuright .search  > ul > .catalog a:hover {
+    color: #f3ac00;
+    font-size: 1.35em;
+    margin-left: 1.5em;
+}
+.menu-container .menuright .search > ul > .product {
+    float: left;
+    opacity:none;
+    font-family: "UTMAptimaBold";
+    list-style: none;
+    background: none;
+    padding-bottom: 1.5em;
+    width: 60%;
+    margin: 1em 1em;
+    height: 22em;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    overflow-y: scroll;
+}
+.menu-container .menuright .search  > ul > .product .title {
+    color: #ffffff;
+    text-shadow:1px 2px 5px rgba(0,0,0,.8);
+    padding-bottom: 0.5em;
+    width: 80%;
+    display: block;
+    font-size: 1.5em;
+    margin-left: 1em;
+    text-transform: uppercase;
+    border-bottom:0.1em solid #2c2c2c;
+    -webkit-box-shadow:0em 0.05em 0.05em rgb(41, 40, 40);
+    text-align: center;
+}
+.menu-container .menuright .search  > ul > .product a {
+    color: #ffffff;
+    padding: 2em;
+    display: block;
+    font-size: 0.9em;
+    float: left;;
+    text-align: center;
+}
+.menu-container .menuright .search  > ul > .product a:hover {
+    background: #272727;
+    box-shadow: 0em 0.05em 0.05em #a8a8a8;
+    -webkit-box-shadow:0.1em 0.2em 0.1em rgba(0,0,1,5);
+}
+.menu-container .menuright .search  > ul > .product a >img{
+ width: 8em;
+ height: 9em;
+}
+.menu-container .menuright .search  > ul > .product a >.nameproduct{
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-top: 0.5em;
+   }
+.menu-container .menuright .search  > ul > .product a >.nameproduct:hover {
+    color: #f3ac00;
+    font-size: 1em;
+}
 .menu-container .menuright >li > ul {
     display: none;
     width: 15em;
@@ -229,11 +561,11 @@ body {
     list-style: none;
 	display: inline-block;
 	font-family: "UTMDaxBold";
-	font-size:0.8em;
+	font-size:1em;
 	color:#fff;
 	display: inline-block;
 	text-decoration: none;
-    margin-top: 5.2em;
+    margin-top: 4.1em;
 }
 
 .menu > ul:before,

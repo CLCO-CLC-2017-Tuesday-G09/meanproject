@@ -35,6 +35,7 @@ import { AdpromotionComponent } from './admin/adpromotion/adpromotion.component'
 import { MenuComponent } from './admin/menu/menu.component';
 import 'hammerjs';
 import { AdbranchComponent } from './admin/adbranch/adbranch.component';
+import { SearchComponent } from './components/search/search.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +53,8 @@ import { AdbranchComponent } from './admin/adbranch/adbranch.component';
     AdcatalogComponent,
     AdpromotionComponent,
     MenuComponent,
-    AdbranchComponent
+    AdbranchComponent,
+    SearchComponent
   ],
   imports: [
     NgbModule.forRoot(),
