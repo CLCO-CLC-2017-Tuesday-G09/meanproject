@@ -1,0 +1,46 @@
+<div id="content">
+    <div class="inner">
+      <div class="title">
+        <h2>Active Catalogs</h2>
+      </div>
+      <div class="components">
+          <div class="row show-hide-message" *ngIf="message">
+            <div [ngClass]="messageClass">
+              <p>{{ message }}</p>
+            </div>
+          </div>
+        </div>
+      <div class="body">
+        <form [formGroup]="formcatalog" (submit)="onCreateCatalogsubmit()">
+          <div class="components">
+            <h1>Name Catalog</h1>
+            <input type="text" class="form-control" id="catalogName" name="catalogName" formControlName="catalogName" placeholder="Enter name branch">
+          </div>
+          <div class="components">
+            <input type="submit" name="catalog-submit" class="form-control btn btn-primary" value="Add">
+          </div>
+        </form>
+      </div>
+      <div class="rightbody">
+        <div class="components">
+          <h1>My List Catalog</h1>
+          <div *ngFor="let catalog of catalogpost">
+          <div class="listcatalog">
+              <div class="namecatalog">
+                  <p>{{ catalog.catalogName }}</p>
+              </div>
+            <div class="action">
+              <button>
+                  <mat-icon>settings</mat-icon>
+                </button>
+                <button (click)="onDeleteCatalogsubmit(catalog._id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+      </div>
+      </div>

@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/CLCO-CLC-2017-Tuesday-G09/meanproject.git#readme",
   "dependencies": {
+    "@angular/animations": "^4.4.4",
+    "@angular/material": "^2.0.0-beta.12",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",

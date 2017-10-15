@@ -4,10 +4,8 @@ body {
 	sans-serif;
 	font-weight:400;
 	font-size:0.8em;
-	color:#d0d0d0;
-	background:url(../images/bg-noise.jpg) #080808;
+    background:url(../images/bg-noise.jpg) #080808;
 }
-
 .topheader {
 	position:absolute;
 	background:rgba(0,0,0,1);
@@ -66,13 +64,18 @@ body {
 
 .titleheader{
 	width:100%;
-	height:14em;
+	height:10em;
     background: #fff;
     border-bottom:0.1em solid #282828;
 	box-shadow:0 2em 0.9em rgba(0,0,0,1);
 	-moz-box-shadow:0 2em 0.5em rgba(0,0,0,.3);
 	-webkit-box-shadow:0 1em 2em rgba(0,0,1,5);
 	text-align:center
+}
+
+.titleheader >p{
+    font-size: 1.5em;
+    color: #080808;
 }
 .slider{
 	width:100%;
@@ -94,10 +97,12 @@ body {
 	-webkit-box-shadow:0em 0.3em 1.2em rgba(0,0,0,1);
 }
 .leftside{
-    width:20%;
+    width:18;
+    float: left;
 }
 .rightbody{
-    width:80%;
+    width:82%;
+    float: right;
 }
 .fullbody{
     width:100%;
@@ -123,14 +128,14 @@ body {
 	background:rgba(0,0,0,1);
 	width:100%;
 	z-index:9999;
-	height:8em;
+	height:6em;
 }
 .menu-container .logo {
 	float: left;
 	list-style: none;
 	width: 14%;
 	margin: 0 auto;
-	padding: 0.8em 0.2em 0em 2em;
+	padding: 1em 0.2em 0em 2em;
 }
 .menu-container .menuright {
 	float: right;
@@ -138,26 +143,73 @@ body {
 .menu-container .menuright >li{
     float: right;
     list-style: none;
-	margin-top: 5.5em;
-	margin-right: 2em;
+	margin-top: 4em;
+	margin-right: 1em;
 }
 .menu-container .menuright >li a{
     font-family: "UTMDaxBold";
-	font-size:1.2em;
+	font-size:0.8em;
 	color:#fff;
-	text-shadow:1px 2px 5px rgba(0,0,0,.8);
-	display: inline-block;
-	text-decoration: none;
+    display: block;
+    text-decoration: none;
 }
 .menu-container .menuright >li a:hover{
 	color: #f3ac00;
 }
+
+.menu-container .menuright >li > ul {
+    display: none;
+    width: 15em;
+    background: #282828;
+    padding: 2em;
+    position: absolute;
+    z-index:99;
+    right: 2em;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.menu-container .menuright >li > ul:before,
+.menu-container .menuright >li > ul:after {
+    content: "";
+    display: table;
+}
+
+.menu-container .menuright >li > ul:after {
+    clear: both;
+}
+
+.menu-container .menuright >li > ul > li {
+    font-family: "UTMAptimaBold";
+    list-style: none;
+    background: none;
+    padding-bottom: 1.5em;
+    border-bottom:0.1em solid #2c2c2c;
+}
+.menu-container .menuright >li > ul > li a {
+    color: #ffffff;
+    padding-bottom: 1em;
+    width: 95%;
+    display: block;
+    font-size: 0.9em;
+}
+.menu-container .menuright >li > ul > li button {
+    color: #fff;
+    background: #c59100;
+}
+.menu-container .menuright >li > ul > li a p {
+   float: left;  
+   margin-left: 0.7em;
+}
+.menu-container .menuright >li > ul > li a mat-icon {
+    float: left;
+ }
+
 .menu-container .menuright .menu-mobile {
     list-style: none;
     display: none;
 }
 .menu-container .menuright .menu-mobile:after {
-    content:"\2b";
     position: relative;
     top: 50%;
     -webkit-transform: translateY(-25%);
@@ -166,7 +218,6 @@ body {
 }
 
 .menu-dropdown-icon:before {
-    content:"\2b";;
     display: none;
     cursor: pointer;
     float: right;
@@ -178,11 +229,11 @@ body {
     list-style: none;
 	display: inline-block;
 	font-family: "UTMDaxBold";
-	font-size:1.2em;
+	font-size:0.8em;
 	color:#fff;
 	display: inline-block;
 	text-decoration: none;
-    margin-top: 4.5em;
+    margin-top: 5.2em;
 }
 
 .menu > ul:before,
@@ -219,7 +270,7 @@ body {
 }
 .menu > ul > li:hover {
     height:2em;
-    margin-bottom: 1em;
+    margin-bottom: 1.7em;
     background: #282828;
 }
 
@@ -227,7 +278,7 @@ body {
     display: none;
     width: 100%;
     background: #282828;
-    padding: 3em;
+    padding: 2em;
     position: absolute;
     z-index: 99;
     left: 0;
@@ -254,7 +305,7 @@ body {
     border-left:0.1em solid #333;
 }
 .menu > ul > li > ul > li a {
-    color: #FFFFFF;
+    color: #ffffff;
     padding: .2em 0;
     width: 95%;
     display: block;
@@ -288,13 +339,13 @@ body {
 }
 
 .menu > ul > li > ul > li > ul > li a {
+    color: #ffffff;
     border: 0;
 }
 
 .menu > ul > li > ul.normal-sub {
     width: 300px;
     left: auto;
-    padding: 10px 20px;
 }
 
 .menu > ul > li > ul.normal-sub > li {

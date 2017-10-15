@@ -1,109 +1,250 @@
 <div class="menu-container">
 	<div class="logo">
-		<a href="#"><img src="assets/images/logo.png"></a>
+		<a href="#">
+			<img src="assets/images/logo.png">
+		</a>
 	</div>
 	<div class="menuright">
-			<li>
-					<a routerLink='/'>
-						<div class="menu-mobile">
-							MORE
-						</div>
+		<li>
+			<a routerLink='/'>
+				<div class="menu-mobile">
+				<mat-icon>more_vert</mat-icon>
+				</div>
+			</a>
+		</li>
+
+		<li>
+			<a routerLink='/acount'>
+				<mat-icon>person</mat-icon>
+			</a>
+			<ul>
+				<li>
+					<a routerLink='/login'>
+						<button type="button" class="form-control">Login</button>
 					</a>
 				</li>
-		<li>
-			<a routerLink='/login'>LOGIN</a>
+
+				<li>
+					<a routerLink='/acount'>
+						<mat-icon>person</mat-icon>
+						<p>My Profile</p>
+					</a>
+				</li>
+				<li>
+					<a routerLink='/#'>
+						<mat-icon>shopping_basket</mat-icon>
+						<p>My Order</p>
+					</a>
+				</li>
+				<li>
+						<a routerLink='/#'>
+							<mat-icon>card_giftcard</mat-icon> 
+							<p>Gilt Card</p>
+						</a>
+					</li>
+				<li>
+					<a routerLink='/register'>
+						<mat-icon>perm_device_information</mat-icon>
+						<p>Register</p>
+					</a>
+				</li>
+				<li>
+					<a routerLink='/adhome'>
+						<mat-icon>supervisor_account</mat-icon>
+						<p>Admin</p>
+					</a>
+				</li>		
+			</ul>
 		</li>
 		<li>
-			<a routerLink='/acount'>ACOUNT</a>
+				<a routerLink='/'><mat-icon>help_outline</mat-icon></a>
+			</li>
+		<li>
+				<a routerLink='/'><mat-icon>shopping_cart</mat-icon></a>
+			</li>
+		<li>
+			<a routerLink='/'><mat-icon>notifications</mat-icon></a>
 		</li>
-		<li><a routerLink='/register'>REGISTER</a></li>
+		<li>
+				<a routerLink='/'><mat-icon>search</mat-icon></a>
+			</li>
 	</div>
 	<div class="menu">
 		<ul>
-			<li><a href="#">NEW ARRIVALS</a></li>
-			<li><a href="#">NEW</a>
-				<ul>
-					<li><a href="#">NEW ARRICALS</a>
-						<ul>
-							<li><a href="#">Lidership</a></li>
-							<li><a href="#">History</a></li>
-							<li><a href="#">Locations</a></li>
-							<li><a href="#">Careers</a></li>
-						</ul>
-					</li>
-					<li><a href="#">WHAT HOST</a>
-						<ul>
-							<li><a href="#">Undergraduate</a></li>
-							<li><a href="#">Masters</a></li>
-							<li><a href="#">International</a></li>
-							<li><a href="#">Online</a></li>
-						</ul>
-					</li>
-					<li><a href="#">RESEARCH</a>
-						<ul>
-							<li><a href="#">Undergraduate research</a></li>
-							<li><a href="#">Masters research</a></li>
-							<li><a href="#">Funding</a></li>
-						</ul>
-					</li>
-					<li><a href="#">SOMETHING</a>
-						<ul>
-							<li><a href="#">Sub something</a></li>
-							<li><a href="#">Sub something</a></li>
-							<li><a href="#">Sub something</a></li>
-							<li><a href="#">Sub something</a></li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-			<li><a href="#">WOMEN'S</a>
-				<ul>
-					<li><a href="#">School</a>
-						<ul>
-							<li><a href="#">Lidership</a></li>
-							<li><a href="#">History</a></li>
-							<li><a href="#">Locations</a></li>
-							<li><a href="#">Careers</a></li>
-						</ul>
-					</li>
-					<li><a href="#">Study</a>
-						<ul>
-							<li><a href="#">Undergraduate</a></li>
-							<li><a href="#">Masters</a></li>
-							<li><a href="#">International</a></li>
-							<li><a href="#">Online</a></li>
-						</ul>
-					</li>
-					<li><a href="#">Study</a>
-						<ul>
-							<li><a href="#">Undergraduate</a></li>
-							<li><a href="#">Masters</a></li>
-							<li><a href="#">International</a></li>
-							<li><a href="#">Online</a></li>
-						</ul>
-					</li>
-					<li><a href="#">Empty sub</a></li>
-				</ul>
-			</li>
-			<li><a href="#">KIDS</a></li>
-			<li><a href="#">APPAREL</a></li>
 			<li>
-				<div class="sale"><a href="#">SALE</a></div>
+				<a href="#">NEW ARRIVALS</a>
 			</li>
-			<li><a href="#">BLOG</a></li>
+			<li>
+				<a>NEW</a>
+				<ul>
+					<li>
+						<a href="#">NEW ARRICALS</a>
+						<ul>
+							<li>
+								<a href="#">Lidership</a>
+							</li>
+							<li>
+								<a href="#">History</a>
+							</li>
+							<li>
+								<a href="#">Locations</a>
+							</li>
+							<li>
+								<a href="#">Careers</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a>WHAT HOST</a>
+						<ul>
+							<li>
+								<a href="#">Undergraduate</a>
+							</li>
+							<li>
+								<a href="#">Masters</a>
+							</li>
+							<li>
+								<a href="#">International</a>
+							</li>
+							<li>
+								<a href="#">Online</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">RESEARCH</a>
+						<ul>
+							<li>
+								<a href="#">Undergraduate research</a>
+							</li>
+							<li>
+								<a href="#">Masters research</a>
+							</li>
+							<li>
+								<a href="#">Funding</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">SOMETHING</a>
+						<ul>
+							<li>
+								<a href="#">Sub something</a>
+							</li>
+							<li>
+								<a href="#">Sub something</a>
+							</li>
+							<li>
+								<a href="#">Sub something</a>
+							</li>
+							<li>
+								<a href="#">Sub something</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">WOMEN'S</a>
+				<ul>
+					<li>
+						<a href="#">School</a>
+						<ul>
+							<li>
+								<a href="#">Lidership</a>
+							</li>
+							<li>
+								<a href="#">History</a>
+							</li>
+							<li>
+								<a href="#">Locations</a>
+							</li>
+							<li>
+								<a href="#">Careers</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">Study</a>
+						<ul>
+							<li>
+								<a href="#">Undergraduate</a>
+							</li>
+							<li>
+								<a href="#">Masters</a>
+							</li>
+							<li>
+								<a href="#">International</a>
+							</li>
+							<li>
+								<a href="#">Online</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">Study</a>
+						<ul>
+							<li>
+								<a href="#">Undergraduate</a>
+							</li>
+							<li>
+								<a href="#">Masters</a>
+							</li>
+							<li>
+								<a href="#">International</a>
+							</li>
+							<li>
+								<a href="#">Online</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">Empty sub</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">KIDS</a>
+			</li>
+			<li>
+				<a href="#">APPAREL</a>
+			</li>
+			<li>
+				<div class="sale">
+					<a href="#">SALE</a>
+				</div>
+			</li>
+			<li>
+				<a href="#">BLOG</a>
+			</li>
 		</ul>
 	</div>
 </div>
 <div class="titleheader">
-	<div> FREE SHIPPING & FREE RETURNS</div>
+	<p> FREE SHIPPING & FREE RETURNS</p>
 </div>
 <!--slider-->
 <div class="slider">
 	<ul id="slider1">
-		<li><a href="#slide1"><img src="../assets/images/sidebar/baner1.jpg" alt="This is caption 1 <a href='#link'>Even with links!</a>"></a>
+		<li>
+			<a href="#slide1">
+				<img src="../assets/images/sidebar/baner1.jpg" alt="This is caption 1 <a href='#link'>Even with links!</a>">
+			</a>
 		</li>
-		<li><a href="#slide2"><img src="../assets/images/sidebar/baner2.jpg"  alt="This is caption 2"></a></li>
-		<li><a href="#slide2"><img src="../assets/images/sidebar/baner3.jpg"  alt="This is caption 3"></a></li>
-		<li><a href="#slide2"><img src="../assets/images/sidebar/baner4.jpg"  alt="This is caption 4"></a></li>
+		<li>
+			<a href="#slide2">
+				<img src="../assets/images/sidebar/baner2.jpg" alt="This is caption 2">
+			</a>
+		</li>
+		<li>
+			<a href="#slide2">
+				<img src="../assets/images/sidebar/baner3.jpg" alt="This is caption 3">
+			</a>
+		</li>
+		<li>
+			<a href="#slide2">
+				<img src="../assets/images/sidebar/baner4.jpg" alt="This is caption 4">
+			</a>
+		</li>
 	</ul>
 </div>

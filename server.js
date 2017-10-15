@@ -8,6 +8,9 @@ const path = require('path');
 const cors = require('cors');
 const userRouter=require('./routers/user.router')(router);
 const productRouter=require('./routers/product.router')(router);
+const menuRouter=require('./routers/menu.router')(router);
+const branchRouter=require('./routers/branch.router')(router);
+const catalogRouter=require('./routers/catalog.router')(router);
 const config = require('./config/database');
 //start connect database
 mongoose.Promise = global.Promise;
@@ -29,10 +32,13 @@ app.use(session({ secret: config.secret, resave: false, saveUninitialized: true 
 app.use(express.static(__dirname + '/public/dist/'));
 //default
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + '/public/dist/index.html'))
+    res.sendFile(path.join(__dirname + '/public/dist/index.html'));
 });
 app.use('/users', userRouter);
 app.use('/products', productRouter);
+app.use('/menus', menuRouter);
+app.use('/branchs', branchRouter);
+app.use('/catalogs', catalogRouter);
 // app.use(cors({
 //     orgin: 'http://localhost:4200'
 // }));

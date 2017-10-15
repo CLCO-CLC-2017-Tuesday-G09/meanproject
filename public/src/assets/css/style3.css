@@ -159,8 +159,9 @@ img {
 		border-bottom:0.1px solid #3d3d3d;
 		padding:0.3em;
 		margin:0 auto;
-		font-size:1.3em;
+		font-size:1em;
 		text-transform:uppercase;width:auto;
+		color: #eeeeee;
 	}
 	.nav-section-dark li{
 		display:inline-block
@@ -413,6 +414,8 @@ img {
 					position: relative;
 					transform-style: preserve-3d;
 					transition: transform 5s;
+					color: #eeeeee;
+					font-size: 80%;
 				}
 				#space-register.animate{
 					margin: 1em 1em 1em 1em;
@@ -424,6 +427,7 @@ img {
 					-moz-transition:  100ms ease-out; 
 					-o-transition:  100ms ease-out; 
 					transition:  100ms ease-out; 
+					padding: 1em 1em 1em 1em;
 				}
 				#space-register.animate> h3{
 					font-size:1.5em;
@@ -577,16 +581,17 @@ img {
 						.menu > ul {
 							display: none;
 							background: #282828;
+							margin-top: 7.8em;
 						}
 						.menu > ul > li {
 							width: 100%;
 							float: none;
 							display: block;
 							list-style: none;
+							padding: 1.5em;
 						}
 						
 						.menu > ul > li a {
-							padding: 1.5em;
 							width: 100%;
 							display: block;
 						}
