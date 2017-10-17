@@ -45,6 +45,12 @@ export class AuthService {
     return this.http.delete(this.domain + '/menus/deletemenu/'+ id).map(res => res.json());
   }
   //branch
+  GetAllBranch() {
+    return this.http.get(this.domain + '/branchs/allbranch').map(res => res.json());
+  }
+  SearchBranch(namebranch) {
+    return this.http.get(this.domain + '/branchs/searchbranch/'+namebranch).map(res => res.json());
+  }
   GetListBranch(idmenu) {
     return this.http.get(this.domain + '/branchs/listbranch/'+idmenu).map(res => res.json());
   }
@@ -56,6 +62,12 @@ export class AuthService {
     return this.http.delete(this.domain + '/branchs/deletebranch/'+ id).map(res => res.json());
   }
   //catalog
+  GetAllCatalog() {
+    return this.http.get(this.domain + '/catalogs/allcatalog').map(res => res.json());
+  }
+  SearchCatalog(namecatalog) {
+    return this.http.get(this.domain + '/catalogs/searchcatalog/'+namecatalog).map(res => res.json());
+  }
   GetListCatalog(idbranch) {
     return this.http.get(this.domain + '/catalogs/listcatalog/'+idbranch).map(res => res.json());
   }
@@ -66,5 +78,17 @@ export class AuthService {
   deleteCatalog(id) {
     console.log(id);
     return this.http.delete(this.domain + '/catalogs/deletecatalog/'+ id).map(res => res.json());
+  }
+  //product
+  SearchProduct(nameproduct) {
+    return this.http.get(this.domain + '/products/searchproduct/'+nameproduct).map(res => res.json());
+  }
+
+  //cart
+  AddCart(idproduct) {
+    return this.http.get(this.domain + '/carts/addcart/'+idproduct).map(res => res.json());
+  }
+  shoppingcart() {
+    return this.http.get(this.domain + '/carts/shoppingcart').map(res => res.json());
   }
 }

@@ -64,7 +64,38 @@ module.exports = (router) => {
 
         }
     });
-   
+    //find all branch
+ router.get('/allbranch', (req, res) => {
+                Branch.find((err, branches) => {
+                    if (err) {
+                        res.json({ success: false, message: err });
+                    } else {
+                        if (!branches) {
+                            res.json({ success: false, message: 'No branch found.' });
+                        } else {
+                            res.json({ success: true,message:"find success", branches: branches });
+        
+                        }
+                    }
+                });
+});
+//search product
+router.get('/searchbranch/:namebranch', (req, res) => {
+    
+            //find with products
+            Branch.find({ branchName: {'$regex': req.body.namebranch} }, (err, branches) => {
+                if (err) {
+                    res.json({ success: false, message: err });
+                } else {
+                    if (!branches || branches=="") {
+                        res.json({ success: true, message: "can not found" });
+                    } else {
+                        res.json({ success: true, message: "find success", branches: branches });
+    
+                    }
+                }
+            });
+        });
  //find all category of one branch
  router.get('/listbranch/:idmenu', (req, res) => {
     //res.json({ success: false, message: req.params.branchName });

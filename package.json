@@ -35,7 +35,8 @@
     "jquery": "^3.2.1",
     "mongoose": "^4.11.13",
     "nodemon": "^1.12.1",
-    "pakage.json": "^1.0.0"
+    "pakage.json": "^1.0.0",
+    "refresh-token": "^1.0.0"
   },
   "devDependencies": {
     "@types/jquery": "^3.2.12"

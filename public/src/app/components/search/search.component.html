@@ -1,132 +1,54 @@
+<script>
+    $(document).ready(function () {
+        $(".rightcontent > .listproduct a").hover(
+            function (e) {
+                $(this).children("ul").fadeIn(150);
+                e.preventDefault();
+            }, function (e) {
+                $(this).children("ul").fadeOut(150);
+                e.preventDefault();
+            }
+        );
+    });
+</script>
 <div class="leftbody">
     <app-sidebar></app-sidebar>
 </div>
-<div class="rightcontent">
+<div class="rightcontent" ng-app="">
     <div class="init"></div>
     <div class="title">
-        search results for: adidas
+        search results for: {{value}}
     </div>
     <div class="numberresult">
         (20 items)
     </div>
+    <div class="col-lg-12">
     <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
+            <form [formGroup]="formsearch">
+        <input type="text" class="form-control" id="searchname" name="searchname" formControlName="searchname" #box (keyup.enter)="onEnter(box.value)" (keyup)="SearchProduct()" placeholder="Search for..." aria-label="Search for...">
         <span class="input-group-btn">
             <a class="btn searchbtn" type="button">
                 <mat-icon>search</mat-icon>
             </a>
         </span>
+        </form>
     </div>
+</div>
     <div class="pagepagin">
-        <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
-        </mat-paginator>
     </div>
-    <div class="listproduct">
-        <a routerLink='/'>
-            <img src="http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$sn20-175x132$&$img=sneakerhead/nike-jordan-8-retro-basketball-305381014-1"
-                alt="" />
-            <div class="nameproduct">
-                NIKE Asin
-            </div>
-            <div class="price">
-                $109.99
-            </div>
-            <ul>
-                <div class="sizeproduct">
-                    SIZE 7.5 8 9.5 10
+        <div class="listproduct" *ngFor="let product of productpost">
+            <a routerLink='/'>
+                <img src='https://drive.google.com/uc?id={{product.image}}' alt="" />
+                <div class="nameproduct">
+                    {{product.nameproduct}}
                 </div>
-            </ul>
-        </a>
-        <a routerLink='/'>
-            <img src="http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$sn20-175x132$&$img=sneakerhead/nike-jordan-8-retro-basketball-305381014-1"
-                alt="" />
-            <div class="nameproduct">
-                NIKE Asin
-            </div>
-            <div class="price">
-                $109.99
-            </div>
-            <ul>
-                <div class="sizeproduct">
-                    SIZE 7.5 8 9.5 10
+                <div class="price">
+                    {{product.price}}
                 </div>
-            </ul>
-        </a>
-        <a routerLink='/'>
-            <img src="http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$sn20-175x132$&$img=sneakerhead/nike-jordan-8-retro-basketball-305381014-1"
-                alt="" />
-            <div class="nameproduct">
-                NIKE Asin
-            </div>
-            <div class="price">
-                $109.99
-            </div>
-            <ul>
                 <div class="sizeproduct">
-                    SIZE 7.5 8 9.5 10
+                    {{product.size}}
                 </div>
-            </ul>
-        </a>
-        <a routerLink='/'>
-            <img src="http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$sn20-175x132$&$img=sneakerhead/nike-jordan-8-retro-basketball-305381014-1"
-                alt="" />
-            <div class="nameproduct">
-                NIKE Asin
-            </div>
-            <div class="price">
-                $109.99
-            </div>
-            <ul>
-                <div class="sizeproduct">
-                    SIZE 7.5 8 9.5 10
-                </div>
-            </ul>
-        </a>
-        <a routerLink='/'>
-            <img src="http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$sn20-175x132$&$img=sneakerhead/nike-jordan-8-retro-basketball-305381014-1"
-                alt="" />
-            <div class="nameproduct">
-                NIKE Asin
-            </div>
-            <div class="price">
-                $109.99
-            </div>
-            <ul>
-                <div class="sizeproduct">
-                    SIZE 7.5 8 9.5 10
-                </div>
-            </ul>
-        </a>
-        <a routerLink='/'>
-            <img src="http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$sn20-175x132$&$img=sneakerhead/nike-jordan-8-retro-basketball-305381014-1"
-                alt="" />
-            <div class="nameproduct">
-                NIKE Asin
-            </div>
-            <div class="price">
-                $109.99
-            </div>
-            <ul>
-                <div class="sizeproduct">
-                    SIZE 7.5 8 9.5 10
-                </div>
-            </ul>
-        </a>
-        <a routerLink='/'>
-            <img src="http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$sn20-175x132$&$img=sneakerhead/nike-jordan-8-retro-basketball-305381014-1"
-                alt="" />
-            <div class="nameproduct">
-                NIKE Asin
-            </div>
-            <div class="price">
-                $109.99
-            </div>
-            <ul>
-                <div class="sizeproduct">
-                    SIZE 7.5 8 9.5 10
-                </div>
-            </ul>
-        </a>
-    </div>
-
+                <button type="button" (click)="AddToCart(product._id)" class="btn">Buy</button>
+            </a>
+        </div>
 </div>

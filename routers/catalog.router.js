@@ -92,7 +92,21 @@ module.exports = (router) => {
 
         }
     });
+    //find all category
+    router.get('/allcatalog', (req, res) => {
+        Catalog.find((err, catalogs) => {
+            if (err) {
+                res.json({ success: false, message: err });
+            } else {
+                if (!catalogs) {
+                    res.json({ success: false, message: 'No catalog found.' });
+                } else {
+                    res.json({ success: true,message:"find success", catalogs: catalogs });
 
+                }
+            }
+        });
+});
     //find all category of one branch
     router.get('/listcatalog/:idbranch', (req, res) => {
         //res.json({ success: false, message: req.params.branchName });
@@ -120,6 +134,24 @@ module.exports = (router) => {
             }
         })
     });
+    //search catalog
+router.get('/searchcatalog/:namecatalog', (req, res) => {
+    
+            //find with products
+            Catalog.find({ catalogName: {'$regex': req.params.namecatalog} }, (err, catalogs) => {
+                if (err) {
+                    res.json({ success: false, message: err });
+                } else {
+                    if (!catalogs || catalogs=="") {
+                        res.json({ success: true, message: "can not found" });
+                    } else {
+                        res.json({ success: true, message: "find success", catalogs: catalogs });
+    
+                    }
+                }
+            });
+        });
+
     // DELETES A CATALOG FROM THE DATABASE
     router.delete('/deletecatalog/:id', function (req, res) {
         if (!req.params.id) {

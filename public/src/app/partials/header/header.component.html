@@ -61,11 +61,44 @@
 				<mat-icon>help_outline</mat-icon>
 			</a>
 		</li>
-		<li>
-			<a routerLink='/'>
-				<mat-icon>shopping_cart</mat-icon>
-			</a>
-		</li>
+		<div class="cart">
+				<a>
+					<mat-icon>shopping_cart</mat-icon>
+				</a>
+				<ul>
+						<div class="title">
+								Shopping bag
+							</div>
+							<div class="content" id="style-scrollbar">
+					<li  *ngFor="let cart of cartpost">
+						<a routerLink='/'>
+							<img src='https://drive.google.com/uc?id={{cart.item.image}}'/>							alt="" />
+							<div class="titleproduct">
+								<div class="nameproduct">
+									{{cart.item.nameproduct}}
+								</div>
+								<div class="description">
+									{{cart.item.nameproduct}}
+							</div>
+								<div class="price">
+									{{cart.item.price}}
+								</div>
+								<div class="quantity">
+									{{cart.qty}}
+							</div>
+							</div>
+						</a>
+					</li>
+
+				</div>
+					<div class="total">
+							Subtotal:{{total}}
+						</div>
+						<div class="checkout">
+							<a type="button" class="btn"> checkout</a>
+						</div>
+				</ul>
+				</div>
 		<li>
 			<a routerLink='/'>
 				<mat-icon>notifications</mat-icon>
@@ -76,146 +109,44 @@
 				<mat-icon>search</mat-icon>
 			</a>
 			<ul>
-					<div class="col-lg-12">
-							<div class="input-group">
-							  <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
-							  <span class="input-group-btn">
-									<a class="btn btn-secondary" type="button"><mat-icon>search</mat-icon></a>
-								  </span>
+				<div class="col-lg-12">
+					<form [formGroup]="formsearch">
+						<div class="input-group">
+							<input type="text" class="form-control" id="searchname" name="searchname" formControlName="searchname" (keyup)="SearchProduct()"
+							 (keyup)="SearchCatalog()" placeholder="Search for..." aria-label="Search for...">
+							<span class="input-group-btn">
+								<a class="btn btn-secondary" type="submit">
+									<mat-icon>search</mat-icon>
+								</a>
+							</span>
+						</div>
+						<small id="searchHelp" class="form-text text-muted">
+							<div *ngIf="searchmess">
+								{{searchmess}}
 							</div>
-							<small id="searchHelp" class="form-text text-muted">Enter keyword name catalog or name product</small>							
-						  </div>
+							Enter keyword name catalog or name product
+						</small>
+					</form>
+				</div>
 				<div class="catalog" id="style-scrollbar">
 					<div class="title">Catalogs</div>
-					<a routerLink='/'>
-						NIKE
-					</a>
-					<a routerLink='/'>
-						ADIS
-					</a>
-					<a routerLink='/'>
-						KLOI
-					</a>
-					<a routerLink='/'>
-						sneek
-					</a>
-					<a routerLink='/'>
-						sneek
-					</a>
-					<a routerLink='/'>
-						ADIS
-					</a>
-					<a routerLink='/'>
-						KLOI
-					</a>
-					<a routerLink='/'>
-						sneek
-					</a>
-					<a routerLink='/'>
-						sneek
-					</a>
+					<div *ngFor="let catalog of catalogpost">
+						<a routerLink='/'>
+							{{catalog.catalogName}}
+						</a>
+					</div>
 				</div>
 				<div class="product" id="style-scrollbar">
-						<div class="title">Products</div>
+					<div class="title">Products</div>
+					<div *ngFor="let product of productpost">
 						<a routerLink='/'>
-							<img src="http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$sn20-175x132$&$img=sneakerhead/nike-jordan-8-retro-basketball-305381014-1"
-							alt="" />
+							<img src='https://drive.google.com/uc?id={{product.image}}' alt="" />
 							<div class="nameproduct">
-								NIKE Asin
-							</div>
-						</a>
-						<a routerLink='/'>
-							<img src="http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$sn20-175x132$&$img=sneakerhead/nike-jordan-8-retro-basketball-305381014-1"
-							alt="" />
-							<div class="nameproduct">
-								NIKE Asin
-							</div>
-						</a>
-						<a routerLink='/'>
-							<img src="http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$sn20-175x132$&$img=sneakerhead/nike-jordan-8-retro-basketball-305381014-1"
-							alt="" />
-							<div class="nameproduct">
-								NIKE Asin
-							</div>
-						</a>
-						<a routerLink='/'>
-							<img src="http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$sn20-175x132$&$img=sneakerhead/nike-jordan-8-retro-basketball-305381014-1"
-							alt="" />
-							<div class="nameproduct">
-								NIKE Asin
-							</div>
-						</a>
-						<a routerLink='/'>
-							<img src="http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$sn20-175x132$&$img=sneakerhead/nike-jordan-8-retro-basketball-305381014-1"
-							alt="" />
-							<div class="nameproduct">
-								NIKE Asin
-							</div>
-						</a>
-						<a routerLink='/'>
-							<img src="http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$sn20-175x132$&$img=sneakerhead/nike-jordan-8-retro-basketball-305381014-1"
-							alt="" />
-							<div class="nameproduct">
-								NIKE Asin
-							</div>
-						</a>
-						<a routerLink='/'>
-							<img src="http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$sn20-175x132$&$img=sneakerhead/nike-jordan-8-retro-basketball-305381014-1"
-							alt="" />
-							<div class="nameproduct">
-								NIKE Asin
-							</div>
-						</a>
-						<a routerLink='/'>
-							<img src="http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$sn20-175x132$&$img=sneakerhead/nike-jordan-8-retro-basketball-305381014-1"
-							alt="" />
-							<div class="nameproduct">
-								NIKE Asin
-							</div>
-						</a>
-						<a routerLink='/'>
-							<img src="http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$sn20-175x132$&$img=sneakerhead/nike-jordan-8-retro-basketball-305381014-1"
-							alt="" />
-							<div class="nameproduct">
-								NIKE Asin
-							</div>
-						</a>
-						<a routerLink='/'>
-							<img src="http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$sn20-175x132$&$img=sneakerhead/nike-jordan-8-retro-basketball-305381014-1"
-							alt="" />
-							<div class="nameproduct">
-								NIKE Asin
-							</div>
-						</a>
-						<a routerLink='/'>
-							<img src="http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$sn20-175x132$&$img=sneakerhead/nike-jordan-8-retro-basketball-305381014-1"
-							alt="" />
-							<div class="nameproduct">
-								NIKE Asin
-							</div>
-						</a>
-						<a routerLink='/'>
-							<img src="http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$sn20-175x132$&$img=sneakerhead/nike-jordan-8-retro-basketball-305381014-1"
-							alt="" />
-							<div class="nameproduct">
-								NIKE Asin
-							</div>
-						</a>
-						<a routerLink='/'>
-							<img src="http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$sn20-175x132$&$img=sneakerhead/nike-jordan-8-retro-basketball-305381014-1"
-							alt="" />
-							<div class="nameproduct">
-								NIKE Asin
-							</div>
-						</a>
-						<a routerLink='/'>
-							<img src="http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$sn20-175x132$&$img=sneakerhead/nike-jordan-8-retro-basketball-305381014-1"
-							alt="" />
-							<div class="nameproduct">
-								NIKE Asin
+								{{product.nameproduct}}
 							</div>
 						</a>
 					</div>
+				</div>
 			</ul>
 		</div>
 	</div>

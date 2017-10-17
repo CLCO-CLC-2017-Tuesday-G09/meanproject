@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 const mongoose = require('mongoose');
-var session = require('express-session');
-var bodyParser = require('body-parser');
+const session = require('express-session');
+const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 const userRouter=require('./routers/user.router')(router);
@@ -11,6 +11,7 @@ const productRouter=require('./routers/product.router')(router);
 const menuRouter=require('./routers/menu.router')(router);
 const branchRouter=require('./routers/branch.router')(router);
 const catalogRouter=require('./routers/catalog.router')(router);
+const cartRouter=require('./routers/cart.router')(router);
 const config = require('./config/database');
 //start connect database
 mongoose.Promise = global.Promise;
@@ -39,6 +40,7 @@ app.use('/products', productRouter);
 app.use('/menus', menuRouter);
 app.use('/branchs', branchRouter);
 app.use('/catalogs', catalogRouter);
+app.use('/carts', catalogRouter);
 // app.use(cors({
 //     orgin: 'http://localhost:4200'
 // }));
