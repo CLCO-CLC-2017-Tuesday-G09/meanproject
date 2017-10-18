@@ -28,8 +28,15 @@ router.get('/shoppingcart', function (req, res, next) {
     if (!req.session.cart) {
         res.json({ success: false, message: 'no session' });
     }
+    if(req.session.cart.items===undefined)
+    {
+        res.json({ success: false, message: 'no items' });
+    }
+    else
+    {
     var cart = new Cart(req.session.cart.items);
     res.json({ success: true, message: 'success', products: cart.generateArray(), totalPrice: cart.totalPrice});
+    }
 });
 
     return router;

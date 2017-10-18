@@ -70,8 +70,9 @@ export class HeaderComponent implements OnInit {
   getCart() {
     console.log("test cart bag");
     this.authService.shoppingcart().subscribe(data => {
-      if (!data.success) {
+      if (data.success==false) {
         this.searchmess = data.message;
+        console.log(""+this.searchmess);
       } else {
         this.searchmess = data.message;
         this.cartpost = data.products;
@@ -82,7 +83,6 @@ export class HeaderComponent implements OnInit {
   }
   ngOnInit() {
     this.GetListCatalog();
-    this.getCart();
   }
 
 }

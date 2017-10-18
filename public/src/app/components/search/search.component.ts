@@ -51,11 +51,24 @@ export class SearchComponent implements OnInit {
         this.searchmess = data.message;
       } else {
         this.searchmess = data.message;
+        this.getCart();
+      }
+    });
+  }
+  getCart() {
+    console.log("test cart bag");
+    this.authService.shoppingcart().subscribe(data => {
+      if (!data.success) {
+        this.searchmess = data.message;
+      } else {
+        this.searchmess = data.message;
+        this.cartpost = data.products;
+        this.total=data.totalPrice;
+        console.log(data);
       }
     });
   }
   onEnter(value: string) { this.value = value; }
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

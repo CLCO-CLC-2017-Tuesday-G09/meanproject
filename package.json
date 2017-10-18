@@ -26,6 +26,8 @@
     "@angular/material": "^2.0.0-beta.12",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^2.0.0",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "ejs": "^2.5.7",
@@ -36,6 +38,7 @@
     "mongoose": "^4.11.13",
     "nodemon": "^1.12.1",
     "pakage.json": "^1.0.0",
+    "passport": "^0.4.0",
     "refresh-token": "^1.0.0"
   },
   "devDependencies": {

@@ -3,9 +3,13 @@ const app = express();
 const router = express.Router();
 const mongoose = require('mongoose');
 const session = require('express-session');
+const flash = require('connect-flash');
+const passport = require('passport');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const path = require('path');
 const cors = require('cors');
+const MongoStore = require('connect-mongo')(session);
 const userRouter=require('./routers/user.router')(router);
 const productRouter=require('./routers/product.router')(router);
 const menuRouter=require('./routers/menu.router')(router);
@@ -35,19 +39,42 @@ app.use(express.static(__dirname + '/public/dist/'));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/dist/index.html'));
 });
+//session
+app.use(cookieParser());
+app.use(session({
+    secret: 'mysupersecret',
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
+}));
+app.use(function(req, res, next) {
+   req.session.cookie.maxAge = 180 * 60 * 1000; // 3 hours
+    next();
+});
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(function(req, res, next) {
+    res.locals.session = req.session;
+    next();
+});
+//
 app.use('/users', userRouter);
 app.use('/products', productRouter);
 app.use('/menus', menuRouter);
 app.use('/branchs', branchRouter);
 app.use('/catalogs', catalogRouter);
 app.use('/carts', catalogRouter);
-// app.use(cors({
-//     orgin: 'http://localhost:4200'
-// }));
-//router
-// app.get('/', function(req, res) {
-//     res.render('index');
+app.use(cors({
+    orgin: 'http://localhost:4200'
+}));
+// catch 404 and forward to error handler
+// app.use(function (req, res, next) {
+//     var err = new Error('Not Found');
+//     err.status = 404;
+//     next(err);
 // });
+// development error handler
 // start server
 var server = app.listen(8080, function () {
     console.log('Server listening at http://' + server.address().address + ':' + server.address().port);

@@ -10,4 +10,5 @@ export const CLIENT_ROUTES: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'login', component: LoginComponent },
     { path: 'search', component: SearchComponent },
+    { path: 'search/:idproduct', component: SearchComponent },
 ];

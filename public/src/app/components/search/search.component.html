@@ -1,16 +1,3 @@
-<script>
-    $(document).ready(function () {
-        $(".rightcontent > .listproduct a").hover(
-            function (e) {
-                $(this).children("ul").fadeIn(150);
-                e.preventDefault();
-            }, function (e) {
-                $(this).children("ul").fadeOut(150);
-                e.preventDefault();
-            }
-        );
-    });
-</script>
 <div class="leftbody">
     <app-sidebar></app-sidebar>
 </div>
@@ -20,35 +7,37 @@
         search results for: {{value}}
     </div>
     <div class="numberresult">
-        (20 items)
+        {{searchmess}}
     </div>
+    <form [formGroup]="formsearch">
     <div class="col-lg-12">
     <div class="input-group">
-            <form [formGroup]="formsearch">
         <input type="text" class="form-control" id="searchname" name="searchname" formControlName="searchname" #box (keyup.enter)="onEnter(box.value)" (keyup)="SearchProduct()" placeholder="Search for..." aria-label="Search for...">
         <span class="input-group-btn">
             <a class="btn searchbtn" type="button">
                 <mat-icon>search</mat-icon>
             </a>
         </span>
-        </form>
     </div>
 </div>
+</form>
     <div class="pagepagin">
     </div>
-        <div class="listproduct" *ngFor="let product of productpost">
-            <a routerLink='/'>
-                <img src='https://drive.google.com/uc?id={{product.image}}' alt="" />
+        <div class="listproduct">
+            <a routerLink='/'*ngFor="let product of productpost">
+                <img src='https://drive.google.com/uc?id={{product.image}}'/>	
                 <div class="nameproduct">
                     {{product.nameproduct}}
                 </div>
                 <div class="price">
-                    {{product.price}}
+                   ${{product.price}}
                 </div>
-                <div class="sizeproduct">
-                    {{product.size}}
+                <div class="showaction">
+                <div class="description">
+                size:{{product.price}}
                 </div>
-                <button type="button" (click)="AddToCart(product._id)" class="btn">Buy</button>
+                <button (click)="AddToCart(product._id)" class="btn">Buy</button>
+            </div>
             </a>
         </div>
 </div>

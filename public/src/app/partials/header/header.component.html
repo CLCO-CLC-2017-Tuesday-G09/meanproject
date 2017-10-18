@@ -62,7 +62,7 @@
 			</a>
 		</li>
 		<div class="cart">
-				<a>
+				<a (on-mouseover)="getCart()">
 					<mat-icon>shopping_cart</mat-icon>
 				</a>
 				<ul>
@@ -78,7 +78,7 @@
 									{{cart.item.nameproduct}}
 								</div>
 								<div class="description">
-									{{cart.item.nameproduct}}
+									{{cart.item.description}}
 							</div>
 								<div class="price">
 									{{cart.item.price}}
