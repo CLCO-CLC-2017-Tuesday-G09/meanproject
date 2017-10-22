@@ -83,12 +83,36 @@ export class AuthService {
   SearchProduct(nameproduct) {
     return this.http.get(this.domain + '/products/searchproduct/'+nameproduct).map(res => res.json());
   }
-
+  addproduct(product) {
+    return this.http.post(this.domain + '/products/createproduct/' , product).map(res => res.json());
+  }
+  getAllProducts() {
+    return this.http.get(this.domain + '/products/getallproducts').map(res => res.json());
+  }
+  getSingleProduct(id) {
+    return this.http.get(this.domain + '/products/singleProduct/' + id).map(res => res.json());
+  }
+  editProduct(product) {
+    return this.http.put(this.domain + '/products/updateProduct/', product).map(res => res.json());
+  }
+  deleteProduct(id) {
+    return this.http.delete(this.domain + '/products/deleteproduct/'+ id).map(res => res.json());
+  }
+  getListProduct(idcatalog) {
+    return this.http.get(this.domain + '/products/listproduct/'+idcatalog).map(res => res.json());
+  }
   //cart
   AddCart(idproduct) {
     return this.http.get(this.domain + '/carts/addcart/'+idproduct).map(res => res.json());
   }
   shoppingcart() {
     return this.http.get(this.domain + '/carts/shoppingcart').map(res => res.json());
+  }
+
+  RemoveAllCart() {
+    return this.http.get(this.domain + '/carts/removecart').map(res => res.json());
+  }
+  removeItemCart(idproduct) {
+    return this.http.get(this.domain + '/carts/removeitem/'+idproduct).map(res => res.json());
   }
 }

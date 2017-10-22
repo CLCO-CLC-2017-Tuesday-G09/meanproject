@@ -4,6 +4,7 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { AuthService } from '../../services/auth.service';
 import { MenuService } from '../../services/menu.service';
 import { Router } from '@angular/router';
+import {SearchComponent} from '../../components/search/search.component';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -14,6 +15,7 @@ export class SidebarComponent implements OnInit {
   meupost;
   branchpost;
   catalogpost;
+  productpost;
   Isbranch=false;
   Iscatalog=false;
   constructor(
@@ -41,6 +43,20 @@ export class SidebarComponent implements OnInit {
     this.authService.GetAllBranch().subscribe(data => {
       this.branchpost = data.branches; // Assign array to use in HTML
 
+    });
+  }
+  //filter with branch
+  FilterCatalog(idbranch) {
+    this.authService.GetListCatalog(idbranch).subscribe(data => {
+      this.catalogpost = data.catalogs;
+      console.log(data);
+    });
+  }
+   //filter with branch
+   FilterProduct(idcatalog) {
+    this.authService.getListProduct(idcatalog).subscribe(data => {
+      this.productpost = data.products;
+      console.log(data);
     });
   }
    //get list branch

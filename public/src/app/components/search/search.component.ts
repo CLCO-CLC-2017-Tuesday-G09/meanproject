@@ -4,6 +4,7 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { AuthService } from '../../services/auth.service';
 import { MenuService } from '../../services/menu.service';
 import { Router } from '@angular/router';
+import {SidebarComponent} from '../../partials/sidebar/sidebar.component';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -13,9 +14,9 @@ export class SearchComponent implements OnInit {
   formsearch: FormGroup
   value = '';
   searchmess;
-  productpos;
   cartpost;
   productpost
+  catalogpost
   total;
   constructor(
     private FormBuilder: FormBuilder,
@@ -68,7 +69,11 @@ export class SearchComponent implements OnInit {
       }
     });
   }
-  onEnter(value: string) { this.value = value; }
-  ngOnInit() {}
+  onEnter(value: string) { 
+    this.value = value; 
+  }
+
+  ngOnInit() {
+  }
 
 }

@@ -4,11 +4,10 @@ const Schema = mongoose.Schema;
 
 
 var ProductSchema = new Schema({
-    nameproduct: { type: String },
-    description:{type:String},
+    nameproduct: { type: String,lowercase: true },
+    description:{type:String,lowercase: true},
     size: { type: String},
     color: { type: String},
-    catalog:{type:String},
     price:{type:String},
     image: {type: String },
     count_user_buy:{type:Number},
@@ -17,6 +16,7 @@ var ProductSchema = new Schema({
     checksale:{type:Number},
     checknew:{type:Number},
     promotion:{type:Number},
+    idcatalog:{ type: Schema.ObjectId, ref: 'Catalog'},
 });
 
 module.exports = mongoose.model('Product', ProductSchema);

@@ -26,6 +26,17 @@ router.get('/addcart/:id', function (req, res, next) {
 
 router.get('/shoppingcart', function (req, res, next) {
     if (!req.session.cart) {
+        res.json({ success: false, message: 'no session',products:null });
+    }
+    else
+    {
+    var cart = new Cart(req.session.cart);
+    res.json({ success: true, message: 'success', products: cart.generateArray(), totalPrice: cart.totalPrice});
+    }
+});
+
+router.get('/removecart', function (req, res, next) {
+    if (!req.session.cart) {
         res.json({ success: false, message: 'no session' });
     }
     if(req.session.cart.items===undefined)
@@ -34,10 +45,18 @@ router.get('/shoppingcart', function (req, res, next) {
     }
     else
     {
-    var cart = new Cart(req.session.cart.items);
-    res.json({ success: true, message: 'success', products: cart.generateArray(), totalPrice: cart.totalPrice});
+    req.session.destroy();
+    res.json({ success: true, message: 'success'});
     }
 });
 
+router.get('/removeitem/:id', function(req, res, next) {
+    var productId = req.params.id;
+    var cart = new Cart(req.session.cart ? req.session.cart : {});
+
+    cart.removeItem(productId);
+    req.session.cart = cart;
+    res.json({ success: true, message: 'success'});
+});
     return router;
 }

@@ -1,0 +1,71 @@
+import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { AuthService } from '../../../services/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
+@Component({
+  selector: 'app-editproduct',
+  templateUrl: './editproduct.component.html',
+  styleUrls: ['./editproduct.component.css']
+})
+export class EditproductComponent implements OnInit {
+  catalogpost
+  processing= false;
+  loading = true;
+  product;
+  message;
+  messageClass;
+  currentUrl;
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private AuthService: AuthService,
+    private router: Router,
+    private location: Location
+  ) { }
+
+  updateproductSubmit() {
+    this.processing = true; // Lock form fields
+    // Function to send blog object to backend
+    console.log(this.product._id);
+    this.AuthService.editProduct(this.product).subscribe(data => {
+      // Check if PUT request was a success or not
+      if (!data.success) {
+        this.messageClass = 'alert alert-danger'; // Set error bootstrap class
+        this.message = data.message; // Set error message
+        this.processing = false; // Unlock form fields
+      } else {
+        this.messageClass = 'alert alert-success'; // Set success bootstrap class
+        this.message = data.message; // Set success message
+        // After two seconds, navigate back to blog page
+        setTimeout(() => {
+          this.router.navigate(['/products']); // Navigate back to route page
+        }, 2000);
+      }
+    });
+  }
+  goBack() {
+    this.location.back();
+  }
+  GetAllCatalog() {
+    this.AuthService.GetAllCatalog().subscribe(data => {
+      this.catalogpost = data.catalogs;
+    });
+  }
+  ngOnInit() {
+    this.currentUrl = this.activatedRoute.snapshot.params; // When component loads, grab the id
+    // Function to GET current blog with id in params
+    this.AuthService.getSingleProduct(this.currentUrl.id).subscribe(data => {
+      // Check if GET request was success or not
+      if (!data.success) {
+        this.messageClass = 'alert alert-danger'; // Set bootstrap error class
+        this.message = 'Blog not found.'; // Set error message
+      } else {
+        this.product = data.product; // Save blog object for use in HTML
+        this.GetAllCatalog();
+        this.loading = false; // Allow loading of blog form
+      }
+    });
+  }
+
+}

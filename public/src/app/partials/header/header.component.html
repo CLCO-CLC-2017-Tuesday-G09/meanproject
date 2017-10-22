@@ -6,7 +6,7 @@
 	</div>
 	<div class="menuright">
 		<li>
-			<a routerLink='/'>
+			<a>
 				<div class="menu-mobile">
 					<mat-icon>more_vert</mat-icon>
 				</div>
@@ -14,7 +14,7 @@
 		</li>
 
 		<li>
-			<a routerLink='/acount'>
+			<a>
 				<mat-icon>person</mat-icon>
 			</a>
 			<ul>
@@ -30,6 +30,7 @@
 						<p>My Profile</p>
 					</a>
 				</li>
+
 				<li>
 					<a routerLink='/#'>
 						<mat-icon>shopping_basket</mat-icon>
@@ -62,43 +63,53 @@
 			</a>
 		</li>
 		<div class="cart">
-				<a (on-mouseover)="getCart()">
-					<mat-icon>shopping_cart</mat-icon>
-				</a>
-				<ul>
-						<div class="title">
-								Shopping bag
-							</div>
-							<div class="content" id="style-scrollbar">
-					<li  *ngFor="let cart of cartpost">
+			<a (on-mouseover)="getCart()">
+				<mat-icon>shopping_cart</mat-icon>
+			</a>
+			<ul>
+				<div class="title">
+					Shopping bag
+					<div class="buttonaction">
+						<a routerLink='/' (click)="removeAllCart()">
+							clear all item
+						</a>
+					</div>
+				</div>
+				<div class="content" id="style-scrollbar">
+					<li *ngFor="let cart of cartpost">
 						<a routerLink='/'>
-							<img src='https://drive.google.com/uc?id={{cart.item.image}}'/>							alt="" />
+							<img src='https://drive.google.com/uc?id={{cart.item.image}}' />
+							<div class="buttonaction">
+								<a routerLink='/' (click)="removeItemCart(cart.item._id)">
+									<mat-icon>delete</mat-icon>
+								</a>
+							</div>
 							<div class="titleproduct">
 								<div class="nameproduct">
 									{{cart.item.nameproduct}}
 								</div>
 								<div class="description">
 									{{cart.item.description}}
-							</div>
+								</div>
 								<div class="price">
 									{{cart.item.price}}
 								</div>
 								<div class="quantity">
 									{{cart.qty}}
-							</div>
+								</div>
 							</div>
 						</a>
 					</li>
 
 				</div>
-					<div class="total">
-							Subtotal:{{total}}
-						</div>
-						<div class="checkout">
-							<a type="button" class="btn"> checkout</a>
-						</div>
-				</ul>
+				<div class="total">
+					Subtotal:{{total}}
 				</div>
+				<div class="checkout">
+					<a type="button" class="btn"> checkout</a>
+				</div>
+			</ul>
+		</div>
 		<li>
 			<a routerLink='/'>
 				<mat-icon>notifications</mat-icon>
@@ -152,151 +163,18 @@
 	</div>
 	<div class="menu">
 		<ul>
-			<li>
-				<a href="#">NEW ARRIVALS</a>
-			</li>
-			<li>
-				<a>NEW</a>
+			<li *ngFor="let menu of menupost">
+				<a href="#">{{menu.menuname}}</a>
 				<ul>
-					<li>
-						<a href="#">NEW ARRICALS</a>
+					<li *ngFor="let branch of branchpost">
+						<a href="#">{{branch.branchName}}</a>
 						<ul>
-							<li>
-								<a href="#">Lidership</a>
-							</li>
-							<li>
-								<a href="#">History</a>
-							</li>
-							<li>
-								<a href="#">Locations</a>
-							</li>
-							<li>
-								<a href="#">Careers</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a>WHAT HOST</a>
-						<ul>
-							<li>
-								<a href="#">Undergraduate</a>
-							</li>
-							<li>
-								<a href="#">Masters</a>
-							</li>
-							<li>
-								<a href="#">International</a>
-							</li>
-							<li>
-								<a href="#">Online</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#">RESEARCH</a>
-						<ul>
-							<li>
-								<a href="#">Undergraduate research</a>
-							</li>
-							<li>
-								<a href="#">Masters research</a>
-							</li>
-							<li>
-								<a href="#">Funding</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#">SOMETHING</a>
-						<ul>
-							<li>
-								<a href="#">Sub something</a>
-							</li>
-							<li>
-								<a href="#">Sub something</a>
-							</li>
-							<li>
-								<a href="#">Sub something</a>
-							</li>
-							<li>
-								<a href="#">Sub something</a>
+							<li *ngFor="let catalog of catalogposts">
+								<a href="#">{{catalog.catalogName}}</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
-			</li>
-			<li>
-				<a href="#">WOMEN'S</a>
-				<ul>
-					<li>
-						<a href="#">School</a>
-						<ul>
-							<li>
-								<a href="#">Lidership</a>
-							</li>
-							<li>
-								<a href="#">History</a>
-							</li>
-							<li>
-								<a href="#">Locations</a>
-							</li>
-							<li>
-								<a href="#">Careers</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#">Study</a>
-						<ul>
-							<li>
-								<a href="#">Undergraduate</a>
-							</li>
-							<li>
-								<a href="#">Masters</a>
-							</li>
-							<li>
-								<a href="#">International</a>
-							</li>
-							<li>
-								<a href="#">Online</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#">Study</a>
-						<ul>
-							<li>
-								<a href="#">Undergraduate</a>
-							</li>
-							<li>
-								<a href="#">Masters</a>
-							</li>
-							<li>
-								<a href="#">International</a>
-							</li>
-							<li>
-								<a href="#">Online</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#">Empty sub</a>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<a href="#">KIDS</a>
-			</li>
-			<li>
-				<a href="#">APPAREL</a>
-			</li>
-			<li>
-				<div class="sale">
-					<a href="#">SALE</a>
-				</div>
-			</li>
-			<li>
-				<a href="#">BLOG</a>
 			</li>
 		</ul>
 	</div>

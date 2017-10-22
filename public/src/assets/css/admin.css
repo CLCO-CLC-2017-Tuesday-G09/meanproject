@@ -355,7 +355,7 @@
 		 #content > .inner .body .components input
          {
 			-webkit-box-shadow:0 0.1em 0.2em rgba(0,0,0,.3);
-			color: #fff;
+			color: rgb(0, 0, 0);
          } 
          #content > .inner .rightbody
          {

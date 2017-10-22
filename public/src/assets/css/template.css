@@ -620,10 +620,24 @@
         padding-bottom:0.5em;
         text-shadow:1px 2px 5px rgba(0,0,0,.8);
     }
+    .menu-container .menuright .cart >ul >.title>.buttonaction{
+        float: right;
+        color: #929292;
+        font: 1em;
+    }
+    .menu-container .menuright .cart >ul >.title>.buttonaction a{
+        text-transform: lowercase;
+        color: #929292;
+        font: 0.5em;
+        list-style: none;
+    }
     .menu-container .menuright .cart >ul > .content > li a img {
         float: left;
         width:7em;
         height: 7em;
+    }
+    .menu-container .menuright .cart >ul > .content > li a .buttonaction{
+        float: right;
     }
     .menu-container .menuright .cart >ul > .content > li a .titleproduct {
         float: left;

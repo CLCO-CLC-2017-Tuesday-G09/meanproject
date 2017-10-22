@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 
 var MenuSchema = new Schema({
-    menuname: { type: String },
+    menuname: { type: String,lowercase: true },
     branches : [{ type: Schema.ObjectId, ref: 'Branch' }]
 });
 

@@ -27,8 +27,9 @@ const countProductInCatalogValidator = [
 
 var CatalogSchema = new Schema({
     idBranch : { type: Schema.ObjectId, ref: 'Branch' },
-    catalogName: { type: String, require: true, unique: true },
-    countProductInCatalog: {type:Number,require:true, validate: countProductInCatalogValidator},
+    catalogName: { type: String, require: true, unique: true,lowercase: true },
+    countProductInCatalog: {type:Number,require:true, validate: countProductInCatalogValidator,lowercase: true},
+    products : [{ type: Schema.ObjectId, ref: 'Product' }]
 });
 
 module.exports = mongoose.model('Catalog', CatalogSchema);

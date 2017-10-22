@@ -5,6 +5,7 @@ import { AdcatalogComponent } from '../../admin/adcatalog/adcatalog.component';
 import { AdpromotionComponent } from '../../admin/adpromotion/adpromotion.component';
 import { MenuComponent } from '../../admin/menu/menu.component';
 import { AdbranchComponent } from '../../admin/adbranch/adbranch.component';
+import { EditproductComponent } from '../../admin/adproduct/editproduct/editproduct.component';
 export const ADMINISTRATOR_ROUTES: Routes = [
     { path: 'adhome', component: AdhomeComponent },
     { path: 'products', component: AdproductComponent },
@@ -12,4 +13,5 @@ export const ADMINISTRATOR_ROUTES: Routes = [
     { path: 'menus', component: MenuComponent },
     { path: 'addbranchs/:idmenu', component: AdbranchComponent },
     { path: 'addcatalogs/:idbranch', component: AdcatalogComponent },
+    { path: 'edit-product/:id',component: EditproductComponent}
 ];

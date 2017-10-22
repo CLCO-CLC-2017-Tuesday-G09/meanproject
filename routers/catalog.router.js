@@ -61,37 +61,108 @@ module.exports = (router) => {
             });
         }
     });
-    
-    router.put('/updateCatalog', (req, res) => {
-        if (!req.body.catalogName) {
-            res.json({ success: false, message: 'no find username' });
-        }
-        else {
-            Catalog.findOne({ catalogName: req.body.catalogName }, (err, catalog) => {
-                if (err) {
-                    res.json({ success: false, message: err });
-                } else {
-                    if (!catalog) {
-                        res.json({ success: false, message: 'false' });
-                    }
-                    else {
-                        catalog.catalogName = req.body.catalogName;
-                        catalog.countProductInCatalog = req.body.countProductInCatalog;
-
-                        catalog.save((err) => {
-                            if (err) {
-                                res.json({ success: false, message: 'can not save' });
-                            }
-                            else {
-                                res.json({ success: true, message: 'data is updated' });
-                            }
-                        });
-                    }
+//update catalog
+router.put('/updateCatalog', (req, res) => {
+    if (!req.body._id) {
+        res.json({ success: false, message: 'Please enter id catalog' });
+    }
+    else {
+        Catalog.findOne({ _id: req.body._id }, (err, catalog) => {
+            if (err) {
+                res.json({ success: false, message: err });
+            } else {
+                if (!catalog) {
+                    res.json({ success: false, message: 'false' });
                 }
-            });
+                else {
+                    catalog.catalogName = req.body.catalogName;
+                    catalog.countProductInCatalog = req.body.countProductInCatalog;
+                    catalog.idBranch = req.body.idBranch;
 
-        }
-    });
+
+                    catalog.save((err) => {
+                        if (err) {
+                            res.json({ success: false, message: 'can not save' });
+                        }
+                        else {
+
+                            //find id of branch and update new data field categories of collection Branch
+                            Branch.findByIdAndUpdate(catalog.idBranch,
+                                { "$push": { "cataloges": catalog } },
+                                { "new": true, "upsert": true }, function (err, data) {
+                                    if (err) {
+                                        res.json(err);
+                                    } else {
+
+                                        res.json({ success: true, message: data });
+                                        // Branch.findOne({ _id: catalog.idBranch }, (error, branch) => {
+                                        //     if (error) {
+                                        //         res.json({ success: false, message: error });
+                                        //     } else {
+
+                                        //         //when update catalog successfully
+                                        //         Branch.findOneAndUpdate({ _id: branch._id },
+                                        //             { $pull: { cataloges: catalog._id } }, function (err, data) {
+                                        //                 if (err) {
+                                        //                     res.json({ success: false, message: err });
+                                        //                 } else {
+                                        //                     res.json({ success: true, data: data });
+                                        //                 }
+                                        //             });
+                                        //     }
+                                        // });
+                                    }
+
+                                });
+                        }
+                    });
+                }
+            }
+        });
+
+    }
+});
+
+//remove catalog
+
+router.get('/deletecatalog/:_id', (req, res) => {
+    if (!req.params._id) {
+        res.json({ success: false, message: req.params._id });
+    }
+    else {
+        Catalog.findOneAndRemove({ _id: req.params._id }, (err, catalog) => {
+            if (err) {
+                res.json({ success: false, message: err });
+            }
+            else {
+                if (!catalog) {
+                    res.json({ success: false, message: 'can not found catalog' });
+                }
+                else {
+                    //res.json({ success: true, message: catalog });
+
+                    Branch.findOne({ _id: catalog.idBranch }, (error, branch) => {
+                        if (error) {
+                            res.json({ success: false, message: error });
+                        } else {
+
+                            //when update catalog successfully
+                            Branch.findOneAndUpdate({ _id: branch._id },
+                                { $pull: { cataloges: catalog._id } }, function (err, data) {
+                                    if (err) {
+                                        res.json({ success: false, message: err });
+                                    } else {
+                                        res.json({ success: true, data: data });
+                                    }
+                                });
+                        }
+                    });
+                }
+            }
+        });
+    }
+});
+
     //find all category
     router.get('/allcatalog', (req, res) => {
         Catalog.find((err, catalogs) => {
@@ -152,24 +223,7 @@ router.get('/searchcatalog/:namecatalog', (req, res) => {
             });
         });
 
-    // DELETES A CATALOG FROM THE DATABASE
-    router.delete('/deletecatalog/:id', function (req, res) {
-        if (!req.params.id) {
-            res.json({ success: false, message: 'no find menu' });
-        }
-        else
-        {
-        Catalog.findByIdAndRemove({_id:req.params.id},function (err,catalog) {
-          if (err){
-            res.json({ success: false, message: err }); // Return error
-          }
-          else
-          {
-            res.json({ success: true, message: "catalog: " + catalog.catalogName + " was deleted" });
-          }
-        });
-    }
-      });
+
     
     //find one a catalog
     router.get('/findCatalog/:catalogName', (req, res) => {

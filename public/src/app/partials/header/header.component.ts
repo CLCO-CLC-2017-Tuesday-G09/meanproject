@@ -12,10 +12,13 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   formsearch: FormGroup
   catalogpost;
+  catalogposts;
   productpost;
   cartpost;
   total;
   searchmess;
+  menupost;
+  branchpost;
   constructor(
     private FormBuilder: FormBuilder,
     private authService: AuthService,
@@ -37,11 +40,11 @@ export class HeaderComponent implements OnInit {
   }
   // Reload blogs on current page
   reloadSearchs() {
-    this.GetListCatalog(); // Add any new blogs to the page
+    this.GetAllCatalog(); // Add any new blogs to the page
     this.getCart();
   }
   //get list catalog
-  GetListCatalog() {
+  GetAllCatalog() {
     this.authService.GetAllCatalog().subscribe(data => {
       this.catalogpost = data.catalogs; // Assign array to use in HTML
 
@@ -81,8 +84,54 @@ export class HeaderComponent implements OnInit {
       }
     });
   }
+  removeAllCart() {
+    console.log("test remove all cart");
+    this.authService.RemoveAllCart().subscribe(data => {
+      if (data.success==false) {
+        this.searchmess = data.message;
+        console.log(""+this.searchmess);
+      } else {
+        this.searchmess = data.message;
+        this.getCart();
+      }
+    });
+  }
+  removeItemCart(idProduct){
+    console.log("test remove item  cart");
+    this.authService.removeItemCart(idProduct).subscribe(data => {
+      if (data.success==false) {
+        this.searchmess = data.message;
+        console.log(""+this.searchmess);
+      } else {
+        this.searchmess = data.message;
+        this.getCart();
+      }
+    });
+  }
+  // Function to get all blogs from the database
+  GetListMenu() {
+    // Function to GET all blogs from database
+    this.authService.GetListMenu().subscribe(data => {
+      this.menupost = data.menus; // Assign array to use in HTML
+      this.GetListBranch(data.menus._id);
+    });
+  }
+  //get list branch
+  GetListBranch(idmenu:string) {
+    console.log(idmenu);
+    this.authService.GetListBranch(idmenu).subscribe(data => {
+      this.branchpost = data.branches; // Assign array to use in HTML
+    });
+  }
+   //get list branch
+   GetListCatalog(idbranch:string) {
+    this.authService.GetListCatalog(idbranch).subscribe(data => {
+      this.catalogposts = data.catalogs; // Assign array to use in HTML
+    });
+  }
   ngOnInit() {
-    this.GetListCatalog();
+    this.GetAllCatalog();
+    this.GetListMenu();
   }
 
 }

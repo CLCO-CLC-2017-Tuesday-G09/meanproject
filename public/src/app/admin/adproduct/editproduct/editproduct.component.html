@@ -1,0 +1,73 @@
+<!-- Content -->
+<div id="content">
+  <div class="row show-hide-message">
+    <div [ngClass]="messageClass">
+      {{ message }}
+    </div>
+  </div> 
+  <div class="inner">
+    <form *ngIf="!loading" (submit)="updateproductSubmit()">
+    <div class="title">
+      <h2>Update product</h2>
+    </div>
+    <div class="body">
+      <div class="components">
+          <h1>Name product</h1>
+        <div class="form-group">            
+          <input type="text" [(ngModel)]="product.nameproduct" id="nameproduct" name="nameproduct" class="form-control" >         
+      </div>
+      </div>
+
+      <div class="components">
+          <h1>Description</h1>
+        <div class="form-group">
+          <textarea class="form-control" [(ngModel)]="product.description" name="description" id="description" rows="3" ></textarea>
+        </div>
+      </div>
+      <div class="components">
+          <h1>Price</h1>
+          <div class="form-group">            
+              <input type="text" [(ngModel)]="product.price" id="price" name="price" class="form-control" >         
+          </div>
+      </div>
+      
+      <div class="components">
+        <h1>Image</h1>
+      <div class="form-group">
+        
+      <div>
+          You chose: <input id="image" name="image" type="text"/>
+      </div>
+      </div>
+    </div>
+    </div>
+    <div class="rightbody">
+<div class="components">
+      <h1>Catalog</h1>
+    <div class="form-group">
+      <!-- //<input type="text" id ="catalog" name="catalog" class="form-control" formControlName="catalog" placeholder="Enter catalog"> -->
+      <select id="catalog" [(ngModel)]="product.catalog" class="form-control" name="catalog" >
+          <option *ngFor="let catalog of catalogpost">{{ catalog.catalogName }}</option>
+        </select>
+    </div>
+  </div>
+      
+      
+<div class="components">
+    <h1>Color</h1>
+        <div class="form-group">            
+          <input type="text" [(ngModel)]="product.color" id="color" name="color" class="form-control" >         
+      </div>
+      </div>
+<div class="components">
+    <h1>Size</h1>
+    <div class="form-group">            
+        <input type="text" [(ngModel)]="product.size" id="size" name="size" class="form-control" >         
+    </div>
+      </div>
+      <input type="submit" class="btn btn-primary" name="updateproduct-submit" value="Update">
+    </div>  
+    </form>
+
+  </div>
+</div>

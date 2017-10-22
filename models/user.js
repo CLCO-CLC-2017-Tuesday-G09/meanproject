@@ -193,7 +193,7 @@ const numberphoneValidators = [
 ]
 var UserSchema = new Schema({
     email: { type: String, require: true, unique: true, lowercase: true, validate: emailValidators },
-    fullname:{type:String,require:true,validate: fullnameValidators},
+    fullname:{type:String,require:true,validate: fullnameValidators,lowercase: true},
     username: { type: String, require: true, unique: true, lowercase: true, validate: usernameValidators },
     password: { type: String, require: true,validate: passwordValidators },
     address:{type:String,required:true,validate: addressValidators},

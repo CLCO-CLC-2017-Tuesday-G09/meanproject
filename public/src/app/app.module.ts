@@ -36,6 +36,7 @@ import { MenuComponent } from './admin/menu/menu.component';
 import 'hammerjs';
 import { AdbranchComponent } from './admin/adbranch/adbranch.component';
 import { SearchComponent } from './components/search/search.component';
+import { EditproductComponent } from './admin/adproduct/editproduct/editproduct.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +55,8 @@ import { SearchComponent } from './components/search/search.component';
     AdpromotionComponent,
     MenuComponent,
     AdbranchComponent,
-    SearchComponent
+    SearchComponent,
+    EditproductComponent
   ],
   imports: [
     NgbModule.forRoot(),
@@ -96,7 +98,7 @@ import { SearchComponent } from './components/search/search.component';
     MatSortModule,
     MatTableModule
   ],
-  providers: [AuthService],
+  providers: [AuthService,SidebarComponent,SearchComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
