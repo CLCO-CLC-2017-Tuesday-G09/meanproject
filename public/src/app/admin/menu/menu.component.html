@@ -6,7 +6,9 @@
     <div class="components">
       <div class="row show-hide-message" *ngIf="message">
         <div [ngClass]="messageClass">
-          <p>{{ message }}</p>
+            <div id="message">
+          <p class="notification">{{ message }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -26,6 +28,13 @@
               <div class="col-sm-8">
                 <input type="text" class="form-control" id="menuname" name="menuname" formControlName="menuname" aria-describedby="emailHelp"
                   placeholder="Enter email">
+                  <div id="message">
+                    <li class="error" *ngIf="form.controls.menuname.errors?.required && form.controls.menuname.dirty">This field is require</li>
+                    <li class="warring" *ngIf="(form.controls.menuname.errors?.minlength||form.controls.menuname.errors?.maxlength) && form.controls.menuname.dirty">
+                      Minimum characters:3, Maximum characters:30</li>
+                    <li class="notification" *ngIf="form.controls.menuname.errors?.validateMenuname && form.controls.menuname.dirty">
+                      This must be a valid full name</li>
+                    </div>
               </div>
               <div class="col-sm-2">
                 <input type="submit" name="menu-submit" class="form-control btn btn-primary" value="Add">

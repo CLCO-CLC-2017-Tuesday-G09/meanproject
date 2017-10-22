@@ -3,8 +3,9 @@ mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
 
 
+
 //countProductInCatalog validate
-let countProductInCatalogCheck = (countProductInCatalog) => {
+var countProductInCatalogCheck = (countProductInCatalog) => {
     if (!countProductInCatalog) {
         return false;
     } 
@@ -17,17 +18,49 @@ let countProductInCatalogCheck = (countProductInCatalog) => {
         }
     }
 };
-const countProductInCatalogValidator = [
+var countProductInCatalogValidator = [
     {
         validator: countProductInCatalogCheck,
         message: 'countProductInCatalog must be greater than zero'
     }
 ]
 
+// catalogName validate
+let catalogNameLengthChecker = (catalogName) => {
+    if (!catalogName) {
+        return false;
+    } else {
+        if (catalogName.length < 3 || catalogName.length > 30) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+};
+let validCatalogName = (catalogName) => {
+    if (!catalogName) {
+        return false;
+    } else {
+        const regExp =
+            new RegExp(/^[a-zA-Z0-9\s]+$/);
+        return regExp.test(catalogName);
+    }
+};
+const catalogNameValidators = [
+    {
+        validator: catalogNameLengthChecker,
+        message: 'Catalog name must be at least 3 characters but no more than 30'
+    },
+    {
+        validator: validCatalogName,
+        message: 'Catalog name must not have any special characters'
+    }
+]
+
 
 var CatalogSchema = new Schema({
     idBranch : { type: Schema.ObjectId, ref: 'Branch' },
-    catalogName: { type: String, require: true, unique: true,lowercase: true },
+    catalogName: { type: String, require: true, unique: true,lowercase: true,validate:catalogNameValidators },
     countProductInCatalog: {type:Number,require:true, validate: countProductInCatalogValidator,lowercase: true},
     products : [{ type: Schema.ObjectId, ref: 'Product' }]
 });

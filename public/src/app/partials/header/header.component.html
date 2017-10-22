@@ -164,13 +164,35 @@
 	<div class="menu">
 		<ul>
 			<li *ngFor="let menu of menupost">
-				<a href="#">{{menu.menuname}}</a>
+				<a href="#" (mouseenter)="GetListBranch(menu._id)">{{menu.menuname}}</a>
 				<ul>
 					<li *ngFor="let branch of branchpost">
-						<a href="#">{{branch.branchName}}</a>
+						<a href="#" (mouseenter)="GetListCatalog(branch._id)">{{branch.branchName}}</a>
 						<ul>
 							<li *ngFor="let catalog of catalogposts">
 								<a href="#">{{catalog.catalogName}}</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a>NEW</a>
+				<ul>
+					<li>
+						<a href="#">NEW ARRICALS</a>
+						<ul>
+							<li>
+								<a href="#">Lidership</a>
+							</li>
+							<li>
+								<a href="#">History</a>
+							</li>
+							<li>
+								<a href="#">Locations</a>
+							</li>
+							<li>
+								<a href="#">Careers</a>
 							</li>
 						</ul>
 					</li>

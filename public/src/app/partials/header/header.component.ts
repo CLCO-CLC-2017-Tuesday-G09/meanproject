@@ -113,7 +113,7 @@ export class HeaderComponent implements OnInit {
     // Function to GET all blogs from database
     this.authService.GetListMenu().subscribe(data => {
       this.menupost = data.menus; // Assign array to use in HTML
-      this.GetListBranch(data.menus._id);
+      console.log(data.menus);
     });
   }
   //get list branch
@@ -121,6 +121,7 @@ export class HeaderComponent implements OnInit {
     console.log(idmenu);
     this.authService.GetListBranch(idmenu).subscribe(data => {
       this.branchpost = data.branches; // Assign array to use in HTML
+      console.log(data.branches);
     });
   }
    //get list branch

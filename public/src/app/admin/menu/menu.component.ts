@@ -35,6 +35,15 @@ export class MenuComponent  implements OnInit{
       ])]
     })
   }
+  validateMenuname(controls) {
+    const regExp =
+      new RegExp(/^[a-zA-Z0-9\s]+$/);
+    if (regExp.test(controls.value)) {
+      return null;
+    } else {
+      return { 'validateMenuname': true }
+    }
+  }
   onCreateMenuSubmit() {
     const menu = {
       menuname: this.form.get('menuname').value,

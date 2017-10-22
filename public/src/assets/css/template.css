@@ -745,7 +745,6 @@
 
     .menu > ul {
         list-style: none;
-        display: inline-block;
         font-family: "UTMDaxBold";
         font-size:1em;
         color:#fff;
@@ -774,6 +773,7 @@
         text-decoration: none;
         padding:0 0.7em;
         display: block;
+        text-transform: uppercase;
     }
     .menu > ul > li > .sale {
         text-decoration: none;
@@ -781,6 +781,7 @@
         display: block;
     }
     .menu > ul > li > .sale a {
+        text-transform: uppercase;
         color:#FF0000;
     }
     .menu > ul > li a:hover {
@@ -823,6 +824,7 @@
         border-left:0.1em solid #333;
     }
     .menu > ul > li > ul > li a {
+        text-transform: uppercase;
         color: #ffffff;
         padding: .2em 0;
         width: 95%;
@@ -857,6 +859,7 @@
     }
 
     .menu > ul > li > ul > li > ul > li a {
+        text-transform: lowercase;
         color: #ffffff;
         border: 0;
     }
