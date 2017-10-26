@@ -9,7 +9,6 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./editproduct.component.css']
 })
 export class EditproductComponent implements OnInit {
-  catalogpost
   processing= false;
   loading = true;
   product;
@@ -27,7 +26,6 @@ export class EditproductComponent implements OnInit {
   updateproductSubmit() {
     this.processing = true; // Lock form fields
     // Function to send blog object to backend
-    console.log(this.product._id);
     this.AuthService.editProduct(this.product).subscribe(data => {
       // Check if PUT request was a success or not
       if (!data.success) {
@@ -39,7 +37,7 @@ export class EditproductComponent implements OnInit {
         this.message = data.message; // Set success message
         // After two seconds, navigate back to blog page
         setTimeout(() => {
-          this.router.navigate(['/products']); // Navigate back to route page
+          this.router.navigate(['/add']); // Navigate back to route page
         }, 2000);
       }
     });
@@ -47,11 +45,7 @@ export class EditproductComponent implements OnInit {
   goBack() {
     this.location.back();
   }
-  GetAllCatalog() {
-    this.AuthService.GetAllCatalog().subscribe(data => {
-      this.catalogpost = data.catalogs;
-    });
-  }
+
   ngOnInit() {
     this.currentUrl = this.activatedRoute.snapshot.params; // When component loads, grab the id
     // Function to GET current blog with id in params
@@ -62,7 +56,6 @@ export class EditproductComponent implements OnInit {
         this.message = 'Blog not found.'; // Set error message
       } else {
         this.product = data.product; // Save blog object for use in HTML
-        this.GetAllCatalog();
         this.loading = false; // Allow loading of blog form
       }
     });

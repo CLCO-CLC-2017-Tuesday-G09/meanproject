@@ -59,10 +59,15 @@ const catalogNameValidators = [
 
 
 var CatalogSchema = new Schema({
-    idBranch : { type: Schema.ObjectId, ref: 'Branch' },
+    catalog:{type:String},
     catalogName: { type: String, require: true, unique: true,lowercase: true,validate:catalogNameValidators },
     countProductInCatalog: {type:Number,require:true, validate: countProductInCatalogValidator,lowercase: true},
-    products : [{ type: Schema.ObjectId, ref: 'Product' }]
+    products:[
+        {
+       _id: Schema.ObjectId
+      
+        }
+    ]
 });
 
 module.exports = mongoose.model('Catalog', CatalogSchema);
