@@ -345,11 +345,32 @@
         -moz-box-shadow:0em 0.5em 0.5em rgba(0,0,0,.3);
         -webkit-box-shadow:0em 0.5em 1em rgba(0,0,1,5);
     }
-
+    table{
+        color:#fafafa;
+        margin:1em;
+    }
+    tr{
+        border-bottom:0.1em solid #2C2B2B;
+        height: 5em;
+        text-align: left;
+    }
+    td p {
+        margin-top: 1em;
+        text-transform: uppercase;
+    }
+    td img {
+        width: 4em;
+        height: 4em;
+    }
+    td button {
+        width: 2em;
+        height: 2em;
+        margin-top: 1em;
+    }
     .topproduct{
         width:100%;
         height:25em;
-    margin-top: 5em;
+        margin-top: 5em;
         border-bottom:0.1em solid #282828;
         -moz-box-shadow:0em 0em 0em rgba(0,0,0,.3);
         -webkit-box-shadow:0em 0.1em 0.2em rgba(0,0,0,1);

@@ -1,0 +1,72 @@
+<div class="container">
+  <div id="content">
+    <div class="init"></div>
+    <div class="inner">
+      <div class="title">
+        <h2>Check out</h2>
+      </div>
+      <div *ngIf="ordermessage">
+        <div [ngClass]="messageClass">
+          <div id="message">
+            <p class="notification">{{ordermessage}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="body">
+        <div class="components">
+          <h1>Items ordered</h1>
+          <div class="shopbag" *ngFor="let cart of cartpost">
+            <img src='https://drive.google.com/uc?id={{cart.item.image}}' />
+            <div class="info">
+              <p>{{cart.item.nameproduct}}</p>
+              <h3>{{cart.item.size}}</h3>
+            </div>
+            <div class="price">
+              <p>${{cart.item.price}}</p>
+              <div class="sale">${{cart.item.price}}</div>
+            </div>
+            <div class="quarity">
+              <input type="number" value="{{cart.qty}}">
+            </div>
+            <div class="action">
+              <button>
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+
+
+          <div class="shopbag">
+            <div class="total">
+              <p>Estimated Total: ${{total}}</p>
+              <div class="sale">Subtotal: ${{total}}</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="rightbody">
+        <div class="components">
+          <h1> Customer Infomation</h1>
+          <div class="form-group">
+            <p>Conuntry</p>
+            <input type="text" class="form-control" id="country" placeholder="enter country">
+          </div>
+          <div class="form-group">
+            <p>State/Province</p>
+            <input type="text" class="form-control" id="State" placeholder="enter State/Province">
+          </div>
+          <div class="form-group">
+            <p>Zip/Postal Code</p>
+            <input type="text" class="form-control" id="Zip" placeholder="enter Zip/Postal Code">
+          </div>
+        </div>
+        <div class="rightbody">
+          <button class="btn btn-info proceed">proceed to checkout</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

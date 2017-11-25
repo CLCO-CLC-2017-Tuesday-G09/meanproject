@@ -40,19 +40,16 @@ export class AdproductComponent implements OnInit {
       description: ['', Validators.compose([
         Validators.required,
         Validators.minLength(3),
-        Validators.maxLength(50),
+        Validators.maxLength(1500),
         
       ])],
       price: ['', Validators.compose([
         Validators.required,
-        Validators.minLength(10),
-        Validators.maxLength(11),
-       
+        Validators.minLength(1),      
       ])],
       image: ['', Validators.compose([
         Validators.required,
         Validators.minLength(5),
-        Validators.maxLength(30),
         
       ])],
       color: ['', Validators.compose([
@@ -63,13 +60,13 @@ export class AdproductComponent implements OnInit {
       ])],
       size: ['', Validators.compose([
         Validators.required,
-        Validators.minLength(8),
-        Validators.maxLength(35),
+        Validators.minLength(1),
+        Validators.maxLength(5),
         
       ])],
       catalog: ['', Validators.compose([
         Validators.required,
-        Validators.minLength(8),
+        Validators.minLength(3),
         Validators.maxLength(35),      
       ])]
     });

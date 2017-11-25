@@ -212,7 +212,7 @@
 
 		#content > .inner {
             z-index: 1;
-            width:100%;
+			width:100%;
 		}
 		#content > .inner p{
            color: #fff;
@@ -247,12 +247,134 @@
 				   color:#9ED2DA;
 				   border-bottom:0.15em solid #2C2B2B;
 				} 
+				#content > .inner .components .shopbag
+				{
+				   min-height: 5em;
+				   margin-bottom: 1em;
+				   -webkit-box-shadow:0 0.1em 0.2em rgba(0,0,0,.3);
+				}
+				#content > .inner .components .shopbag .total
+				{
+					font-family: "UTMHelvetIns";
+					margin-bottom: 0.1em;
+					text-align: right;
+					border-top: 0.15em solid #2C2B2B;
+					padding-right: 10%;
+				}
+				#content > .inner .components .shopbag .total p
+				{
+					color: #f7f79e;
+					font-size:1.2em;
+				} 
+				#content > .inner .components .shopbag .total .sale
+				{
+					color: #fd7d7d;
+					font-size:1em;
+					text-decoration: line-through;
+				} 
+				#content > .inner .components .shopbag img
+				{
+					float: left;
+					margin-left: 1em;
+					width: 3em;
+					height: 3em;
+				} 
+				#content > .inner .components .shopbag .info
+				{
+					margin-left:10%;
+					float: left;
+				} 
+				#content > .inner .components .shopbag .info p
+				{
+					font-family: "UTMHelvetIns";
+					color: #CFB1B1;
+					font-size:1.2em;
+					margin-bottom: 0.1em;
+				} 
+				#content > .inner .components .shopbag .info h2
+				{
+					font-family: "UTMDaxMedium";
+					color: #A3A2A2;
+					font-size:0.8em;
+					margin-top: 0;
+				} 
+				#content > .inner .components .shopbag .info h3
+				{
+					font-family: "UTMDaxMedium";
+					color: #A3A2A2;
+					font-size:0.8em;
+					margin-top: 0;
+				} 
+				#content > .inner .components .shopbag .price
+				{
+					margin-top: 0.5em;
+					margin-left: 20%;
+					float: left;
+				}
+				#content > .inner .components .shopbag .price p
+				{
+					color: #fff;
+					margin-top: 0;
+				}
+				#content > .inner .components .shopbag .price .sale
+				{
+					color: #949494;
+					font-size:0.75em;
+					text-decoration: line-through;
+					padding-top: 0;
+				}
+				#content > .inner .components .shopbag .quarity
+				{
+					margin-top: 0.5em;
+					margin-left: 10%;
+					float: left;
+				} 
+				#content > .inner .components .shopbag .quarity input
+				{
+					margin-left: 20%;
+					width: 3em;
+					height: 2em;
+					float: left;
+					background: #292929;
+					text-align: center;
+					color: #fff;
+					border: #464646;
+				} 
+				#content > .inner .components .shopbag .action
+				{
+					margin-right: 1em;
+					padding-left: 1em;
+					float: right;
+				} 
+				#content > .inner .components .shopbag .action button
+				{
+					margin: 0.5em 0em 0em 0.2em;
+					width:2em;
+					height: 2em;
+					text-align: center;
+					background:none;
+					border:none;
+					color: #caeaee;
+				} 
+				#content > .inner .components .listcatalog .action button:hover
+				{
+					color: #fce72a;
+				} 
+
+
 				#content > .inner .components .listcatalog
 				{
 				   min-height: 3.5em;
 				   margin-bottom: 1em;
 				   -webkit-box-shadow:0 0.1em 0.2em rgba(0,0,0,.3);
 				}
+				#content > .inner .components .listcatalog img
+				{
+					float: left;
+					margin-left: 1em;
+					width: 3em;
+					height: 3em;
+				} 
 				#content > .inner .components .listcatalog .namecatalog
 				{
 					margin-left: 2em;
@@ -269,6 +391,15 @@
 				{
 					font-family: "UTMDaxMedium";
 					color: #A3A2A2;
+					margin-top:0.5em;
+					font-size:0.8em;
+					margin-top: 0;
+				} 
+				#content > .inner .components .listcatalog .namecatalog h3
+				{
+					font-family: "UTMDaxMedium";
+					color: #A3A2A2;
+					margin-top:0.5em;
 					font-size:0.8em;
 					margin-top: 0;
 				} 
@@ -276,6 +407,18 @@
 				{
 					margin-top: 0.5em;
 					margin-left: 30%;
+					float: left;
+				} 
+				#content > .inner .components .listcatalog .price
+				{
+					margin-top: 0.5em;
+					margin-left: 20%;
+					float: left;
+				} 
+				#content > .inner .components .listcatalog .quarity
+				{
+					margin-top: 0.5em;
+					margin-left: 10%;
 					float: left;
 				} 
 				#content > .inner .components .listcatalog .action
@@ -382,7 +525,18 @@
             padding-bottom: 0.5em;
             color:#9ED2DA;
             border-bottom:0.15em solid #2C2B2B;
-         } 
+		 } 
+		 #content > .inner .rightbody .components input
+		 {
+			 background: #292929;
+			 color: #fff;
+			 border: #464646;
+		 } 
+		 #content > .inner .rightbody .proceed
+		 {
+			 background: #e0af0b;
+			 color: #fcfcfc;
+		 } 
 /* Copyright */
 
 	#copyright {

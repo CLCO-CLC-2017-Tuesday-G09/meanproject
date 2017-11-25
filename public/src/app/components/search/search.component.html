@@ -12,7 +12,7 @@
     <form [formGroup]="formsearch">
     <div class="col-lg-12">
     <div class="input-group">
-        <input type="text" class="form-control" id="searchname" name="searchname" formControlName="searchname" #box (keyup.enter)="onEnter(box.value)" (keyup)="SearchProduct()" placeholder="Search for..." aria-label="Search for...">
+        <input type="text" class="form-control" id="searchname" name="searchname" formControlName="searchname"[(ngModel)]="searchtext" placeholder="Search for..." aria-label="Search for...">
         <span class="input-group-btn">
             <a class="btn searchbtn" type="button">
                 <mat-icon>search</mat-icon>
@@ -24,7 +24,7 @@
     <div class="pagepagin">
     </div>
         <div class="listproduct">
-            <a routerLink='/'*ngFor="let product of productpost">
+            <a routerLink='/'*ngFor="let product of productpost|productpipe:searchtext">
                 <img src='https://drive.google.com/uc?id={{product.image}}'/>	
                 <div class="nameproduct">
                     {{product.nameproduct}}

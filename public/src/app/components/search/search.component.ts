@@ -72,8 +72,16 @@ export class SearchComponent implements OnInit {
   onEnter(value: string) { 
     this.value = value; 
   }
-
-  ngOnInit() {
+  AllProduct() {
+    console.log("test main product");
+    this.authService.getAllProducts().subscribe(data => {
+        this.productpost = data.product;
+        console.log(data);
+    });
   }
+  ngOnInit() {
+    this.AllProduct();
+  }
+
 
 }

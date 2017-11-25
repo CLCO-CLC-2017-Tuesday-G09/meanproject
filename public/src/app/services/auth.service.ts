@@ -115,4 +115,7 @@ export class AuthService {
   removeItemCart(idproduct) {
     return this.http.get(this.domain + '/carts/removeitem/'+idproduct).map(res => res.json());
   }
+  Checkout(order) {
+    return this.http.post(this.domain + '/carts/checkout/',order).map(res => res.json());
+  }
 }

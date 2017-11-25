@@ -37,6 +37,8 @@ import 'hammerjs';
 import { AdbranchComponent } from './admin/adbranch/adbranch.component';
 import { SearchComponent } from './components/search/search.component';
 import { EditproductComponent } from './admin/adproduct/editproduct/editproduct.component';
+import { ProductpipePipe } from './pipe/productpipe.pipe';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +58,9 @@ import { EditproductComponent } from './admin/adproduct/editproduct/editproduct.
     MenuComponent,
     AdbranchComponent,
     SearchComponent,
-    EditproductComponent
+    EditproductComponent,
+    ProductpipePipe,
+    CheckoutComponent
   ],
   imports: [
     NgbModule.forRoot(),
