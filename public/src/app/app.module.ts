@@ -37,8 +37,16 @@ import 'hammerjs';
 import { AdbranchComponent } from './admin/adbranch/adbranch.component';
 import { SearchComponent } from './components/search/search.component';
 import { EditproductComponent } from './admin/adproduct/editproduct/editproduct.component';
-import { ProductpipePipe } from './pipe/productpipe.pipe';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { DetailproductComponent } from './components/detailproduct/detailproduct.component';
+import { OrderComponent } from './admin/order/order.component';
+import { OrderdetailComponent } from './admin/order/orderdetail/orderdetail.component';
+import { TrackingComponent } from './components/tracking/tracking.component';
+//pipe
+import { ProductpipePipe } from './pipe/productpipe.pipe';
+import { cataloryPipe } from './pipe/productpipe.pipe';
+import { sizePipe } from './pipe/productpipe.pipe';
+import { CheckorderPipe } from './pipe/productpipe.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +68,14 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     SearchComponent,
     EditproductComponent,
     ProductpipePipe,
-    CheckoutComponent
+    cataloryPipe,
+    sizePipe,
+    CheckorderPipe,
+    CheckoutComponent,
+    DetailproductComponent,
+    OrderComponent,
+    OrderdetailComponent,
+    TrackingComponent,
   ],
   imports: [
     NgbModule.forRoot(),

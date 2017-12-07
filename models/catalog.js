@@ -59,13 +59,12 @@ const catalogNameValidators = [
 
 
 var CatalogSchema = new Schema({
-    catalog:{type:String},
     catalogName: { type: String, require: true, unique: true,lowercase: true,validate:catalogNameValidators },
     countProductInCatalog: {type:Number,require:true, validate: countProductInCatalogValidator,lowercase: true},
+    idBranch:{ type: Schema.ObjectId, ref: 'Branch'},
     products:[
         {
        _id: Schema.ObjectId
-      
         }
     ]
 });

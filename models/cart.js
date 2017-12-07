@@ -24,7 +24,13 @@ module.exports = function Cart(oldCart) {
             delete this.items[id];
         }
     };
-
+    
+    this.increaseByOne = function(id,qty) {
+        this.items[id].qty++;
+        this.items[id].price += this.items[id].item.price;
+        this.totalQty++;
+        this.totalPrice += this.items[id].item.price;
+    };
     this.removeItem = function(id) {
         this.totalQty -= this.items[id].qty;
         this.totalPrice -= this.items[id].price;

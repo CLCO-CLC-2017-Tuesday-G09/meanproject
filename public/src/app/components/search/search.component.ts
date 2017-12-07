@@ -8,7 +8,7 @@ import {SidebarComponent} from '../../partials/sidebar/sidebar.component';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
   formsearch: FormGroup
@@ -17,6 +17,9 @@ export class SearchComponent implements OnInit {
   cartpost;
   productpost
   catalogpost
+  branchpost;
+  Isbranch=false;
+  Iscatalog=false;
   total;
   constructor(
     private FormBuilder: FormBuilder,
@@ -29,7 +32,7 @@ export class SearchComponent implements OnInit {
     this.formsearch = this.FormBuilder.group({
       searchname: ['', Validators.compose([
         Validators.maxLength(50)
-      ])]
+      ])],
     });
   }
   goBack() {
@@ -46,7 +49,6 @@ export class SearchComponent implements OnInit {
     });
   }
   AddToCart(idproduct) {
-    console.log(idproduct);
     this.authService.AddCart(idproduct).subscribe(data => {
       if (!data.success) {
         this.searchmess = data.message;
@@ -57,7 +59,6 @@ export class SearchComponent implements OnInit {
     });
   }
   getCart() {
-    console.log("test cart bag");
     this.authService.shoppingcart().subscribe(data => {
       if (!data.success) {
         this.searchmess = data.message;
@@ -65,7 +66,6 @@ export class SearchComponent implements OnInit {
         this.searchmess = data.message;
         this.cartpost = data.products;
         this.total=data.totalPrice;
-        console.log(data);
       }
     });
   }
@@ -73,14 +73,61 @@ export class SearchComponent implements OnInit {
     this.value = value; 
   }
   AllProduct() {
-    console.log("test main product");
     this.authService.getAllProducts().subscribe(data => {
         this.productpost = data.product;
-        console.log(data);
     });
   }
+   //get list branch
+   GetListBranch() {
+    
+        this.Isbranch =true;
+        this.Iscatalog =false;
+        this.authService.GetAllBranch().subscribe(data => {
+          this.branchpost = data.branches; // Assign array to use in HTML
+    
+        });
+      }
+      //filter with branch
+      FilterCatalog(idbranch) {
+        this.authService.GetListCatalog(idbranch).subscribe(data => {
+          this.catalogpost = data.catalogs;
+        });
+      }
+       //filter with branch
+       FilterProduct(idcatalog) {
+        this.authService.getListProduct(idcatalog).subscribe(data => {
+          console.log(data.products);
+          this.productpost = data.products;
+        });
+      }
+         //get list branch
+   GetListCatalog() {
+    this.Iscatalog =true;
+    this.authService.GetAllCatalog().subscribe(data => {
+      this.catalogpost = data.catalogs; // Assign array to use in HTML
+
+    });
+  }
+    //filter with size
+    FilterSize(size) {
+      this.authService.filterSize(size).subscribe(data => {
+        this.catalogpost = data.catalogs;
+        this.branchpost = data.branches;
+        this.productpost = data.products;
+      });
+    }
+       //filter with size
+       FilterColor(color) {
+        this.authService.filterColor(color).subscribe(data => {
+          this.catalogpost = data.catalogs;
+          this.branchpost = data.branches;
+          this.productpost = data.products;
+        });
+      }
   ngOnInit() {
     this.AllProduct();
+    this.GetListBranch(); // Get all blogs on component load
+    this.GetListCatalog();
   }
 
 

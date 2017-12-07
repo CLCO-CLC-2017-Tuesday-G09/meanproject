@@ -49,14 +49,12 @@ export class SidebarComponent implements OnInit {
   FilterCatalog(idbranch) {
     this.authService.GetListCatalog(idbranch).subscribe(data => {
       this.catalogpost = data.catalogs;
-      console.log(data);
     });
   }
    //filter with branch
    FilterProduct(idcatalog) {
     this.authService.getListProduct(idcatalog).subscribe(data => {
       this.productpost = data.products;
-      console.log(data);
     });
   }
    //get list branch

@@ -101,6 +101,12 @@ export class AuthService {
   getListProduct(idcatalog) {
     return this.http.get(this.domain + '/products/listproduct/'+idcatalog).map(res => res.json());
   }
+  filterSize(size) {
+    return this.http.get(this.domain + '/products/filtersize/'+size).map(res => res.json());
+  }
+  filterColor(color) {
+    return this.http.get(this.domain + '/products/filtercolor/'+color).map(res => res.json());
+  }
   //cart
   AddCart(idproduct) {
     return this.http.get(this.domain + '/carts/addcart/'+idproduct).map(res => res.json());
@@ -115,7 +121,22 @@ export class AuthService {
   removeItemCart(idproduct) {
     return this.http.get(this.domain + '/carts/removeitem/'+idproduct).map(res => res.json());
   }
+  reduceItemCart(idproduct) {
+    return this.http.get(this.domain + '/carts/reduceitem/'+idproduct).map(res => res.json());
+  }
+  increaseItemCart(idproduct) {
+    return this.http.get(this.domain + '/carts/increaseitem/'+idproduct).map(res => res.json());
+  }
   Checkout(order) {
-    return this.http.post(this.domain + '/carts/checkout/',order).map(res => res.json());
+    return this.http.post(this.domain + '/carts/order/',order).map(res => res.json());
+  }
+  listorder() {
+    return this.http.get(this.domain + '/carts/listorder/').map(res => res.json());
+  }
+  getDetailOrder(id) {
+    return this.http.get(this.domain + '/carts/detailorder/' + id).map(res => res.json());
+  }
+  updateorder() {
+    return this.http.get(this.domain + '/carts/listorder/').map(res => res.json());
   }
 }

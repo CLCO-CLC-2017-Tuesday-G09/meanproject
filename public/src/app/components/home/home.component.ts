@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit {
     console.log("test main product");
     this.authService.getAllProducts().subscribe(data => {
         this.productpost = data.product;
-        console.log(data);
     });
   }
   ngOnInit() {

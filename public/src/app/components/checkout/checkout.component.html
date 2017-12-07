@@ -8,15 +8,16 @@
       <div *ngIf="ordermessage">
         <div [ngClass]="messageClass">
           <div id="message">
-            <p class="notification">{{ordermessage}}</p>
+            {{ordermessage}}
           </div>
         </div>
       </div>
+      <form [formGroup]="orderform" (submit)="onOrderSubmit()">
       <div class="body">
         <div class="components">
           <h1>Items ordered</h1>
           <div class="shopbag" *ngFor="let cart of cartpost">
-            <img src='https://drive.google.com/uc?id={{cart.item.image}}' />
+            <img src='https://drive.google.com/uc?id={{cart.item.leftimage}}' />
             <div class="info">
               <p>{{cart.item.nameproduct}}</p>
               <h3>{{cart.item.size}}</h3>
@@ -26,15 +27,20 @@
               <div class="sale">${{cart.item.price}}</div>
             </div>
             <div class="quarity">
+                <a class="bnt-ji" routerLink='/checkout' (click)="reduceItemCart(cart.item._id)">
+                  <mat-icon>-</mat-icon>
+                </a>
               <input type="number" value="{{cart.qty}}">
-            </div>
+              <a  class="bnt-ji" routerLink='/checkout' (click)="increaseItemCart(cart.item._id)">
+                <mat-icon>add</mat-icon>
+              </a>
+              </div>
             <div class="action">
               <button>
                 <mat-icon>delete</mat-icon>
               </button>
             </div>
           </div>
-
 
           <div class="shopbag">
             <div class="total">
@@ -50,23 +56,28 @@
         <div class="components">
           <h1> Customer Infomation</h1>
           <div class="form-group">
-            <p>Conuntry</p>
-            <input type="text" class="form-control" id="country" placeholder="enter country">
+            <p>Name Customer</p>
+            <input type="text" class="form-control" id="name" formControlName="name" placeholder="enter customer">
           </div>
           <div class="form-group">
-            <p>State/Province</p>
-            <input type="text" class="form-control" id="State" placeholder="enter State/Province">
+            <p>Address</p>
+            <input type="text" class="form-control" id="adress"  formControlName="address" placeholder="enter address">
           </div>
           <div class="form-group">
-            <p>Zip/Postal Code</p>
-            <input type="text" class="form-control" id="Zip" placeholder="enter Zip/Postal Code">
+            <p>Phone</p>
+            <input type="text" class="form-control" id="phone" formControlName="phone" placeholder="enter phone number">
+          </div>
+          <div class="form-group">
+            <p>Payment card number</p>
+            <input type="text" class="form-control" id="paymentcard" formControlName="paymentcard" placeholder="enter card number">
           </div>
         </div>
         <div class="rightbody">
-          <button class="btn btn-info proceed">proceed to checkout</button>
+          <button type="submit" class="btn btn-info proceed">proceed to checkout</button>
         </div>
 
       </div>
+    </form>
     </div>
   </div>
 </div>

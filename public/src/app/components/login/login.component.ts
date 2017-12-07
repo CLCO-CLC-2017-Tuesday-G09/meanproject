@@ -49,7 +49,6 @@ export class LoginComponent implements OnInit {
     if (regExp.test(controls.value)) {
       return null;
     } else {
-      console.log('b');
       return { 'validatePassword': true }
     }
   }

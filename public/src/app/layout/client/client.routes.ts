@@ -3,6 +3,8 @@ import { LoginComponent } from '../../components/login/login.component';
 import { RegisterComponent } from '../../components/register/register.component';
 import { SearchComponent } from '../../components/search/search.component';
 import { CheckoutComponent } from '../../components/checkout/checkout.component';
+import { TrackingComponent } from '../../components/tracking/tracking.component';
+import { DetailproductComponent } from '../../components/detailproduct/detailproduct.component';
 import { Routes, RouterModule } from '@angular/router';
 
 
@@ -12,5 +14,7 @@ export const CLIENT_ROUTES: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'search', component: SearchComponent },
     { path: 'checkout', component: CheckoutComponent },
+    {path: 'tracking', component: TrackingComponent },
     { path: 'search/:idproduct', component: SearchComponent },
+    { path: 'detailproduct/:id', component: DetailproductComponent },
 ];

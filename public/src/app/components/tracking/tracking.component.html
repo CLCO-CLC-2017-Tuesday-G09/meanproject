@@ -1,0 +1,48 @@
+<div class="container">
+  <div id="content">
+    <div class="init"></div>
+    <div class="title">
+        search for your order
+    </div>
+    <div class="inner">
+        <form [formGroup]="formsearch">
+            <div class="col-lg-12">
+            <div class="input-group">
+                <input type="text" class="form-control" id="checkorder" name="checkorder" formControlName="checkorder" [(ngModel)]="checkorder" placeholder="check order for..." aria-label="check order for...">
+                <span class="input-group-btn">
+                    <a class="btn searchbtn" type="button">
+                        <mat-icon>search</mat-icon>
+                    </a>
+                </span>
+            </div>
+        </div>
+        </form>
+      <div *ngFor="let order of orderpost|checkorder:checkorder">
+      <div class="components">
+        <h1>Order Process</h1>
+          <ol class="progtrckr" data-progtrckr-steps="3">
+            <li class="progtrckr-done">Order Processing</li>
+            <li class="progtrckr-todo" *ngIf="order.status!='shipping order'&& order.status!='complete'">Shipping Order</li>
+            <li class="progtrckr-done" *ngIf="order.status=='shipping order'|| order.status=='complete'">Shipping Order</li>
+            <li class="progtrckr-todo" *ngIf="order.status!='complete'">Complete</li>
+            <li class="progtrckr-done" *ngIf="order.status=='complete'">Complete</li>
+          </ol>
+      </div>
+      <div class="components">
+          <h1>Order Detail</h1>
+          <div class="shopbag">
+              <div class="info">
+                <p>{{order.cart.name}}</p>
+                <h3>{{order.cart.address}}</h3>
+              </div>
+            </div>
+            <div class="shopbag">
+                <div class="total">
+                  <p>Estimated Total: ${{order.cart.totalPrice}}</p>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+<div id="content">
+  <div class="inner">
+    <div class="title">
+      <h2>Active Order</h2>
+    </div>0
+    <div class="components">
+      <div class="row show-hide-message" *ngIf="message">
+        <div [ngClass]="messageClass">
+            <div id="message">
+          <p class="notification">{{ message }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="body">
+      <div class="components">
+        <h1>Items ordered</h1>
+        <div class="shopbag" *ngFor="let order of orderpost">
+          <div class="phone">
+          <p>{{order.dateorder|date:"MM/dd/yy"}}</p>
+        </div>
+          <div class="info">
+            <p>Name:{{order.name}}</p>
+            <h3>Address:{{order.address}}</h3>
+            <h3>Phone:{{order.phone}}</h3>
+          </div>
+          <div class="quarity">
+           <p>Subtotal: ${{order.cart.totalPrice}}</p>
+          </div>
+          <div class="action">
+            <button [routerLink]="['/ordertail/', order._id]">
+              <mat-icon>keyboard_arrow_down</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="shopbag">
+          <div class="total">
+            <p>Estimated Total: $</p>
+            <div class="sale">Subtotal: $</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="rightbody">
+      <div class="components">
+        <h1> Customer Infomation</h1>
+        <div class="form-group">
+          <p>Name Customer</p>
+          <input type="text" class="form-control" id="name"placeholder="enter customer">
+        </div>
+        <div class="form-group">
+          <p>Address</p>
+          <input type="text" class="form-control" id="adress"  placeholder="enter address">
+        </div>
+        <div class="form-group">
+          <p>Phone</p>
+          <input type="text" class="form-control" id="phone" placeholder="enter phone number">
+        </div>
+        <div class="form-group">
+          <p>Payment card number</p>
+          <input type="text" class="form-control" id="paymentcard" placeholder="enter card number">
+        </div>
+      </div>
+
+    
+
+</div>
+</div>

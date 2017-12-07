@@ -71,25 +71,20 @@ export class HeaderComponent implements OnInit {
     });
   }
   getCart() {
-    console.log("test cart bag");
     this.authService.shoppingcart().subscribe(data => {
       if (data.success==false) {
         this.searchmess = data.message;
-        console.log(""+this.searchmess);
       } else {
         this.searchmess = data.message;
         this.cartpost = data.products;
         this.total=data.totalPrice;
-        console.log(data);
       }
     });
   }
   removeAllCart() {
-    console.log("test remove all cart");
     this.authService.RemoveAllCart().subscribe(data => {
       if (data.success==false) {
         this.searchmess = data.message;
-        console.log(""+this.searchmess);
       } else {
         this.searchmess = data.message;
         this.getCart();
@@ -97,31 +92,53 @@ export class HeaderComponent implements OnInit {
     });
   }
   removeItemCart(idProduct){
-    console.log("test remove item  cart");
     this.authService.removeItemCart(idProduct).subscribe(data => {
       if (data.success==false) {
         this.searchmess = data.message;
-        console.log(""+this.searchmess);
+
       } else {
         this.searchmess = data.message;
         this.getCart();
       }
     });
   }
+  //
+  reduceItemCart(idProduct){
+    this.authService.reduceItemCart(idProduct).subscribe(data => {
+      if (data.success==false) {
+        this.searchmess = data.message;
+
+      } else {
+        this.searchmess = data.message;
+        this.getCart();
+      }
+    });
+  }
+    //
+    increaseItemCart(idProduct){
+      this.authService.increaseItemCart(idProduct).subscribe(data => {
+        if (data.success==false) {
+          this.searchmess = data.message;
+        } else {
+          this.searchmess = data.message;
+          this.getCart();
+        }
+      });
+    }
   // Function to get all blogs from the database
   GetListMenu() {
     // Function to GET all blogs from database
     this.authService.GetListMenu().subscribe(data => {
       this.menupost = data.menus; // Assign array to use in HTML
-      console.log(data.menus);
+
     });
   }
   //get list branch
   GetListBranch(idmenu:string) {
-    console.log(idmenu);
+
     this.authService.GetListBranch(idmenu).subscribe(data => {
       this.branchpost = data.branches; // Assign array to use in HTML
-      console.log(data.branches);
+
     });
   }
    //get list branch
