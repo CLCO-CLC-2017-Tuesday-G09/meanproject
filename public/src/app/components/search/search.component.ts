@@ -55,6 +55,14 @@ export class SearchComponent implements OnInit {
       } else {
         this.searchmess = data.message;
         this.getCart();
+        this.authService.editProduct(this.product).subscribe(data => {
+          // Check if PUT request was a success or not
+          if (!data.success) {
+            this.searchmess = data.message;
+          } else {
+            this.searchmess = data.message;
+          }
+        });
       }
     });
   }

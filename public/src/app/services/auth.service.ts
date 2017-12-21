@@ -107,6 +107,9 @@ export class AuthService {
   filterColor(color) {
     return this.http.get(this.domain + '/products/filtercolor/'+color).map(res => res.json());
   }
+  coutbuyProduct(product,id) {
+    return this.http.put(this.domain + '/products/countbuyproduct/'+ id, product).map(res => res.json());
+  }
   //cart
   AddCart(idproduct) {
     return this.http.get(this.domain + '/carts/addcart/'+idproduct).map(res => res.json());

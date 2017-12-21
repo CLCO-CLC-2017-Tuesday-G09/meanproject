@@ -55,14 +55,15 @@ router.get('/reduceitem/:id', function(req, res, next) {
     req.session.cart = cart;
     res.json({ success: true, message: 'you are reduce product!'});
 });
+
 router.get('/increaseitem/:id', function(req, res, next) {
     var productId = req.params.id;
     var cart = new Cart(req.session.cart ? req.session.cart : {});
-
     cart.increaseByOne(productId);
     req.session.cart = cart;
     res.json({ success: true, message: 'you are increase product!'});
 });
+
 router.get('/removeitem/:id', function(req, res, next) {
     var productId = req.params.id;
     var cart = new Cart(req.session.cart ? req.session.cart : {});
@@ -98,7 +99,7 @@ router.post('/order', function(req, res, next) {
         });
         order.save(function(err, result) {
             req.session.cart = null;
-            res.json({ success: true, message: 'Successfully bought product!'+result._id});
+            res.json({ success: true, message: 'Successfully bought product!your order Id: '+result._id});
         });
     }
     });
@@ -134,7 +135,6 @@ router.get('/detailorder/:id', (req, res) => {
             res.json({ success: false, message: 'Orders not found.' }); // Return error message
           } else {
             res.json({ success: true, orders: orders }); // Return success
-  
           }
         }
       });

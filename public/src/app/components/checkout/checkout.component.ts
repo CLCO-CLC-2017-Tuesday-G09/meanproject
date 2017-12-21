@@ -82,15 +82,25 @@ export class CheckoutComponent implements OnInit {
           paymentcard: this.orderform.get('paymentcard').value,
           dateorder:new Date()
         }
-        console.log(order);
-        this.ProductService.Checkout(order).subscribe(data => {
-          console.log(data);
-          if (!data.success) {
+        const product = {
+          amountproduct: data.products.qty
+        }
+        this.ProductService.Checkout(order).subscribe(data1 => {
+          console.log(data1);
+          if (!data1.success) {
             this.messageClass = 'alert alert-danger';
-            this.ordermessage = data.message;
+            this.ordermessage = data1.message;
           } else {
-            this.messageClass = 'alert alert-success';
-            this.ordermessage = data.message;
+            this.ProductService.coutbuyProduct(this.orderform.get('_id').value,product).subscribe(data => {
+              console.log(data);
+              if (!data.success) {
+                this.messageClass = 'alert alert-danger';
+                this.ordermessage = data.message;
+              } else {
+                this.messageClass = 'alert alert-success';
+                this.ordermessage = data.message;
+              }
+            });
           }
         });
       }

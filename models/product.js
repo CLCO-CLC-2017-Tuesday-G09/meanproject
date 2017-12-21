@@ -19,8 +19,8 @@ var ProductSchema = new Schema({
     count_user_buy:{type:Number},
     count_user_search:{type:Number},
     amountproduct:{type:Number},
-    checksale:{type:Number},
-    checknew:{type:Number},
+    checksale:{type:Boolean},
+    checknew:{type:Boolean},
     promotion:{type:Number},
 });
 

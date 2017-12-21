@@ -104,13 +104,19 @@ module.exports = (router) => {
             behindimagezoom: results.id,
             color: req.body.color,
             size: req.body.size,
-            catalog: req.body.catalog
+            catalog: req.body.catalog,
+            count_user_buy: 0,
+            count_user_search: 0,
+            amountproduct: req.body.amountproduct,
+            checksale: req.body.checksale,
+            checknew: true,
+            promotion: req.body.promotion
           });
 
           product.save((err, product) => {
             if (err) {
               if (err.code === 11000) {
-                res.json({ success: false, message: 'Username or e-mail allready exists' });
+                res.json({ success: false, message: 'product allready exists' });
               }
               else {
                 if (err.errors) {
@@ -118,7 +124,7 @@ module.exports = (router) => {
 
                 }
                 else {
-                  res.json({ success: false, message: 'Could not save user. Error: ', err });
+                  res.json({ success: false, message: 'Could not save product. Error: ', err });
                 }
               }
             }
@@ -602,6 +608,12 @@ module.exports = (router) => {
                           product.size = req.body.size;
                           product.catalog = req.body.catalog;
                           product.color = req.body.color;
+                          product.count_user_buy = 0;
+                          product.count_user_search = 0;
+                          product.amountproduct = req.body.amountproduct;
+                          product.checksale = req.body.checksale;
+                          product.checknew = true;
+                          procduct.promotion = req.body.promotion;
                           product.save((err) => {
                             if (err) {
 
@@ -631,6 +643,12 @@ module.exports = (router) => {
               product.size = req.body.size;
               product.catalog = req.body.catalog;
               product.color = req.body.color;
+              product.count_user_buy = 0;
+              product.count_user_search = 0;
+              product.amountproduct = req.body.amountproduct;
+              product.checksale = req.body.checksale;
+              product.checknew = true;
+              procduct.promotion = req.body.promotion;
               product.save((err) => {
                 if (err) {
 
@@ -677,6 +695,69 @@ module.exports = (router) => {
       });
     }
   });
+
+  router.put('/countbuyproduct/:id', (req, res) => {
+    // Check if id was provided
+    if (!req.params._id) {
+      res.json({ success: false, message: 'No product id found' }); // Return error message
+    } else {
+      // Check if id exists in database
+      Product.findOne({ _id: req.params._id }, (err, product) => {
+        // Check if id is a valid ID
+        if (err) {
+          res.json({ success: false, message: 'Not a valid product id' }); // Return error message
+        } else {
+          // Check if id was found in the database
+          if (!product) {
+            res.json({ success: false, message: 'product id was not found.' }); // Return error message
+          }
+          else {
+            product.count_user_buy=product.count_user_buy ++;
+            product.amountproduct=product.amountproduct - req.body.totalqty;
+            product.save((err) => {
+              if (err) {
+                res.json({ success: false, message: err }); // Return error message
+              } else {
+                res.json({ success: true, message: 'Product Updated!' }); // Return success message
+              }
+            });
+          }
+        }
+      });
+    }
+  });
+  router.delete('/deleteproduct/:id', function (req, res) {
+    if (!req.params.id) {
+      res.json({ success: false, message: 'no find product' });
+    }
+    else {
+      Product.findByIdAndRemove({ _id: req.params.id }, function (err, product) {
+        if (err) {
+          res.json({ success: false, message: err }); // Return error
+        }
+        else {
+          Catalog.update({ catalogName: product.catalog },
+            {
+              $pull: {
+                "products": {
+                  _id: ObjectId(product._id)
+                }
+              }
+            }, function (err, data) {
+              if (err) {
+                res.json({ success: false, message: 'error' });
+              }
+              else {
+                res.json({ success: true, message: 'Product deleted' });
+              }
+            }
+
+          );
+        }
+      });
+    }
+  });
+
   router.get('/searchproduct/:nameproduct', (req, res) => {
 
     //find with products
@@ -696,7 +777,7 @@ module.exports = (router) => {
   router.get('/filtersize/:size', (req, res) => {
 
     //find with products
-    Product.find({ size:  req.params.size }, (err, products) => {
+    Product.find({ size: req.params.size }, (err, products) => {
       if (err) {
         res.json({ success: false, message: err });
       } else {
@@ -707,12 +788,12 @@ module.exports = (router) => {
             if (!catalogs || catalogs == "") {
               res.json({ success: false, message: err }); // Return error message
             } else {
-              Branch.find({ _id: catalogs[0]['idBranch']}, (err, branches) => {
+              Branch.find({ _id: catalogs[0]['idBranch'] }, (err, branches) => {
                 if (!branches || branches == "") {
                   res.json({ success: false, message: err }); // Return error message
                 }
                 else {
-                  res.json({ success: true, message: "find success", products: products, catalogs: catalogs,branches:branches });
+                  res.json({ success: true, message: "find success", products: products, catalogs: catalogs, branches: branches });
                 }
               });
             }
@@ -722,82 +803,82 @@ module.exports = (router) => {
     });
   });
   router.get('/filtercolor/:color', (req, res) => {
-    
-        //find with products
-        Product.find({ color:  req.params.color }, (err, products) => {
-          if (err) {
-            res.json({ success: false, message: err });
-          } else {
-            if (!products || products == "") {
+
+    //find with products
+    Product.find({ color: req.params.color }, (err, products) => {
+      if (err) {
+        res.json({ success: false, message: err });
+      } else {
+        if (!products || products == "") {
+          res.json({ success: false, message: err }); // Return error message
+        } else {
+          Catalog.find({ catalogName: products[0]['catalog'] }, (err, catalogs) => {
+            if (!catalogs || catalogs == "") {
               res.json({ success: false, message: err }); // Return error message
             } else {
-              Catalog.find({ catalogName: products[0]['catalog'] }, (err, catalogs) => {
-                if (!catalogs || catalogs == "") {
+              Branch.find({ _id: catalogs[0]['idBranch'] }, (err, branches) => {
+                if (!branches || branches == "") {
                   res.json({ success: false, message: err }); // Return error message
-                } else {
-                  Branch.find({ _id: catalogs[0]['idBranch']}, (err, branches) => {
-                    if (!branches || branches == "") {
-                      res.json({ success: false, message: err }); // Return error message
-                    }
-                    else {
-                      res.json({ success: true, message: "find success", products: products, catalogs: catalogs,branches:branches });
-                    }
-                  });
                 }
-              })
+                else {
+                  res.json({ success: true, message: "find success", products: products, catalogs: catalogs, branches: branches });
+                }
+              });
             }
-          }
-        });
-      });
-    router.get('/listproduct/:idcatalog', (req, res) => {
-      //res.json({ success: false, message: req.params.branchName });
-      Catalog.find({ _id: req.params.idcatalog }, (err, catalogs) => {
-        if (err) {
-          res.json({ success: false, message: err });
+          })
+        }
+      }
+    });
+  });
+  router.get('/listproduct/:idcatalog', (req, res) => {
+    //res.json({ success: false, message: req.params.branchName });
+    Catalog.find({ _id: req.params.idcatalog }, (err, catalogs) => {
+      if (err) {
+        res.json({ success: false, message: err });
+      } else {
+        if (!catalogs) {
+          res.json({ success: false, message: 'No catalogs found.' });
         } else {
-          if (!catalogs) {
-            res.json({ success: false, message: 'No catalogs found.' });
-          } else {
-            Product.find({ catalog: catalogs[0]['catalogName'] }, (err, products) => {
-              if (err) {
-                res.json({ success: false, message: err });
+          Product.find({ catalog: catalogs[0]['catalogName'] }, (err, products) => {
+            if (err) {
+              res.json({ success: false, message: err });
+            } else {
+              if (!products) {
+                res.json({ success: false, message: 'No product found.' });
               } else {
-                if (!products) {
-                  res.json({ success: false, message: 'No product found.' });
-                } else {
-                  res.json({ success: true, message: catalogs[0]['catalogName'], products: products });
+                res.json({ success: true, message: catalogs[0]['catalogName'], products: products });
 
-                }
               }
-            });
+            }
+          });
+
+        }
+      }
+    })
+  });
+
+  router.get('/singleProduct/:id', (req, res) => {
+    // Check if id is present in parameters
+    if (!req.params.id) {
+      res.json({ success: false, message: 'No product ID was provided.' }); // Return error message
+    } else {
+      // Check if the blog id is found in database
+      Product.findOne({ _id: req.params.id }, (err, product) => {
+        // Check if the id is a valid ID
+        if (err) {
+          res.json({ success: false, message: 'Not a valid product id' }); // Return error message
+        } else {
+          // Check if blog was found by id
+          if (!product) {
+            res.json({ success: false, message: 'Product not found.' }); // Return error message
+          } else {
+            res.json({ success: true, product: product }); // Return success
 
           }
         }
-      })
-    });
+      });
+    }
+  });
 
-    router.get('/singleProduct/:id', (req, res) => {
-      // Check if id is present in parameters
-      if (!req.params.id) {
-        res.json({ success: false, message: 'No product ID was provided.' }); // Return error message
-      } else {
-        // Check if the blog id is found in database
-        Product.findOne({ _id: req.params.id }, (err, product) => {
-          // Check if the id is a valid ID
-          if (err) {
-            res.json({ success: false, message: 'Not a valid product id' }); // Return error message
-          } else {
-            // Check if blog was found by id
-            if (!product) {
-              res.json({ success: false, message: 'Product not found.' }); // Return error message
-            } else {
-              res.json({ success: true, product: product }); // Return success
-
-            }
-          }
-        });
-      }
-    });
-
-    return router;
-  }
+  return router;
+}

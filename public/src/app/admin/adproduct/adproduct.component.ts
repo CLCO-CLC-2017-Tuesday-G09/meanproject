@@ -33,57 +33,56 @@ export class AdproductComponent implements OnInit {
       nameproduct: ['', Validators.compose([
         Validators.required,
         Validators.minLength(3),
-        Validators.maxLength(30),
+        Validators.maxLength(500),
         this.validatenameproduct
       ])],
       description: ['', Validators.compose([
         Validators.required,
         Validators.minLength(3),
-        Validators.maxLength(50),
+        Validators.maxLength(4000),
         this.validatedescriptionproduct
         
       ])],
       price: ['', Validators.compose([
         Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(10),
+        Validators.min(1),
         this.validatepriceproduct
        
       ])],
       leftimage: ['', Validators.compose([
         Validators.required,
         Validators.minLength(5),
-        Validators.maxLength(30),
+        Validators.maxLength(100),
         
       ])],
       leftimagezoom: ['', Validators.compose([
         Validators.required,
         Validators.minLength(5),
-        Validators.maxLength(30),
+        Validators.maxLength(100),
         
       ])],
       underimage: ['', Validators.compose([
         Validators.required,
         Validators.minLength(5),
-        Validators.maxLength(30),
+        Validators.maxLength(100),
         
       ])],
       underimagezoom: ['', Validators.compose([
         Validators.required,
         Validators.minLength(5),
-        Validators.maxLength(30),
+        Validators.maxLength(100),
         
       ])],
       behindimage: ['', Validators.compose([
         Validators.required,
         Validators.minLength(5),
-        Validators.maxLength(30),
+        Validators.maxLength(100),
         
       ])],
       behindimagezoom: ['', Validators.compose([
         Validators.required,
         Validators.minLength(5),
-        Validators.maxLength(30),
+        Validators.maxLength(100),
         
       ])],
       color: ['', Validators.compose([
@@ -94,15 +93,21 @@ export class AdproductComponent implements OnInit {
       ])],
       size: ['', Validators.compose([
         Validators.required,
-        Validators.minLength(8),
-        Validators.maxLength(35),
+        Validators.min(30),
+        Validators.max(50)
         
       ])],
       catalog: ['', Validators.compose([
         Validators.required,
         Validators.minLength(8),
         Validators.maxLength(35),      
-      ])]
+      ])],
+      amountproduct: ['', Validators.compose([
+        Validators.required,
+        Validators.min(0),
+        Validators.max(1000),      
+      ])],
+      checksale: [false]
     });
     
   }
@@ -170,6 +175,9 @@ export class AdproductComponent implements OnInit {
       color: this.form.get('color').value,
       size: this.form.get('size').value,
       catalog: this.form.get('catalog').value,
+      checksale: true,
+      amountproduct:this.form.get('amountproduct').value,
+      promotion: this.form.get('checksale').value,
     }
     
     this.AuthService.addproduct(product).subscribe(data => {

@@ -370,6 +370,11 @@
 					color: #CFB1B1;
 					font-size:1.2em;
 					margin-bottom: 0.1em;
+					display: block;
+					width: 6em;
+					overflow: hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
 				} 
 				 .shopbag .info h2
 				{
@@ -377,6 +382,10 @@
 					color: #A3A2A2;
 					font-size:0.8em;
 					margin-top: 0;
+					width: 6em;
+					overflow: hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
 				} 
 				.shopbag .info h3
 				{
@@ -384,6 +393,10 @@
 					color: #A3A2A2;
 					font-size:0.8em;
 					margin-top: 0;
+					width: 6em;
+					overflow: hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
 				} 
 				.shopbag .price
 				{
