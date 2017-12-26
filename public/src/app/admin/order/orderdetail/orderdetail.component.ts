@@ -13,6 +13,7 @@ export class OrderdetailComponent implements OnInit {
   currentUrl;
   messageClass;
   message;
+  products
   loadingOrders = false;
   constructor(
     private FormBuilder: FormBuilder,
@@ -24,9 +25,37 @@ export class OrderdetailComponent implements OnInit {
     // Function to GET all blogs from database
     const idorder = this.currentUrl.idorder;
     console.log(idorder)
+    let resulf=[];
     this.authService.getDetailOrder(idorder).subscribe(data => {
       this.orderpost = data.orders;
-      console.log(this.orderpost.name);
+      for(let key in data.products)
+      {
+        resulf.push({value: data.products[key]});
+      }
+      this.products = resulf;
+      console.log(this.orderpost);
+      console.log(this.products);
+    });
+  }
+  UpdateStatusShip(id,status) {
+    if(status=="shipping order")
+    {
+      status = "complete"
+    }
+    if(status=="process order")
+    {
+      status = "shipping order"
+    }
+    this.authService.updateorder(id,status).subscribe(data => {
+      console.log(data);
+      if (!data.success) {
+        this.messageClass = 'alert alert-danger';
+        this.message = data.message;
+      } else {
+        this.messageClass = 'alert alert-success';
+        this.message = data.message;
+        this.GetListOrder;
+      }
     });
   }
   ngOnInit() {

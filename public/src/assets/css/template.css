@@ -124,19 +124,20 @@
         text-decoration: none;
         margin-bottom: 0.5em;
     }
-    .rightcontent > .listproduct {
+    .listproduct {
         float: left;
         font-family: "UTMAptimaBold";
         list-style: none;
         padding-bottom: 2em;
         margin: 2em 2em;
+        width: 100%;
     }
-    .rightcontent > .listproduct .pagepagin {
+     .listproduct .pagepagin {
         color: #ffffff;
         font-size: 1.5em;
         text-align: right;
     }
-    .rightcontent > .listproduct a {
+    .listproduct a {
         position: relative;
         width: 14em;
         height:22em;
@@ -148,7 +149,7 @@
         text-align: center;
         text-decoration: none;
     }
-    .rightcontent > .listproduct a:hover {
+   .listproduct a:hover {
         background:url(../images/bg-cat-product-hover.jpg) #282828;
         background-size: 14em 18em;
         box-shadow:0 2em 0.9em rgba(0,0,0,1);
@@ -156,7 +157,7 @@
         -webkit-box-shadow:0 0.5em 1em rgba(0,0,1,5);
         color: #f3ac00;
     }
-    .rightcontent > .listproduct a:hover .showaction{
+    .listproduct a:hover .showaction{
         display: block;
     }
     .showaction{
@@ -178,7 +179,7 @@
         margin-top: 0.7em;
         border-top:0.1em solid #444343;
         height: 2.5em;
-        width: 7em;
+        width: 7.5em;
         background: #b48400;
         color: #ffffff;
     }
@@ -186,11 +187,11 @@
         background: #dfa402;
         color: #2736fd;
     }
-    .rightcontent > .listproduct a >img{
+    .listproduct a >img{
     width: 9em;
     height:9em;
     }
-    .rightcontent > .listproduct a >.nameproduct{
+     .listproduct a >.nameproduct{
         font-size: 1em;
         color: #ffffff;
         text-transform: uppercase;
@@ -201,12 +202,12 @@
         white-space: nowrap;
         text-overflow: ellipsis;
     }
-    .rightcontent > .listproduct a >.price{
+   .listproduct a >.price{
         color: #929292;
         text-transform: uppercase;
         font-family: UTMDaxMedium;
     }
-    .rightcontent > .listproduct a > ul {
+  .listproduct a > ul {
         display: none;
         width: 100%;
         position: absolute;
@@ -216,17 +217,17 @@
         box-sizing: border-box;
     }
 
-    .rightcontent > .listproduct a > ul:before,
-    .rightcontent > .listproduct a > ul:after {
+    .listproduct a > ul:before,
+   .listproduct a > ul:after {
         content: "";
         display: table;
     }
 
-    .rightcontent > .listproduct a > ul:after {
+    .listproduct a > ul:after {
         clear: both;
     }
 
-    .rightcontent > .listproduct a > ul>.sizeproduct{
+   .listproduct a > ul>.sizeproduct{
         font-size: 0.8em;
         margin-top: 0.7em;
         border-top:0.1em solid #444343;

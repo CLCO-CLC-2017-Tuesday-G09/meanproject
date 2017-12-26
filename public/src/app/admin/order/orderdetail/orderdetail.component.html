@@ -1,1 +1,72 @@
-{{orderpost?.name}}
+<div class="container">
+    <div id="content">
+      <div class="init"></div>
+      <div class="inner">
+        <div class="title">
+          <h2>Order Detail</h2>
+        </div>
+        <div class="components">
+            <div class="row show-hide-message" *ngIf="message">
+              <div [ngClass]="messageClass">
+                  <div id="message">
+                <p class="notification">{{ message }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="body">
+          <div class="components">
+            <h1>Items ordered</h1>
+            <div class="shopbag" *ngFor="let product of products">
+              <img src='https://drive.google.com/uc?id={{product.value.item.leftimage}}' />
+              <div class="info">
+                <p>{{product.value.item.nameproduct}}</p>
+                <h3>{{product.value.item.size}}</h3>
+              </div>
+              <div class="price">
+                <p>${{product.value.item.price}}</p>
+              </div>
+              <div class="quarity">
+                {{product.value.qty}}
+                </div>
+              <div class="action">
+                <p>${{product.value.price}}</p>
+              </div>
+            </div>
+  
+            <div class="shopbag">
+              <div class="total">
+                <p>Subtotal: ${{orderpost?.cart.totalPrice}}</p>
+                <div>Subtotal Quantity:{{orderpost?.cart.totalQty}}</div>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+  
+        <div class="rightbody">
+          <div class="components">
+            <h1> Customer Infomation</h1>
+            <div class="form-group">
+                <p>Code bill:{{orderpost?._id}}</p>
+              </div>
+            <div class="form-group">
+              <p>Name Customer:{{orderpost?.name}}</p>
+            </div>
+            <div class="form-group">
+              <p>Address:{{orderpost?.address}}</p>
+            </div>
+            <div class="form-group">
+              <p>Phone:{{orderpost?.phone}}</p>
+            </div>
+            <div class="form-group">
+                <p>Status order:{{orderpost?.status}}</p>
+              </div>
+          </div>
+          <div class="rightbody">
+            <button type="submit" (click)="UpdateStatusShip(orderpost?._id,orderpost?.status)" class="btn btn-info proceed">proceed to shipping</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -139,7 +139,7 @@ export class AuthService {
   getDetailOrder(id) {
     return this.http.get(this.domain + '/carts/detailorder/' + id).map(res => res.json());
   }
-  updateorder() {
-    return this.http.get(this.domain + '/carts/listorder/').map(res => res.json());
+  updateorder(id,status) {
+    return this.http.get(this.domain + '/carts/updateorder/'+id+'/'+status).map(res => res.json());
   }
 }

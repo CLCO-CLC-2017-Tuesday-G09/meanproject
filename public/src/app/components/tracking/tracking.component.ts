@@ -13,6 +13,9 @@ export class TrackingComponent implements OnInit {
   orderpost;
   formsearch: FormGroup
   products;
+  orderstatus=false;
+  messageClass;
+  message;
   constructor(
     private FormBuilder: FormBuilder,
     private authService: AuthService,
@@ -25,16 +28,28 @@ export class TrackingComponent implements OnInit {
       ])],
     });
   }
-  // Function to get all blogs from the database
-  GetListOrder() {
-    // Function to GET all blogs from database
-    this.authService.listorder().subscribe(data => {
-      this.orderpost = data.orders; // Assign array to use in HTML
-      console.log(this.orderpost);
+  GetListOrder(idorder) {
+    console.log(idorder);
+    let resulf=[];
+    this.authService.getDetailOrder(idorder).subscribe(data => {
+      if (!data.success) {
+        this.messageClass = 'alert alert-danger';
+        this.message = data.message;
+        this.orderstatus=false;
+      } else {
+        this.messageClass = 'alert alert-success';
+        this.message = data.message;
+        this.orderstatus=true;
+        this.orderpost = data.orders;
+        for(let key in data.products)
+        {
+          resulf.push({value: data.products[key]});
+        }
+        this.products = resulf;
+      }
     });
   }
   ngOnInit() {
-    this.GetListOrder();
   }
 
 }

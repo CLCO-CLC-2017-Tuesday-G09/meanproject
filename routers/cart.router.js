@@ -113,7 +113,7 @@ router.get('/listorder', (req, res) => {
             if (!orders) {
                 res.json({ success: false, message: 'No User found.' });
             } else {
-                res.json({ success: true, orders: orders });
+                res.json({ success: true, orders: orders});
             }
         }
     }).sort({ '_id': -1 });
@@ -128,24 +128,24 @@ router.get('/detailorder/:id', (req, res) => {
       Order.findOne({ _id: req.params.id }, (err, orders) => {
         // Check if the id is a valid ID
         if (err) {
-          res.json({ success: false, message: 'Not a valid orders id' }); // Return error message
+          res.json({ success: false, message: 'code bill error, try again!' }); // Return error message
         } else {
           // Check if blog was found by id
           if (!orders) {
             res.json({ success: false, message: 'Orders not found.' }); // Return error message
           } else {
-            res.json({ success: true, orders: orders }); // Return success
+            res.json({ success: true,message: 'Your order!', orders: orders,products: orders.cart.items }); // Return success
           }
         }
       });
     }
   });   
-    router.post('/updateorder', function(req, res, next) {
-        if (!req.body._id) {
-            res.json({ success: false, message: 'no find order' });
+    router.get('/updateorder/:id/:status', function(req, res, next) {
+        if (!req.params.id) {
+            res.json({ success: false, message: 'no order id' });
         }
         else {
-            Order.findById({ _id: req.body._id }, (err, orders) => {
+            Order.findById({ _id: req.params.id }, (err, orders) => {
                 if (err) {
                     res.json({ success: false, message: err });
                 } else {
@@ -153,13 +153,13 @@ router.get('/detailorder/:id', (req, res) => {
                         res.json({ success: false, message: 'false' });
                     }
                     else {
-                        orders.status = req.body.status;
+                        orders.status = req.params.status;
                         orders.save((err) => {
                             if (err) {
                                 res.json({ success: false, message: 'can not save' });
                             }
                             else {
-                                res.json({ success: true, message: 'data is updated' });
+                                res.json({ success: true, message: 'status for order is '+ orders.status });
                             }
                         });
                     }

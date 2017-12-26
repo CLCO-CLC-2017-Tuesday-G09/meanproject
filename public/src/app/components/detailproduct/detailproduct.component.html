@@ -1,4 +1,11 @@
 <div id="detail-display-bg" class="all-width">
+    <div *ngIf="message">
+        <div [ngClass]="messageClass">
+          <div id="message">
+            {{message}}
+          </div>
+        </div>
+      </div>
     <div id="detail-display-wrapper" class="clearfix responsive-mid">				
   <div id="detail-gallery-wrapper">
     <div id="detail-display-img-wrapper">
@@ -133,7 +140,7 @@
       <li>*Excluded From Discount, Promo &amp; Reward Points</li>
     </ul>
       <div class="detail-display-info-section detail-display-bag default">
-        <button class="button-yellow" type="submit">ADD TO BAG</button>
+        <button  (click)="AddToCart(product?._id)" class="button-yellow" type="submit">ADD TO BAG</button>
       </div>
   </form>			
   </div>

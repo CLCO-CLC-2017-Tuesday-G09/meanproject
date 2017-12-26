@@ -117,7 +117,7 @@ import { CheckorderPipe } from './pipe/productpipe.pipe';
     MatSortModule,
     MatTableModule
   ],
-  providers: [AuthService,SidebarComponent,SearchComponent],
+  providers: [AuthService,SidebarComponent,SearchComponent,HeaderComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
