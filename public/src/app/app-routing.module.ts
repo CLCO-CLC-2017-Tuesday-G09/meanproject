@@ -1,4 +1,4 @@
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { AdhomeComponent } from './admin/adhome/adhome.component';
 
@@ -14,7 +14,7 @@ const appRoutes: Routes = [
 @NgModule({
     declarations: [],
     imports: [
-        RouterModule.forRoot(appRoutes, { useHash: true }) 
+        RouterModule.forRoot(appRoutes, { useHash: true, preloadingStrategy: PreloadAllModules  }) 
     ],
     providers: [],
     bootstrap: [],

@@ -125,7 +125,7 @@ router.put('/updateCatalog', (req, res) => {
 
 //remove catalog
 
-router.get('/deletecatalog/:_id', (req, res) => {
+router.delete('/deletecatalog/:_id', (req, res) => {
     if (!req.params._id) {
         res.json({ success: false, message: req.params._id });
     }

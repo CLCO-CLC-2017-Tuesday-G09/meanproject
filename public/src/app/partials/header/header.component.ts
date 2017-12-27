@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
 
    createForm() {
     this.formsearch = this.FormBuilder.group({
-      searchname: ['', Validators.compose([
+      searchproduct: ['', Validators.compose([
         Validators.maxLength(50)
       ])]
     });
@@ -50,6 +50,11 @@ export class HeaderComponent implements OnInit {
     this.authService.GetAllCatalog().subscribe(data => {
       this.catalogpost = data.catalogs; // Assign array to use in HTML
 
+    });
+  }
+  AllProduct() {
+    this.authService.getAllProducts().subscribe(data => {
+        this.productpost = data.product;
     });
   }
   SearchProduct() {
@@ -174,6 +179,7 @@ export class HeaderComponent implements OnInit {
     });
   };
   ngOnInit() {
+    this.AllProduct();
     this.GetAllCatalog();
     this.GetListMenu();
     this.getprofile();

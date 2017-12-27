@@ -7,9 +7,7 @@
       </div>
       <div *ngIf="ordermessage">
         <div [ngClass]="messageClass">
-          <div id="message">
             {{ordermessage}}
-          </div>
         </div>
       </div>
       <form [formGroup]="orderform" (submit)="onOrderSubmit()">
@@ -72,6 +70,7 @@
             <input type="text" class="form-control" id="paymentcard" formControlName="paymentcard" placeholder="enter card number">
           </div>
         </div>
+        
         <div class="rightbody">
           <button type="submit" class="btn btn-info proceed">proceed to checkout</button>
         </div>

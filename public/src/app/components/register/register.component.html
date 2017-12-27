@@ -5,9 +5,9 @@
       <div class="title">
         <h2>REGISTER</h2>
       </div>
-      <div class="row show-hide-message" *ngIf="message">
+      <div *ngIf="message">
         <div [ngClass]="messageClass">
-          <p class="notification">{{ message }}</p>
+          {{ message }}
         </div>
       </div>
       <div class="components" style="width:60%;	margin-left: 20%">

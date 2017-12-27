@@ -3,13 +3,9 @@
     <div class="title">
       <h2>Active Menus</h2>
     </div>
-    <div class="components">
-      <div class="row show-hide-message" *ngIf="message">
-        <div [ngClass]="messageClass">
-            <div id="message">
-          <p class="notification">{{ message }}</p>
-          </div>
-        </div>
+    <div *ngIf="message">
+      <div [ngClass]="messageClass">
+        {{ message }}
       </div>
     </div>
     <div class="components">
@@ -56,7 +52,7 @@
             <button (click)="GetListBranch(menu._id)">
               <mat-icon>keyboard_arrow_down</mat-icon>
             </button>
-            <button (click)="onDeleteMenuSubmit(menu._id)">
+            <button data-toggle="modal" data-target="#deletemenu" >
               <mat-icon>delete</mat-icon>
             </button>
             <button>
@@ -67,6 +63,25 @@
             </button>
           </div>
         </div>
+
+             <!-- modal -->
+             <div class="modal fade" id="deletemenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
+                  </div>
+                  <div class="modal-body">
+                    <h3 style="color:red;text-transform: lowercase;">Are you sure you want to delete the mennu {{menu?.menuname}}?</h3>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" (click)="onDeleteMenuSubmit(menu._id)" data-dismiss="modal">Delete Catalog</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">cance</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+                 <!-- end modal -->
       </div>
     </div>
 
@@ -82,7 +97,7 @@
             <button (click)="GetListCatalog(branch._id)">
               <mat-icon>keyboard_arrow_down</mat-icon>
             </button>
-            <button (click)="onDeleteBranchsubmit(branch._id)">
+            <button data-toggle="modal" data-target="#deletebranch">
               <mat-icon>delete</mat-icon>
             </button>
             <button>
@@ -93,6 +108,24 @@
             </button>
           </div>
         </div>
+        <!-- modal -->
+        <div class="modal fade" id="deletebranch" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
+              </div>
+              <div class="modal-body">
+                <h3 style="color:red;text-transform: lowercase;">Are you sure you want to delete the branch {{branch?.branchName}}?</h3>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="onDeleteBranchsubmit(branch._id)" data-dismiss="modal">Delete Branch</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">cance</button>
+              </div>
+            </div>
+          </div>
+        </div>
+             <!-- end modal -->
       </div>
     </div>
 
@@ -110,11 +143,29 @@
             <button>
                 <mat-icon>settings</mat-icon>
               </button>
-            <button (click)="onDeleteCatalogsubmit(catalog._id)">
+            <button  data-toggle="modal" data-target="#deletecatalog" >
               <mat-icon>delete</mat-icon>
             </button>
           </div>
         </div>
+              <!-- modal -->
+              <div class="modal fade" id="deletecatalog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
+                    </div>
+                    <div class="modal-body">
+                      <h3 style="color:red;text-transform: lowercase;">Are you sure you want to delete the catalog {{catalog?.catalogName}}?</h3>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" (click)="onDeleteCatalogsubmit(catalog._id)" data-dismiss="modal">Delete Catalog</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">cance</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                   <!-- end modal -->
       </div>
     </div>
     

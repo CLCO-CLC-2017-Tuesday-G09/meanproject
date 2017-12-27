@@ -118,6 +118,28 @@ router.get('/listorder', (req, res) => {
         }
     }).sort({ '_id': -1 });
 });
+//search  order with phone number
+router.get('/phoneforoder/:phone', (req, res) => {
+    // Check if id is present in parameters
+    if (!req.params.phone) {
+      res.json({ success: false, message: 'phone number was provided.' }); // Return error message
+    } else {
+      // Check if the blog id is found in database
+      Order.find({ phone: req.params.phone }, (err, orders) => {
+        // Check if the id is a valid phone
+        if (err) {
+          res.json({ success: false, message: 'code bill error, try again!' }); // Return error message
+        } else {
+          // Check if blog was found by id
+          if (!orders) {
+            res.json({ success: false, message: 'Orders not found.' }); // Return error message
+          } else {
+            res.json({ success: true,message: 'Your order!', orders: orders}); // Return success
+          }
+        }
+      });
+    }
+  });   
 //detail order
 router.get('/detailorder/:id', (req, res) => {
     // Check if id is present in parameters

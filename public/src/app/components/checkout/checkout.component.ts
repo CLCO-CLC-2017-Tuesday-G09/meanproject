@@ -91,18 +91,9 @@ export class CheckoutComponent implements OnInit {
             this.messageClass = 'alert alert-danger';
             this.ordermessage = data1.message;
           } else {
-            this.ProductService.coutbuyProduct(this.orderform.get('_id').value,product).subscribe(data => {
-              console.log(data);
-              if (!data.success) {
-                this.messageClass = 'alert alert-danger';
-                this.ordermessage = data.message;
-                window.location.reload();
-              } else {
-                this.messageClass = 'alert alert-success';
-                this.ordermessage = data.message;
-                window.location.reload();
-              }
-            });
+            this.messageClass = 'alert alert-success';
+            this.ordermessage = data1.message;
+            window.location.reload();
           }
         });
       }

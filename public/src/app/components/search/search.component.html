@@ -6,14 +6,14 @@
       <div class="title">Branch</div>
       <ul *ngFor="let branch of branchpost">
         <input type="checkbox" value="" (click)="FilterCatalog(branch._id)">
-        <p>{{branch.branchName}} (120)</p>
+        <p>{{branch.branchName}}</p>
       </ul>
     </div>
     <div class="components" id="style-scrollbar">
       <div class="title">Catalog</div>
       <ul *ngFor="let catalog of catalogpost">
         <input type="checkbox"  value="" (click)="FilterProduct(catalog._id)">
-        <p>{{catalog.catalogName}} (120)</p>
+        <p>{{catalog.catalogName}}</p>
       </ul>
     </div>
     <div class="components" id="style-scrollbar">
@@ -40,10 +40,11 @@
 </div>
 <div class="rightcontent" ng-app="">
     <div class="init"></div>
-    <div class="row show-hide-message" *ngIf="message">
-            <div [ngClass]="messageClass">{{ message }}
-            </div>
-          </div>
+    <div *ngIf="message">
+        <div [ngClass]="messageClass">
+          {{ searchmess }}
+        </div>
+      </div>
     <div class="title">
         search results for: {{value}}
     </div>
@@ -66,7 +67,7 @@
     </div>
         <div class="listproduct">
             <a routerLink='/search'*ngFor="let product of productpost|productpipe:searchtext|filterprice:rangeprice">
-                <img src='https://drive.google.com/uc?id={{product.behindimage}}'/>	
+                <img src='https://drive.google.com/uc?id={{product.leftimage}}'/>	
                 <div class="nameproduct">
                     {{product.nameproduct}}
                 </div>

@@ -1,14 +1,15 @@
 <!-- Content -->
+
 <div id="content">
-  <div class="row show-hide-message">
-    <div [ngClass]="messageClass">
-      {{ message }}
-    </div>
-  </div>
   <!-- New Post Button -->
   <div class="inner">
     <div class="title">
       <h2>List product</h2>
+    </div>
+    <div *ngIf="message">
+      <div [ngClass]="messageClass">
+        {{ message }}
+      </div>
     </div>
     <form [formGroup]="form" *ngIf="newProduct" (submit)="addproductSubmit()">
       <div class="title">
@@ -229,7 +230,7 @@
                     </a>
                   </div>
                 </td>
-                <!-- Modal -->
+                <!-- Modal product -->
                 <div class="modal fade" id="deleteproduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">

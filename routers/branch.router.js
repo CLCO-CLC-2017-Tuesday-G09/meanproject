@@ -126,20 +126,40 @@ router.get('/searchbranch/:namebranch', (req, res) => {
 
 router.delete('/deletebranch/:id', function (req, res) {
     if (!req.params.id) {
-        res.json({ success: false, message: 'There is no branch available' });
+        res.json({ success: false, message: req.params.id });
     }
-    else
-    {
-    Branch.findByIdAndRemove({_id:req.params.id},function (err,branch) {
-      if (err){
-        res.json({ success: false, message: err }); // Return error
-      }
-      else
-      {
-        res.json({ success: true, message: "branch: " + branch.branchName + " was deleted" });
-      }
-    });
-}
+    else {
+        Branch.findOneAndRemove({ _id: req.params.id }, (err, branch) => {
+            if (err) {
+                res.json({ success: false, message: err });
+            }
+            else {
+                if (!branch) {
+                    res.json({ success: false, message: 'can not found branch' });
+                }
+                else {
+                    //res.json({ success: true, message: catalog });
+
+                    Menu.findOne({ _id: branch.idmenu }, (error, menu) => {
+                        if (error) {
+                            res.json({ success: false, message: error });
+                        } else {
+
+                            //when update catalog successfully
+                            Menu.findOneAndUpdate({ _id: menu._id },
+                                { $pull: { branches: branch._id } }, function (err, data) {
+                                    if (err) {
+                                        res.json({ success: false, message: err });
+                                    } else {
+                                        res.json({ success: true, data: data });
+                                    }
+                                });
+                        }
+                    });
+                }
+            }
+        });
+    }
   });
 
     return router;

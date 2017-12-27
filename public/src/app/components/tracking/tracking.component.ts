@@ -14,8 +14,10 @@ export class TrackingComponent implements OnInit {
   formsearch: FormGroup
   products;
   orderstatus=false;
+  orderdetailstatus=false;
   messageClass;
   message;
+  orderdetail;
   constructor(
     private FormBuilder: FormBuilder,
     private authService: AuthService,
@@ -28,10 +30,9 @@ export class TrackingComponent implements OnInit {
       ])],
     });
   }
-  GetListOrder(idorder) {
-    console.log(idorder);
-    let resulf=[];
-    this.authService.getDetailOrder(idorder).subscribe(data => {
+  GetphoneForOrder(phone) {
+    this.orderdetailstatus=false;
+    this.authService.orderwithphone(phone).subscribe(data => {
       if (!data.success) {
         this.messageClass = 'alert alert-danger';
         this.message = data.message;
@@ -41,9 +42,33 @@ export class TrackingComponent implements OnInit {
         this.message = data.message;
         this.orderstatus=true;
         this.orderpost = data.orders;
+      }
+    });
+  }
+  GetdetailOrder(idorder) {
+    this.orderstatus=false;
+    let resulf=[];
+    this.authService.getDetailOrder(idorder).subscribe(data => {
+      if (!data.success) {
+        this.messageClass = 'alert alert-danger';
+        this.message = data.message;
+        this.orderdetailstatus=false;
+      } else {
+        this.messageClass = 'alert alert-success';
+        this.message = data.message;
+        this.orderdetailstatus=true;
+        this.orderdetail = data.orders;
         for(let key in data.products)
         {
-          resulf.push({value: data.products[key]});
+          this.authService.getSingleProduct(data.products[key].item._id).subscribe(dataproduct => {
+            if (!dataproduct.success) {
+              this.messageClass = 'alert alert-warning';
+              this.message = dataproduct.message;
+            } else {
+              resulf.push({value:dataproduct.product,qty:data.products[key].qty,subprice:data.products[key].price}); // Save blog object for use in HTML           
+            }
+            console.log(data.products[key]);
+        });
         }
         this.products = resulf;
       }

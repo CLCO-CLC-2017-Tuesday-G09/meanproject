@@ -53,7 +53,7 @@
 					</a>
 				</li>
 				<li>
-					<a routerLink='/adhome'>
+					<a routerLink='/menus'>
 						<mat-icon>supervisor_account</mat-icon>
 						<p>Admin</p>
 					</a>
@@ -137,35 +137,22 @@
 			<ul>
 				<div class="col-lg-12">
 					<form [formGroup]="formsearch">
+						<div class="col-lg-12">
 						<div class="input-group">
-							<input type="text" class="form-control" id="searchname" name="searchname" formControlName="searchname" (keyup)="SearchProduct()"
-							 (keyup)="SearchCatalog()" placeholder="Search for..." aria-label="Search for...">
+							<input type="text" class="form-control" id="searchproduct" name="searchproduct" formControlName="searchproduct" [(ngModel)]="search" placeholder="Search for..." aria-label="Search for...">
 							<span class="input-group-btn">
-								<a class="btn btn-secondary" type="submit">
+								<a class="btn searchbtn" type="button">
 									<mat-icon>search</mat-icon>
 								</a>
 							</span>
 						</div>
-						<small id="searchHelp" class="form-text text-muted">
-							<div *ngIf="searchmess">
-								{{searchmess}}
-							</div>
-							Enter keyword name catalog or name product
-						</small>
-					</form>
-				</div>
-				<div class="catalog" id="style-scrollbar">
-					<div class="title">Catalogs</div>
-					<div *ngFor="let catalog of catalogpost">
-						<a routerLink='/'>
-							{{catalog.catalogName}}
-						</a>
 					</div>
+					</form>
 				</div>
 				<div class="product" id="style-scrollbar">
 					<div class="title">Products</div>
-					<div *ngFor="let product of productpost">
-						<a routerLink='/'>
+					<div *ngFor="let product of productpost|productpipe:search">
+						<a [routerLink]="['/detailproduct/', product._id]">
 							<img src='https://drive.google.com/uc?id={{product.leftimage}}' alt="" />
 							<div class="nameproduct">
 								{{product.nameproduct}}
