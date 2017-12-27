@@ -40,6 +40,10 @@
 </div>
 <div class="rightcontent" ng-app="">
     <div class="init"></div>
+    <div class="row show-hide-message" *ngIf="message">
+            <div [ngClass]="messageClass">{{ message }}
+            </div>
+          </div>
     <div class="title">
         search results for: {{value}}
     </div>

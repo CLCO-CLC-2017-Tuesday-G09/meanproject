@@ -139,20 +139,30 @@ module.exports = (router) => {
         }).sort({ '_id': -1 });
     });
     //find one a user
-    router.get('/findmember/:username', (req, res) => {
-        User.findOne({ username: req.params.username }, (err, user) => {
+    router.get('/profile', (req, res) => {
+        User.findOne({ username: req.session.user }, (err, users) => {
             if (err) {
                 res.json({ success: false, message: err });
             } else {
-                if (!user) {
-                    res.json({ success: false, message: 'User name is not found' });
+                if (!users) {
+                    res.json({ success: false, message: 'User name is not found',users:{} });
                 } else {
-                    res.json({ success: true, message: user.username + ' is found', user: user });
+                    res.json({ success: true, users: users });
                 }
             }
         });
     });
-
+//logout
+router.get('/logout', function (req, res, next) {
+    if (!req.session.user) {
+        res.json({ success: false, message: 'You have not signed in to any accounts yet' });
+    }
+    else
+    {
+    req.session.destroy();
+    res.json({ success: true, message: 'You have successfully logged out'});
+    }
+});
     /* ========
   LOGIN ROUTE
   ======== */
@@ -180,7 +190,8 @@ module.exports = (router) => {
               if (!validPassword) {
                 res.json({ success: false, message: 'Password invalid' }); // Return error
               } else {
-                res.json({ success: true, message: 'Success!',user: { username: user.username } }); // Return success and token to frontend
+                req.session.user=user.username;
+                res.json({ success: true, message: 'wellcome !',user: { username: user.username } }); // Return success and token to frontend
               }
             }
           }

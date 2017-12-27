@@ -470,7 +470,7 @@ module.exports = (router) => {
                                                       if (!err) {
                                                         Product.update({ nameproduct: name_product }, { $set: { underimagezoom: results.id } }, function (err, product) {
                                                           if (!err) {
-                                                            res.json({ success: true, message: 'Product saved' });
+                                                            res.json({ success: true, message: 'The data was saved successfully! Please look at the latest update your website!' });
                                                           }
                                                           else {
                                                             res.json({ success: false, message: 'Error' });
@@ -542,7 +542,7 @@ module.exports = (router) => {
       } else {
         // Check if blogs were found in database
         if (!product) {
-          res.json({ success: false, message: 'No products found.' }); // Return error of no blogs found
+          res.json({ success: false, message: 'There is no product available' }); // Return error of no blogs found
         } else {
           res.json({ success: true, product: product }); // Return success and blogs array
         }
@@ -558,7 +558,7 @@ module.exports = (router) => {
       } else {
         // Check if blogs were found in database
         if (!catalog) {
-          res.json({ success: false, message: 'No catalogs found.' }); // Return error of no blogs found
+          res.json({ success: false, message: 'There is no catalog available' }); // Return error of no blogs found
         } else {
           res.json({ success: true, catalog: catalog }); // Return success and blogs array
         }
@@ -568,13 +568,13 @@ module.exports = (router) => {
   router.put('/updateProduct', (req, res) => {
     // Check if id was provided
     if (!req.body._id) {
-      res.json({ success: false, message: 'No product id provided' }); // Return error message
+      res.json({ success: false, message: 'There is no product available' }); // Return error message
     } else {
       // Check if id exists in database
       Product.findOne({ _id: req.body._id }, (err, product) => {
         // Check if id is a valid ID
         if (err) {
-          res.json({ success: false, message: 'Not a valid product id' }); // Return error message
+          res.json({ success: false, message: 'he error occurred in the process of work' }); // Return error message
         } else {
           // Check if id was found in the database
           if (!product) {
@@ -620,7 +620,7 @@ module.exports = (router) => {
                               res.json({ success: false, message: err }); // Return error message
 
                             } else {
-                              res.json({ success: true, message: 'Product Updated!' }); // Return success message
+                              res.json({ success: true, message: 'The data was saved successfully! Please look at the latest update your website!' }); // Return success message
                             }
                           });
 
@@ -655,7 +655,7 @@ module.exports = (router) => {
                   res.json({ success: false, message: err }); // Return error message
 
                 } else {
-                  res.json({ success: true, message: 'Product Updated!' }); // Return success message
+                  res.json({ success: true, message: 'The data was saved successfully! Please look at the latest update your website!' }); // Return success message
                 }
               });
             }
@@ -664,42 +664,11 @@ module.exports = (router) => {
       });
     }
   });
-  router.delete('/deleteproduct/:id', function (req, res) {
-    if (!req.params.id) {
-      res.json({ success: false, message: 'no find product' });
-    }
-    else {
-      Product.findByIdAndRemove({ _id: req.params.id }, function (err, product) {
-        if (err) {
-          res.json({ success: false, message: err }); // Return error
-        }
-        else {
-          Catalog.update({ catalogName: product.catalog },
-            {
-              $pull: {
-                "products": {
-                  _id: ObjectId(product._id)
-                }
-              }
-            }, function (err, data) {
-              if (err) {
-                res.json({ success: false, message: 'error' });
-              }
-              else {
-                res.json({ success: true, message: 'Product deleted' });
-              }
-            }
-
-          );
-        }
-      });
-    }
-  });
 
   router.put('/countbuyproduct/:id', (req, res) => {
     // Check if id was provided
     if (!req.params._id) {
-      res.json({ success: false, message: 'No product id found' }); // Return error message
+      res.json({ success: false, message: 'There is no product available' }); // Return error message
     } else {
       // Check if id exists in database
       Product.findOne({ _id: req.params._id }, (err, product) => {
@@ -718,7 +687,7 @@ module.exports = (router) => {
               if (err) {
                 res.json({ success: false, message: err }); // Return error message
               } else {
-                res.json({ success: true, message: 'Product Updated!' }); // Return success message
+                res.json({ success: true, message: 'The data was saved successfully! Please look at the latest update your website!' }); // Return success message
               }
             });
           }
@@ -728,7 +697,7 @@ module.exports = (router) => {
   });
   router.delete('/deleteproduct/:id', function (req, res) {
     if (!req.params.id) {
-      res.json({ success: false, message: 'no find product' });
+      res.json({ success: false, message: 'There is no product available' });
     }
     else {
       Product.findByIdAndRemove({ _id: req.params.id }, function (err, product) {
@@ -748,7 +717,7 @@ module.exports = (router) => {
                 res.json({ success: false, message: 'error' });
               }
               else {
-                res.json({ success: true, message: 'Product deleted' });
+                res.json({ success: true, message: 'Product have name: '+data.name_product+' was delete' });
               }
             }
 
@@ -769,7 +738,7 @@ module.exports = (router) => {
           res.json({ success: false, message: err }); // Return error message
 
         } else {
-          res.json({ success: true, message: "find success", products: products });
+          res.json({ success: true, message: "We found an results", products: products });
         }
       }
     });
@@ -793,7 +762,7 @@ module.exports = (router) => {
                   res.json({ success: false, message: err }); // Return error message
                 }
                 else {
-                  res.json({ success: true, message: "find success", products: products, catalogs: catalogs, branches: branches });
+                  res.json({ success: true, message: "We found an results", products: products, catalogs: catalogs, branches: branches });
                 }
               });
             }
@@ -821,7 +790,7 @@ module.exports = (router) => {
                   res.json({ success: false, message: err }); // Return error message
                 }
                 else {
-                  res.json({ success: true, message: "find success", products: products, catalogs: catalogs, branches: branches });
+                  res.json({ success: true, message: "We found an results", products: products, catalogs: catalogs, branches: branches });
                 }
               });
             }
@@ -844,7 +813,7 @@ module.exports = (router) => {
               res.json({ success: false, message: err });
             } else {
               if (!products) {
-                res.json({ success: false, message: 'No product found.' });
+                res.json({ success: false, message: 'There is no product available' });
               } else {
                 res.json({ success: true, message: catalogs[0]['catalogName'], products: products });
 
@@ -866,11 +835,11 @@ module.exports = (router) => {
       Product.findOne({ _id: req.params.id }, (err, product) => {
         // Check if the id is a valid ID
         if (err) {
-          res.json({ success: false, message: 'Not a valid product id' }); // Return error message
+          res.json({ success: false, message: 'An issue occurred during the product search' }); // Return error message
         } else {
           // Check if blog was found by id
           if (!product) {
-            res.json({ success: false, message: 'Product not found.' }); // Return error message
+            res.json({ success: false, message: 'Product have Id:'+ req.params.id+' does not exist or was deleted' }); // Return error message
           } else {
             res.json({ success: true, product: product }); // Return success
 

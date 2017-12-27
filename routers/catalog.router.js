@@ -8,7 +8,7 @@ module.exports = (router) => {
     //add catalog
     router.post('/addCatalog/:idBranch', (req, res) => {
         if (!req.body.catalogName  || !req.params.idBranch) {
-            res.json({ success: false, message: 'you must enter input' });
+            res.json({ success: false, message: 'The error occurred in the process of work' });
         }
         else {
             var newcatalog = new Catalog({
@@ -26,7 +26,7 @@ module.exports = (router) => {
 
                         }
                         else {
-                            res.json({ success: false, message: 'Could not save catalog. Error: ', err });
+                            res.json({ success: false, message: 'The error occurred in the process of work', err });
                         }
                     }
                 }
@@ -64,7 +64,7 @@ module.exports = (router) => {
 //update catalog
 router.put('/updateCatalog', (req, res) => {
     if (!req.body._id) {
-        res.json({ success: false, message: 'Please enter id catalog' });
+        res.json({ success: false, message: 'The error occurred in the process of work' });
     }
     else {
         Catalog.findOne({ _id: req.body._id }, (err, catalog) => {
@@ -72,7 +72,7 @@ router.put('/updateCatalog', (req, res) => {
                 res.json({ success: false, message: err });
             } else {
                 if (!catalog) {
-                    res.json({ success: false, message: 'false' });
+                    res.json({ success: false, message: 'Cannot save the data' });
                 }
                 else {
                     catalog.catalogName = req.body.catalogName;
@@ -82,7 +82,7 @@ router.put('/updateCatalog', (req, res) => {
 
                     catalog.save((err) => {
                         if (err) {
-                            res.json({ success: false, message: 'can not save' });
+                            res.json({ success: false, message: 'Cannot save the data' });
                         }
                         else {
 
@@ -172,7 +172,7 @@ router.get('/deletecatalog/:_id', (req, res) => {
                 if (!catalogs) {
                     res.json({ success: false, message: 'No catalog found.' });
                 } else {
-                    res.json({ success: true,message:"find success", catalogs: catalogs });
+                    res.json({ success: true,message:"The data was saved successfully! Please look at the latest update your website!", catalogs: catalogs });
 
                 }
             }
@@ -186,14 +186,14 @@ router.get('/deletecatalog/:_id', (req, res) => {
                 res.json({ success: false, message: err });
             } else {
                 if (!branch) {
-                    res.json({ success: false, message: 'No branch found.' });
+                    res.json({ success: false, message: 'There is no branch available' });
                 } else {
                     Catalog.find({idBranch: branch[0]['_id']}, (err, catalogs) => {
                         if (err) {
                             res.json({ success: false, message: err });
                         } else {
                             if (!catalogs) {
-                                res.json({ success: false, message: 'No catalog found.' });
+                                res.json({ success: false, message: 'There is no catalog available' });
                             } else {
                                 res.json({ success: true, catalogs: catalogs });
             
@@ -216,7 +216,7 @@ router.get('/searchcatalog/:namecatalog', (req, res) => {
                     if (!catalogs || catalogs=="") {
                         res.json({ success: true, message: "can not found" });
                     } else {
-                        res.json({ success: true, message: "find success", catalogs: catalogs });
+                        res.json({ success: true, message: "The data was saved successfully! Please look at the latest update your website!", catalogs: catalogs });
     
                     }
                 }
@@ -234,7 +234,7 @@ router.get('/searchcatalog/:namecatalog', (req, res) => {
                 if (!catalog) {
                     res.json({ success: false, message: 'Catalog name is not found' });
                 } else {
-                    res.json({ success: true, message: catalog.catalogName + ' is found', catalog: catalog });
+                    res.json({ success: true, message: 'The '+catalog.catalogName +  ' was saved successfully! Please look at the latest update your website!', catalog: catalog });
                 }
             }
         }).populate('idBranch');

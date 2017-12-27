@@ -30,7 +30,7 @@ export class DetailproductComponent implements OnInit {
       } else {
         this.messageClass = 'alert alert-success';
         this.message = data.message;
-        this.header.getCart();
+        window.location.reload();
       }
     });
   }

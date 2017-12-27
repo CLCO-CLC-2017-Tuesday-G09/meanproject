@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup
   message;
   messageClass;
+  profiles;
   constructor(
     private FormBuilder: FormBuilder,
     private AuthService: AuthService,
@@ -64,6 +65,7 @@ export class LoginComponent implements OnInit {
       } else {
         this.messageClass = 'alert alert-success';
         this.message = data.message;
+        window.location.reload();
         this.router.navigate(['/home']); // Redirect to login view
       }
     });

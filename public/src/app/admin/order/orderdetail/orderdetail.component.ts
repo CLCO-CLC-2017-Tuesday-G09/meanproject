@@ -26,11 +26,20 @@ export class OrderdetailComponent implements OnInit {
     const idorder = this.currentUrl.idorder;
     console.log(idorder)
     let resulf=[];
+    let qty=[];
     this.authService.getDetailOrder(idorder).subscribe(data => {
       this.orderpost = data.orders;
       for(let key in data.products)
       {
-        resulf.push({value: data.products[key]});
+        this.authService.getSingleProduct(data.products[key].item._id).subscribe(dataproduct => {
+          console.log(dataproduct);
+          if (!dataproduct.success) {
+            this.messageClass = 'alert alert-warning';
+            this.message = dataproduct.message;
+          } else {
+            resulf.push({value:dataproduct.product,qty:data.products[key].qty,subprice:data.products[key].price}); // Save blog object for use in HTML           
+          }
+      });
       }
       this.products = resulf;
       console.log(this.orderpost);

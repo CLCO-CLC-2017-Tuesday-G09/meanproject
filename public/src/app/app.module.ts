@@ -47,6 +47,7 @@ import { ProductpipePipe } from './pipe/productpipe.pipe';
 import { cataloryPipe } from './pipe/productpipe.pipe';
 import { sizePipe } from './pipe/productpipe.pipe';
 import { CheckorderPipe } from './pipe/productpipe.pipe';
+import { ProfilesComponent } from './components/profiles/profiles.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,6 +77,7 @@ import { CheckorderPipe } from './pipe/productpipe.pipe';
     OrderComponent,
     OrderdetailComponent,
     TrackingComponent,
+    ProfilesComponent,
   ],
   imports: [
     NgbModule.forRoot(),

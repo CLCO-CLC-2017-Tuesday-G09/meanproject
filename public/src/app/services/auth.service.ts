@@ -29,7 +29,12 @@ export class AuthService {
   checkEmail(email) {
     return this.http.get(this.domain + '/users/checkEmail/' + email).map(res => res.json());
   }
-
+  profile() {
+    return this.http.get(this.domain + '/users/profile/').map(res => res.json());
+  }
+  logout() {
+    return this.http.get(this.domain + '/users/logout/').map(res => res.json());
+  }
   //menu
   GetListMenu() {
     return this.http.get(this.domain + '/menus/listmenu').map(res => res.json());

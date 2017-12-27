@@ -11,40 +11,40 @@ router.get('/addcart/:id', function (req, res, next) {
     Product.findById(productId, function (err, product) {
         if(err)
         {
-            res.json({ success: false, message: 'faile'});            
+            res.json({ success: false, message: 'The product you selected is not available or has already been deleted on the system'});            
         }
         else
         {
         cart.add(product, product.id);
         req.session.cart = cart;
-        res.json({ success: true, message: 'buy item success',carts:cart});   
+        res.json({ success: true, message: 'The success of the product is added to the cart',carts:cart});   
         }
     });
 });
 
 router.get('/shoppingcart', function (req, res, next) {
     if (!req.session.cart) {
-        res.json({ success: false, message: 'no session',products:null });
+        res.json({ success: false, message: 'you do not have any products in your shopping cart',products:null });
     }
     else
     {
     var cart = new Cart(req.session.cart);
-    res.json({ success: true, message: 'success', products: cart.generateArray(), totalPrice: cart.totalPrice});
+    res.json({ success: true, message: 'your cart!', products: cart.generateArray(), totalPrice: cart.totalPrice});
     }
 });
 
 router.get('/removecart', function (req, res, next) {
     if (!req.session.cart) {
-        res.json({ success: false, message: 'no session' });
+        res.json({ success: false, message: 'you do not have any products in your shopping cart' });
     }
     if(req.session.cart.items===undefined)
     {
-        res.json({ success: false, message: 'no items' });
+        res.json({ success: false, message: 'products in your shopping cart have the problem!' });
     }
     else
     {
     req.session.destroy();
-    res.json({ success: true, message: 'remove all product success'});
+    res.json({ success: true, message: 'All products have been removed from the cart'});
     }
 });
 router.get('/reduceitem/:id', function(req, res, next) {
@@ -142,7 +142,7 @@ router.get('/detailorder/:id', (req, res) => {
   });   
     router.get('/updateorder/:id/:status', function(req, res, next) {
         if (!req.params.id) {
-            res.json({ success: false, message: 'no order id' });
+            res.json({ success: false, message: 'There is no order available' });
         }
         else {
             Order.findById({ _id: req.params.id }, (err, orders) => {
@@ -150,13 +150,13 @@ router.get('/detailorder/:id', (req, res) => {
                     res.json({ success: false, message: err });
                 } else {
                     if (!orders) {
-                        res.json({ success: false, message: 'false' });
+                        res.json({ success: false, message: 'The error occurred in the process of work' });
                     }
                     else {
                         orders.status = req.params.status;
                         orders.save((err) => {
                             if (err) {
-                                res.json({ success: false, message: 'can not save' });
+                                res.json({ success: false, message: 'can not update status' });
                             }
                             else {
                                 res.json({ success: true, message: 'status for order is '+ orders.status });

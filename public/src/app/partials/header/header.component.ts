@@ -16,9 +16,11 @@ export class HeaderComponent implements OnInit {
   productpost;
   cartpost;
   total;
+  profiles;
   searchmess;
   menupost;
   branchpost;
+  isLogin=false;
   constructor(
     private FormBuilder: FormBuilder,
     private authService: AuthService,
@@ -147,9 +149,34 @@ export class HeaderComponent implements OnInit {
       this.catalogposts = data.catalogs; // Assign array to use in HTML
     });
   }
+  getprofile(){
+    this.authService.profile().subscribe(data => {
+      if (!data.success) {
+        this.searchmess = data.message;
+      } else {
+        this.searchmess = data.message;
+        this.profiles=data.users;
+        this.isLogin=true;
+      }
+    });
+    console.log(this.profiles);
+  };
+  logout()
+  {
+    this.authService.logout().subscribe(data => {
+      if (!data.success) {
+        this.searchmess = data.message;
+      } else {
+        this.searchmess = data.message;
+        this.isLogin=false;
+        window.location.reload();
+      }
+    });
+  };
   ngOnInit() {
     this.GetAllCatalog();
     this.GetListMenu();
+    this.getprofile();
   }
 
 }

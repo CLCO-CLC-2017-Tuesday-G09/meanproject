@@ -5,32 +5,26 @@
         <div class="title">
           <h2>Order Detail</h2>
         </div>
-        <div class="components">
-            <div class="row show-hide-message" *ngIf="message">
-              <div [ngClass]="messageClass">
-                  <div id="message">
-                <p class="notification">{{ message }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="row show-hide-message" *ngIf="message">
+          <div [ngClass]="messageClass">{{ message }}</div>
+        </div>
         <div class="body">
           <div class="components">
             <h1>Items ordered</h1>
             <div class="shopbag" *ngFor="let product of products">
-              <img src='https://drive.google.com/uc?id={{product.value.item.leftimage}}' />
+              <img src='https://drive.google.com/uc?id={{product.value.leftimage}}' />
               <div class="info">
-                <p>{{product.value.item.nameproduct}}</p>
-                <h3>{{product.value.item.size}}</h3>
+                <p>{{product.value.nameproduct}}</p>
+                <h3>{{product.value.size}}</h3>
               </div>
               <div class="price">
-                <p>${{product.value.item.price}}</p>
+                <p>${{product.value.price}}</p>
               </div>
               <div class="quarity">
-                {{product.value.qty}}
+                {{qty?.qty}}
                 </div>
               <div class="action">
-                <p>${{product.value.price}}</p>
+                <p>${{qty?.subprice}}</p>
               </div>
             </div>
   

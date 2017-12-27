@@ -96,9 +96,11 @@ export class CheckoutComponent implements OnInit {
               if (!data.success) {
                 this.messageClass = 'alert alert-danger';
                 this.ordermessage = data.message;
+                window.location.reload();
               } else {
                 this.messageClass = 'alert alert-success';
                 this.ordermessage = data.message;
+                window.location.reload();
               }
             });
           }

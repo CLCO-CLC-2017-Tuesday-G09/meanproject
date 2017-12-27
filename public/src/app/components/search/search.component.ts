@@ -14,6 +14,8 @@ export class SearchComponent implements OnInit {
   formsearch: FormGroup
   value = '';
   searchmess;
+  message;
+  messageClass;
   cartpost;
   productpost
   catalogpost
@@ -51,19 +53,15 @@ export class SearchComponent implements OnInit {
   AddToCart(idproduct) {
     this.authService.AddCart(idproduct).subscribe(data => {
       if (!data.success) {
-        this.searchmess = data.message;
+        this.messageClass = 'alert alert-danger';
+        this.message = data.message;
       } else {
-        this.searchmess = data.message;
+        this.messageClass = 'alert alert-success';
+        this.message = data.message;
+        window.location.reload();
         this.getCart();
-        this.authService.editProduct(idproduct).subscribe(data => {
-          // Check if PUT request was a success or not
-          if (!data.success) {
-            this.searchmess = data.message;
-          } else {
-            this.searchmess = data.message;
-          }
-        });
       }
+
     });
   }
   getCart() {

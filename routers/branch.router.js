@@ -10,7 +10,7 @@ module.exports = (router) => {
     router.post('/addbranch/:idmenu', (req, res) => {
         if (!req.body.branchName || !req.body.image ||
             !req.body.description || !req.params.idmenu) {
-            res.json({ success: false, message: 'you must enter input' });
+            res.json({ success: false, message: 'The error occurred in the process of work' });
         }
         else {
             var newbranch = new Branch({
@@ -30,7 +30,7 @@ module.exports = (router) => {
 
                         }
                         else {
-                            res.json({ success: false, message: 'Could not save branch. Error: ', err });
+                            res.json({ success: false, message: 'The error occurred in the process of work', err });
                         }
                     }
                 }
@@ -52,7 +52,7 @@ module.exports = (router) => {
                                         if (err) {
                                             res.json(err);
                                         } else {
-                                            res.json({ success: true,message: 'Add success',message: dataNew })
+                                            res.json({ success: true,message: 'The data was saved successfully! Please look at the latest update your website!',branchs: dataNew })
                                         }
 
                                     });
@@ -71,9 +71,9 @@ module.exports = (router) => {
                         res.json({ success: false, message: err });
                     } else {
                         if (!branches) {
-                            res.json({ success: false, message: 'No branch found.' });
+                            res.json({ success: false, message: 'There is no branch available' });
                         } else {
-                            res.json({ success: true,message:"find success", branches: branches });
+                            res.json({ success: true,message:"The data was saved successfully! Please look at the latest update your website!", branches: branches });
         
                         }
                     }
@@ -88,9 +88,9 @@ router.get('/searchbranch/:namebranch', (req, res) => {
                     res.json({ success: false, message: err });
                 } else {
                     if (!branches || branches=="") {
-                        res.json({ success: true, message: "can not found" });
+                        res.json({ success: true, message: "There is no branch available" });
                     } else {
-                        res.json({ success: true, message: "find success", branches: branches });
+                        res.json({ success: true, message: "The data was saved successfully! Please look at the latest update your website!", branches: branches });
     
                     }
                 }
@@ -111,7 +111,7 @@ router.get('/searchbranch/:namebranch', (req, res) => {
                         res.json({ success: false, message: err });
                     } else {
                         if (!branches) {
-                            res.json({ success: false, message: 'No catalog found.' });
+                            res.json({ success: false, message: 'There is no branch available' });
                         } else {
                             res.json({ success: true,message:menu[0]['_id'], branches: branches });
         
@@ -126,7 +126,7 @@ router.get('/searchbranch/:namebranch', (req, res) => {
 
 router.delete('/deletebranch/:id', function (req, res) {
     if (!req.params.id) {
-        res.json({ success: false, message: 'no find menu' });
+        res.json({ success: false, message: 'There is no branch available' });
     }
     else
     {

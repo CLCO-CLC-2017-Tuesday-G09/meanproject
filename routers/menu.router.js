@@ -14,7 +14,7 @@ module.exports = (router) => {
 
             }
             else {
-                res.json({ success: false, message: 'Could not save Menu. Error: ', err });
+                res.json({ success: false, message: 'The error occurred in the process of work', err });
             }
         }
         }
@@ -25,10 +25,10 @@ module.exports = (router) => {
         NewMenu.save((err,menus)=>{
             if(err)
             {
-                res.json({ success: false, message: 'No save' }); // Return error
+                res.json({ success: false, message: 'Cannot save the data' }); // Return error
             }
             else{
-                res.json({ success: true, message: 'save',menus:menus}); // Return sucess
+                res.json({ success: true, message: 'The data was saved successfully! Please look at the latest update your website!',menus:menus}); // Return sucess
             }
         });
     }
@@ -40,7 +40,7 @@ module.exports = (router) => {
           }
           else
           {
-            res.json({ success: true, message: 'find',menus:menus}); // Return sucess
+            res.json({ success: true, message: 'The results in your system.',menus:menus}); // Return sucess
           }
         }).sort({ '_id': -1 }).populate('branchs');
       });
@@ -51,16 +51,16 @@ module.exports = (router) => {
             res.json({ success: false, message: err });
         } else {
             if (!user) {
-                res.json({ success: false, message: 'Menu is not found' });
+                res.json({ success: false, message: 'Your Menu name is currently not available in the system' });
             } else {
-                res.json({ success: true, message: 'find',menus:menus});
+                res.json({ success: true, message: 'We found an results',menus:menus});
             }
         }
     });
 });
       router.delete('/deletemenu/:id', function (req, res) {
         if (!req.params.id) {
-            res.json({ success: false, message: 'no find menu' });
+            res.json({ success: false, message: 'There is no menu available!' });
         }
         else
         {
